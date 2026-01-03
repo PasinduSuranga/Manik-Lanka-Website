@@ -5,9 +5,8 @@ export default function Footer() {
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4">Explore Lanka</h3>
+            <h3 className="text-xl font-semibold text-white mb-4">Manik Lanka Holidays</h3>
             <p className="text-gray-400">
               Discover the wonder of Sri Lanka with our curated tour packages.
             </p>
@@ -16,17 +15,17 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Contact Information</h3>
             <div className="space-y-3">
-              <a href="tel:+94112345678" className="flex items-center gap-3 hover:text-sky-400 transition-colors">
+              <a href="tel:+94777673814" className="flex items-center gap-3 hover:text-sky-400 transition-colors">
                 <Phone className="h-5 w-5 text-sky-400" />
-                <span>+94 11 234 5678</span>
+                <span>+94 77 767 3814</span>
               </a>
-              <a href="mailto:info@explorelanka.com" className="flex items-center gap-3 hover:text-sky-400 transition-colors">
+              <a href="mailto:mlankaholidays@gmail.com" className="flex items-center gap-3 hover:text-sky-400 transition-colors">
                 <Mail className="h-5 w-5 text-sky-400" />
-                <span>info@explorelanka.com</span>
+                <span>mlankaholidays@gmail.com</span>
               </a>
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-sky-400 flex-shrink-0 mt-1" />
-                <span>123 Galle Road, Colombo 03, Sri Lanka</span>
+                <span>No. 67/C, Walpola, Ragama, Sri</span>
               </div>
             </div>
           </div>
@@ -55,7 +54,7 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://wa.me/94112345678"
+                href="https://wa.me/94777673814"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -71,7 +70,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} Explore Lanka. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Manik Lanka Holidays. All rights reserved.</p>
         </div>
       </div>
     </footer>
