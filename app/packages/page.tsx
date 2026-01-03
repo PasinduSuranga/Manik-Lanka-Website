@@ -14,7 +14,7 @@ const packagesData = [
     description: "Experience the best of Sri Lanka in one journey. This tour covers ancient cities, hill country, beaches, and cultural highlights with a relaxed stay plan.",
     //highlights: ["Negombo", "Polonnaruwa", "Kandy", "Nuwara Eliya", "Benthota", "Colombo" ],
     duration: "11 Days/ 10 Nights",
-    groupSize: "2-6 People",
+    //groupSize: "2-6 People",
     image: "/images/package1.jpg",
   },
   {
@@ -23,7 +23,7 @@ const packagesData = [
     description: "Experience the misty mountains of Kandy, Nuwara Eliya, and Ella before relaxing on the golden sands of Benthota.",
     //highlights: ["Kandy", "Nuwara Eliya", "Ella", "Benthota"],
     duration: "7 Days/ 6 Nights",
-    groupSize: "2-6 People",
+    //groupSize: "2-6 People",
     image: "/images/package2.jpg",
   },
   {
@@ -32,7 +32,7 @@ const packagesData = [
     description: "The ultimate Sri Lankan experience covering Colombo, the Hill Country, and the Southern coast including Yala and Mirissa.",
     //highlights: ["Colombo", "Kandy", "Nuwara Eliya", "Ella", "Yala", "Mirissa", "Benthota" ],
     duration: "10 Days/ 9 Nights",
-    groupSize: "4-8 People",
+    //groupSize: "4-8 People",
     image: "/images/package3.jpg",
   },
   {
@@ -41,7 +41,7 @@ const packagesData = [
     description: "An adventure featuring the surfing hotspots of Trinco and Arugam Bay, the mountains of Ella, and historic Galle.",
     //highlights: ["Negombo", "Trincomalee", "Arugam Bay", "Ella", "Nuwara Eliya", "Galle"],
     duration: "11 Days/ 10 Nights",
-    groupSize: "4-10 People",
+    //groupSize: "4-10 People",
     image: "/images/package4.jpg",
   },
   {
@@ -50,7 +50,7 @@ const packagesData = [
     description: "An immersive tour covering Pinnawala, eastern beaches, southern wildlife, and the Mask Museum in Benthota.",
     //highlights: ["Pinnawala", "Trincomalee", "Arugam Bay", "Ella", "Yala", "Mirissa", "Benthota", "Colombo" ],
     duration: "12 Days/ 11 Nights",
-    groupSize: "6-12 People",
+    //groupSize: "6-12 People",
     image: "/images/package5.jpg",
   },
 ];
@@ -158,12 +158,12 @@ export default function PackagesPage() {
                           </div>
                           <span className="font-medium">{pkg.duration}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-[#2C4A52]">
+                        {/*<div className="flex items-center gap-2 text-sm text-[#2C4A52]">
                           <div className="w-8 h-8 bg-[#F59E42]/10 rounded-lg flex items-center justify-center">
                             <Users className="h-4 w-4 text-[#F59E42]" />
                           </div>
                           <span className="font-medium">{pkg.groupSize}</span>
-                        </div>
+                        </div>*/}
                       </div>
 
                       {/* Highlights Section */}
