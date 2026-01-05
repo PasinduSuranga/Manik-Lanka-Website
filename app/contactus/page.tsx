@@ -264,7 +264,7 @@ export default function ContactPage() {
                   <motion.a
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/share/1BgCs3V8wR/?mibextid=wwXIfr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F59E42] hover:to-[#E88B2F] transition-all duration-300 shadow-lg"
@@ -274,7 +274,7 @@ export default function ContactPage() {
                   <motion.a
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/manik_lankaholidays?igsh=MTBubms2c3BrMm9nNA%3D%3D&utm_source=qr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F59E42] hover:to-[#E88B2F] transition-all duration-300 shadow-lg"

@@ -56,10 +56,13 @@ export default function Navbar() {
 
         <div className="px-3 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center h-14 sm:h-16">
-            <div className="flex items-center gap-2 sm:gap-3 group relative cursor-pointer">
+            <div 
+              className="flex items-center gap-2 sm:gap-3 group relative cursor-pointer"
+              onClick={() => router.push('/')}
+            >
               <div className="absolute -inset-2 bg-gradient-to-r from-[#F59E42]/30 to-[#E88B2F]/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-              <div className="w-12 h-12 sm:w-16 sm:h-16 relative rounded-lg sm:rounded-xl border-2 border-[#F59E42]/50 backdrop-blur-sm bg-[#FFF8F0]/20 shadow-lg shadow-[#F59E42]/30 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[#F59E42]/50 flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 relative rounded-lg sm:rounded-xl border-2 border-[#F59E42]/50 backdrop-blur-sm bg-[#FFF8F0]/20 shadow-lg shadow-[#F59E42]/30 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[#F59E42]/50 flex items-center justify-center overflow-hidden">
                 <img
                   src="/logo.png"
                   alt="Manik Lanka Holidays Logo"
@@ -68,10 +71,10 @@ export default function Navbar() {
               </div>
 
               <div className="flex flex-col relative">
-                <span className="font-semibold text-[#FFF8F0] text-sm sm:text-base tracking-wide transition-all duration-500 group-hover:text-[#F59E42]">
+                <span className="font-semibold text-[#FFF8F0] text-xs sm:text-sm md:text-base tracking-wide transition-all duration-500 group-hover:text-[#F59E42] leading-tight">
                   Manik Lanka Holidays
                 </span>
-                <span className="hidden sm:block text-[#F5E6D3] text-xs tracking-widest opacity-80">
+                <span className="hidden sm:block text-[#F5E6D3] text-[10px] md:text-xs tracking-widest opacity-80">
                   Your Journey Begins Here
                 </span>
               </div>
@@ -107,6 +110,38 @@ export default function Navbar() {
             >
               {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+              isOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0 py-0'
+            }`}
+          >
+            <div className="flex flex-col space-y-2 pb-2">
+              {navLinks.map((link) => (
+                <button
+                  key={link.path}
+                  onClick={() => {
+                    router.push(link.path);
+                    setIsOpen(false);
+                  }}
+                  className={`relative px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 text-left overflow-hidden ${
+                    isActive(link.path)
+                      ? 'text-white shadow-lg shadow-[#F59E42]/30'
+                      : 'text-[#FFF8F0] hover:text-white backdrop-blur-md hover:bg-[#F59E42]/10'
+                  }`}
+                >
+                  {isActive(link.path) && (
+                    <div
+                      className="absolute inset-0 bg-gradient-to-br from-[#F59E42] via-[#E88B2F] to-[#F59E42] animate-gradient-shift"
+                      style={{ backgroundSize: '200% 200%' }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
