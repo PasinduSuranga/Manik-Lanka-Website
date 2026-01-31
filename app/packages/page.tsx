@@ -57,43 +57,35 @@ const packagesData = [
 
 export default function PackagesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#FFFFFF] to-[#E8F4F8]">
-      
-      <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/images/packagehero.jpg"
-          alt="Tour Packages"
-          className="absolute inset-0 w-full h-full object-cover scale-105 animate-subtle-zoom"
-          fill
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2C4A52]/90 via-[#2C4A52]/70 to-[#F59E42]/60" />
-        
-        <div className="absolute top-10 left-10 w-32 h-32 bg-[#F59E42]/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#E88B2F]/20 rounded-full blur-3xl animate-pulse-slow" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="inline-block mb-4 px-6 py-2 bg-[#F59E42]/20 backdrop-blur-md border border-[#F59E42]/40 rounded-full"
-            >
-              <span className="text-[#FFF8F0] text-sm font-semibold tracking-wider">EXPLORE SRI LANKA</span>
-            </motion.div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#FFFFFF] to-[#E8F4F8] mobile-dark-bg">
+
+      {/* Hero Section - Mobile: Stack Vertically, Desktop: Side by Side */}
+      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
+        {/* Background Image - Top on Mobile, Left on Desktop */}
+        <div className="relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full">
+          <img
+            src="/package.jpg"
+            alt="Tour Packages"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
+        </div>
+
+        {/* Decorative Elements - Hidden on Mobile */}
+        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl animate-pulse-slow" />
+
+        {/* Text Container - Bottom on Mobile, Right on Desktop */}
+        <div className="relative z-10 w-full lg:w-1/2 flex items-center">
+          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 lg:min-h-[400px] lg:h-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
               Our Tour Packages
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-[#FFF8F0]/95 max-w-2xl mx-auto drop-shadow-lg leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
               Choose from our carefully crafted tour packages designed to showcase the best of Sri Lanka
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -106,10 +98,10 @@ export default function PackagesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#2C4A52] mb-3">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#8B6914] mb-3">
               Discover Your Perfect Journey
             </h2>
-            <p className="text-[#6B7280] max-w-2xl mx-auto">
+            <p className="text-[#784212] max-w-2xl mx-auto">
               Each package is thoughtfully designed to give you an authentic Sri Lankan experience
             </p>
           </motion.div>
@@ -124,10 +116,10 @@ export default function PackagesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border border-[#F5E6D3] hover:border-[#F59E42]/40 bg-white relative group">
-                  
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#F59E42]/30 to-[#E88B2F]/30 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500" />
-                  
+                <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border border-[#8B6914]/30 hover:border-[#F5B041]/40 bg-gradient-to-br from-[#C9A96E]/95 via-[#B8935D]/90 to-[#A67C52]/95 relative group">
+
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#F5B041]/30 to-[#F39C12]/30 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500" />
+
                   <div className="relative">
                     <div className="relative w-full h-56 sm:h-64 overflow-hidden">
                       <Image
@@ -136,25 +128,25 @@ export default function PackagesPage() {
                         className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                         fill
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#2C4A52]/80 via-[#2C4A52]/30 to-transparent" />
-                      
-                      <div className="absolute top-4 right-4 w-10 h-10 bg-[#F59E42] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#5D4E37]/80 via-[#784212]/30 to-transparent" />
+
+                      <div className="absolute top-4 right-4 w-10 h-10 bg-[#F5B041] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
                         {pkg.id}
                       </div>
                     </div>
-                    
-                    <div className="p-5 sm:p-6 flex flex-col flex-grow bg-white">
-                      <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#2C4A52] group-hover:text-[#F59E42] transition-colors duration-300">
+
+                    <div className="p-5 sm:p-6 flex flex-col flex-grow bg-gradient-to-br from-[#2C1810]/10 via-[#3D2F1F]/5 to-transparent backdrop-blur-sm">
+                      <h2 className="text-lg sm:text-xl font-bold mb-3 text-[#2C1810] group-hover:text-[#F5B041] transition-colors duration-300">
                         {pkg.name}
                       </h2>
-                      <p className="text-[#6B7280] mb-4 text-sm leading-relaxed flex-grow">
+                      <p className="text-[#3D2F1F] mb-4 text-sm leading-relaxed flex-grow">
                         {pkg.description}
                       </p>
 
-                      <div className="space-y-2 mb-5 bg-gradient-to-r from-[#FFF8F0] to-[#F5E6D3] p-3 rounded-xl border border-[#F59E42]/10">
-                        <div className="flex items-center gap-2 text-sm text-[#2C4A52]">
-                          <div className="w-8 h-8 bg-[#F59E42]/10 rounded-lg flex items-center justify-center">
-                            <Clock className="h-4 w-4 text-[#F59E42]" />
+                      <div className="space-y-2 mb-5 bg-gradient-to-r from-[#FFF8F0] to-[#F5E6D3] p-3 rounded-xl border border-[#F5B041]/10">
+                        <div className="flex items-center gap-2 text-sm text-[#2C1810]">
+                          <div className="w-8 h-8 bg-[#F5B041]/10 rounded-lg flex items-center justify-center">
+                            <Clock className="h-4 w-4 text-[#F5B041]" />
                           </div>
                           <span className="font-medium">{pkg.duration}</span>
                         </div>
@@ -187,7 +179,7 @@ export default function PackagesPage() {
                         
                       </div>
 */}
-                      
+
                     </div>
                   </div>
                 </Card>
@@ -197,11 +189,11 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#2C4A52] via-[#2C4A52] to-[#F59E42] text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#F59E42]/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#E88B2F]/20 rounded-full blur-3xl animate-float-delayed" />
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#8B6914] via-[#784212] to-[#BA4A00] text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-[#F5B041]/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F39C12]/20 rounded-full blur-3xl animate-float-delayed" />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl" />
-        
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -209,10 +201,10 @@ export default function PackagesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-6 inline-block px-6 py-2 bg-[#F59E42]/20 backdrop-blur-md border border-[#F59E42]/40 rounded-full">
+            <div className="mb-6 inline-block px-6 py-2 bg-[#F5B041]/20 backdrop-blur-md border border-[#F5B041]/40 rounded-full">
               <span className="text-[#FFF8F0] text-sm font-semibold tracking-wider">CUSTOM EXPERIENCES</span>
             </div>
-            
+
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 drop-shadow-2xl">
               Can't Find What You're Looking For?
             </h2>
@@ -220,9 +212,9 @@ export default function PackagesPage() {
               We can create a custom tour package tailored to your preferences and interests.
             </p>
             <Link href="/contactus">
-              <Button 
-                size="lg" 
-                className="bg-white text-[#2C4A52] hover:bg-[#FFF8F0] border-none rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F59E42]/50 hover:scale-105 transition-all duration-300"
+              <Button
+                size="lg"
+                className="bg-white text-[#8B6914] hover:bg-[#FFF8F0] border-none rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F5B041]/50 hover:scale-105 transition-all duration-300"
               >
                 Contact Us for Custom Tours
               </Button>
@@ -233,8 +225,8 @@ export default function PackagesPage() {
 
       <style>{`
         @keyframes subtle-zoom {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+          0%, 100% { transform: scale(1.05); }
+          50% { transform: scale(1.08); }
         }
         @keyframes float {
           0%, 100% { transform: translateY(0); }
