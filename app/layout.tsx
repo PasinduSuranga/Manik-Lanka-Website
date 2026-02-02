@@ -33,7 +33,7 @@ export default function RootLayout({
 
         {/* 3. Wrap children in <main> for content */}
         <main>{children}</main>
-        
+
         {/* You could also add a <Footer /> here */}
         <Footer />
       </body>

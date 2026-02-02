@@ -1,17 +1,21 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { MapPin, Users, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const heroImage = '/images/hero1.jpeg'; 
+const heroImage = '/images/hero1.jpeg';
 const sigiriyaImage = '/images/sigiriya.jpg';
 const beachImage = '/images/beachImage.jpg';
 const wildLifeImage = '/images/wildLifeImage.jpg';
 const foodImage = '/images/food.jpg';
 const greenHillImage = '/images/nuwaraEliya.jpg';
 
-export default function HomePage() {
+export default function Home() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const featuredDestinations = [
     {
@@ -51,31 +55,31 @@ export default function HomePage() {
       icon: MapPin,
       title: 'Best Destinations',
       description: "Discover our expertly crafted tours to Sri Lanka's most breathtaking locations",
-      gradient: 'from-[#FF8C42] via-[#FF6B9D] to-[#7209B7]',
-      iconColor: 'text-[#2C4A52]',
-      glowColor: 'shadow-[#FF8C42]/30',
-      textColor: 'text-[#FFF8F0]',
-      descColor: 'text-[#FFF8F0]/95',
+      gradient: 'from-[#C9A96E] via-[#B8935D] to-[#A67C52]',
+      iconColor: 'text-[#5D4E37]',
+      glowColor: 'shadow-[#B8935D]/40',
+      textColor: 'text-[#2C1810]',
+      descColor: 'text-[#3D2F1F]',
     },
     {
       icon: Users,
       title: 'Expert Guides',
       description: 'Friendly local professionals bringing you authentic Sri Lankan experiences',
-      gradient: 'from-[#00B4D8] via-[#06D6A0] to-[#FFD23F]',
-      iconColor: 'text-[#2C4A52]',
-      glowColor: 'shadow-[#00B4D8]/30',
-      textColor: 'text-[#FFF8F0]',
-      descColor: 'text-[#FFF8F0]/95',
+      gradient: 'from-[#A67C52] via-[#8B6914] to-[#715310]',
+      iconColor: 'text-[#5D4E37]',
+      glowColor: 'shadow-[#8B6914]/40',
+      textColor: 'text-[#2C1810]',
+      descColor: 'text-[#3D2F1F]',
     },
     {
       icon: Shield,
       title: 'Safe Travel',
       description: 'Your safety and comfort are always our top priorities',
-      gradient: 'from-[#7209B7] via-[#FF6B9D] to-[#FF8C42]',
-      iconColor: 'text-[#2C4A52]',
-      glowColor: 'shadow-[#7209B7]/30',
-      textColor: 'text-[#FFF8F0]',
-      descColor: 'text-[#FFF8F0]/95',
+      gradient: 'from-[#B8935D] via-[#9A7B4F] to-[#8B6914]',
+      iconColor: 'text-[#5D4E37]',
+      glowColor: 'shadow-[#9A7B4F]/40',
+      textColor: 'text-[#2C1810]',
+      descColor: 'text-[#3D2F1F]',
     },
   ];
 
@@ -91,10 +95,26 @@ export default function HomePage() {
     setCurrentIndex(index);
   };
 
+  // Trigger entrance animation on first load
+  useEffect(() => {
+    if (!hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, []);
+
+  // Auto-play slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % featuredDestinations.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []); // Remove dependency to prevent recreation
+
   const getCardScale = (index: any) => {
     const total = featuredDestinations.length;
     const diff = (index - currentIndex + total) % total;
-    
+
     if (diff === 0) return 'scale-100 md:scale-110 z-30 opacity-100';
     if (diff === 1 || diff === total - 1) return 'scale-90 z-20 opacity-70';
     return 'scale-75 z-10 opacity-40';
@@ -103,7 +123,7 @@ export default function HomePage() {
   const getCardPosition = (index: any) => {
     const total = featuredDestinations.length;
     const diff = (index - currentIndex + total) % total;
-    
+
     if (diff === 0) return 'translate-x-0';
     if (diff === 1) return 'translate-x-[70%] md:translate-x-[60%]';
     if (diff === 2) return 'translate-x-[140%] md:translate-x-[120%]';
@@ -113,57 +133,74 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
-      <div className="relative h-[500px] sm:h-[600px] lg:h-[700px] flex items-center justify-center overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Sri Lanka Train Bridge"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2C4A52]/85 via-[#2C4A52]/70 to-[#7209B7]/60" />
-        
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#FF8C42]/15 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#FF6B9D]/15 rounded-full blur-3xl animate-float-delayed" />
-        
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#FFF8F0] mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
-            Experience the Magic of Sri Lanka with Manik Lanka Holidays
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#FFD23F] max-w-2xl mx-auto drop-shadow-lg font-medium">
-            Your Gateway to Unforgettable Adventures and Cultural Experiences
-          </p>
-          <a 
-            href="/packages"
-            className="bg-gradient-to-r from-[#FF8C42] via-[#FF6B9D] to-[#7209B7] hover:from-[#FF6B9D] hover:via-[#7209B7] hover:to-[#FF8C42] text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-xl shadow-[#FF8C42]/40 hover:shadow-2xl hover:shadow-[#FF6B9D]/50 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block">
-            Explore Packages
-          </a>
+    <div
+      className="min-h-screen bg-gradient-to-br from-[#FDFEFE] via-[#F8F9F9] to-[#E8DAEF] mobile-dark-bg"
+    >
+      {/* Hero Section - Mobile: Stack Vertically, Desktop: Side by Side */}
+      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
+        {/* Background Image - Top on Mobile, Left on Desktop */}
+        <div className={`relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full transition-transform duration-1000 ease-out ${hasAnimated ? 'lg:translate-x-0' : 'lg:-translate-x-full'
+          }`}>
+          <img
+            src={heroImage}
+            alt="Sri Lanka Train Bridge"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
+        </div>
+
+        {/* Decorative Elements - Hidden on Mobile */}
+        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl animate-float-slow" />
+        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl animate-float-delayed" />
+
+        {/* Text Container - Bottom on Mobile, Right on Desktop */}
+        <div className={`relative z-10 w-full lg:w-1/2 flex items-center transition-transform duration-1000 ease-out delay-300 ${hasAnimated ? 'lg:translate-x-0' : 'lg:translate-x-full'
+          }`}>
+          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 min-h-[400px] lg:h-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
+              Experience the Magic of Sri Lanka with Manik Lanka Holidays
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
+              Your Gateway to Unforgettable Adventures and Cultural Experiences
+            </p>
+            <a
+              href="/packages"
+              className="backdrop-blur-xl bg-gradient-to-r from-[#F39C12] via-[#E67E22] to-[#D68910] hover:from-[#FFD700] hover:via-[#F39C12] hover:to-[#E67E22] border-2 border-[#FFD700]/80 hover:border-white text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-2xl shadow-[#F39C12]/60 hover:shadow-[#FFD700]/80 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block w-fit">
+              Explore Packages
+            </a>
+          </div>
         </div>
       </div>
 
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#FFF8F0] via-[#E8E9EB] to-[#FFF8F0] relative overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-[#00B4D8]/10 to-[#06D6A0]/10 rounded-full blur-3xl opacity-60" />
-        <div className="absolute bottom-0 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-[#FFD23F]/10 to-[#FF8C42]/10 rounded-full blur-3xl opacity-60" />
-        
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#FDFEFE] via-[#F8F9F9] to-[#E8DAEF] relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-[#F5B041]/15 to-[#F8C471]/15 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-0 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-r from-[#E67E22]/15 to-[#F39C12]/15 rounded-full blur-3xl opacity-60" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`relative rounded-2xl p-6 sm:p-8 overflow-hidden bg-gradient-to-br ${feature.gradient} shadow-xl ${feature.glowColor} hover:shadow-2xl hover:shadow-[#FF6B9D]/40 transition-all duration-500 group cursor-pointer transform hover:scale-105 hover:-translate-y-2`}
+                className={`relative rounded-2xl p-6 sm:p-8 overflow-hidden bg-gradient-to-br ${feature.gradient} shadow-xl ${feature.glowColor} hover:shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-500 group cursor-pointer transform hover:scale-105 hover:-translate-y-3 md:opacity-100 md:translate-x-0 animate-slide-in-mobile`}
+                style={{
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2), 0 5px 15px rgba(139,105,20,0.3)',
+                  animationDelay: `${index * 200}ms`
+                }}
               >
-                <div className="absolute top-4 right-4 w-2 h-2 bg-[#FFF8F0]/50 rounded-full animate-pulse" />
-                <div className="absolute bottom-8 left-8 w-3 h-3 bg-[#FFF8F0]/40 rounded-full animate-pulse-delayed" />
-                <div className="absolute top-1/2 right-8 w-2 h-2 bg-[#FFF8F0]/45 rounded-full animate-pulse" />
-                
+                <div className="absolute top-4 right-4 w-2 h-2 bg-white/60 rounded-full animate-pulse" />
+                <div className="absolute bottom-8 left-8 w-3 h-3 bg-white/50 rounded-full animate-pulse-delayed" />
+                <div className="absolute top-1/2 right-8 w-2 h-2 bg-white/55 rounded-full animate-pulse" />
+
                 <div className="flex flex-col items-center text-center relative z-10">
-                  <div className="relative mb-4 sm:mb-6">
-                    <div className="absolute inset-0 rounded-full bg-[#FFF8F0]/25 blur-xl opacity-70 w-20 sm:w-24 h-20 sm:h-24 -left-2 sm:-left-3 -top-2 sm:-top-3 animate-pulse-slow" />
-                    
-                    <div className="w-16 sm:w-20 h-16 sm:h-20 bg-[#FFF8F0]/95 backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
+                  <div className="relative mb-4 sm:mb-6" style={{ perspective: '1000px' }}>
+                    <div className="absolute inset-0 rounded-full bg-white/30 blur-xl opacity-70 w-20 sm:w-24 h-20 sm:h-24 -left-2 sm:-left-3 -top-2 sm:-top-3 animate-pulse-slow" />
+
+                    <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/95 backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden group-hover:scale-110 transition-all duration-500 animate-rotate-3d" style={{ transformStyle: 'preserve-3d' }}>
                       <feature.icon className={`h-8 sm:h-10 w-8 sm:w-10 ${feature.iconColor} relative z-10 group-hover:scale-110 transition-transform duration-300`} />
                     </div>
                   </div>
-                  
+
                   <h3 className={`text-xl sm:text-2xl font-bold ${feature.textColor} mb-2 sm:mb-3 drop-shadow-lg`}>
                     {feature.title}
                   </h3>
@@ -177,61 +214,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-20 bg-[#FFF8F0] relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-br from-[#FF8C42]/10 to-[#FF6B9D]/8 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-br from-[#00B4D8]/8 to-[#06D6A0]/10 rounded-full blur-3xl animate-float-delayed" />
-        
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#F5E6D3] via-[#FFF8F0] to-[#E8DAEF] mobile-dark-section-bg relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-br from-[#F39C12]/20 to-[#F5B041]/15 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-80 h-64 sm:h-80 bg-gradient-to-br from-[#E67E22]/15 to-[#F8C471]/20 rounded-full blur-3xl animate-float-delayed" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2C4A52] mb-3 sm:mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#8B6914] mb-3 sm:mb-4">
               Top Sri Lankan Experiences
             </h2>
-            <p className="text-base sm:text-lg text-[#1A1B1E]/80 max-w-2xl mx-auto font-medium">
+            <p className="text-base sm:text-lg text-[#784212]/90 max-w-2xl mx-auto font-medium">
               Discover our island's must-see places, cultural wonders, and unforgettable flavors.
             </p>
           </div>
 
+          {/* Stacked Card Carousel */}
           <div className="relative">
             <div className="relative h-[500px] sm:h-[600px] md:h-[650px] lg:h-[700px] flex items-center justify-center overflow-visible">
               {featuredDestinations.map((destination, index) => (
                 <div
                   key={destination.id}
                   className={`absolute transition-all duration-700 ease-out ${getCardScale(index)} ${getCardPosition(index)} cursor-pointer transform-gpu will-change-transform`}
-                  style={{ width: '350px', maxWidth: '90vw' }}
+                  style={{ width: '420px', maxWidth: '92vw' }}
                   onClick={() => goToSlide(index)}
                 >
                   <div className="relative group">
-                    <div className="relative backdrop-blur-2xl bg-white/70 border-2 border-[#FF8C42]/40 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl hover:shadow-[#FF6B9D]/30 transition-all duration-700">
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-[#FFD23F]/10 pointer-events-none z-10" />
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8C42]/70 to-transparent" />
-                      
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C42]/0 via-[#FF6B9D]/15 to-[#00B4D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer-slow pointer-events-none z-10" 
-                           style={{ backgroundSize: '200% 200%' }} />
-                      
+                    <div
+                      className="relative backdrop-blur-2xl bg-white/70 border-2 border-[#F39C12]/40 rounded-3xl overflow-hidden shadow-2xl hover:shadow-[0_25px_60px_rgba(139,105,20,0.4)] transition-all duration-500 transform hover:-translate-y-2"
+                      style={{
+                        boxShadow: '0 15px 40px rgba(0,0,0,0.15), 0 8px 20px rgba(243,156,18,0.25), inset 0 1px 0 rgba(255,255,255,0.7)',
+                      }}
+                    >
                       <div className="aspect-[4/3] overflow-hidden relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C42]/8 to-transparent z-10 pointer-events-none group-hover:from-[#FF6B9D]/20 transition-all duration-700" />
-                        
                         <div className="relative w-full h-full">
                           <img
                             src={destination.image}
                             alt={destination.name}
                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                            style={{
+                              filter: 'brightness(1.15) contrast(1.2) saturate(1.4)',
+                              imageRendering: '-webkit-optimize-contrast'
+                            }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-[#00B4D8]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                         </div>
                       </div>
-                      
-                      <div className="p-4 sm:p-6 bg-gradient-to-br from-[#FFF8F0]/95 via-[#E8E9EB]/85 to-[#FFF8F0]/95 backdrop-blur-xl relative">
-                        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF8C42]/90 to-transparent" />
-                        
-                        <h3 className="text-lg sm:text-xl font-bold text-[#2C4A52] mb-2 drop-shadow-sm">
+
+                      {/* Colored Text Box */}
+                      <div className="p-5 sm:p-7 bg-gradient-to-br from-[#E8D5B5]/98 via-[#DCC9A8]/95 to-[#D9C5A3]/98 backdrop-blur-xl relative shadow-inner">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F39C12]/70 to-transparent" />
+
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#5D4E37] mb-2 drop-shadow-sm">
                           {destination.name}
                         </h3>
-                        <p className="text-sm sm:text-base text-[#1A1B1E]/80 line-clamp-3">
+                        <p className="text-sm sm:text-base text-[#4A3C2A]/90 line-clamp-3 leading-relaxed">
                           {destination.description}
                         </p>
-                        
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF6B9D]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                       </div>
                     </div>
                   </div>
@@ -239,61 +277,60 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+            {/* Navigation Buttons - Below Cards */}
+            <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 onClick={prevSlide}
-                className="relative backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#FF8C42]/40 hover:border-[#FF6B9D]/60 rounded-full p-2.5 sm:p-3 shadow-lg shadow-[#FF8C42]/15 hover:shadow-xl hover:shadow-[#FF6B9D]/30 transition-all duration-500 group overflow-hidden"
+                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 shadow-xl shadow-[#F39C12]/30 hover:shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-500 group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C42]/0 to-[#FF6B9D]/0 group-hover:from-[#FF8C42]/25 group-hover:to-[#FF6B9D]/25 transition-all duration-500 rounded-full" />
-                <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 text-[#FF8C42] group-hover:text-[#FF6B9D] relative z-10 transition-colors duration-300" />
+                <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-[#8B6914] group-hover:text-[#F39C12] transition-colors duration-300" />
               </button>
-              
+
+              {/* Dot Indicators */}
               <div className="flex items-center gap-2">
                 {featuredDestinations.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`transition-all duration-300 rounded-full ${
-                      index === currentIndex 
-                        ? 'w-8 h-2 bg-gradient-to-r from-[#FF8C42] via-[#FF6B9D] to-[#7209B7]' 
-                        : 'w-2 h-2 bg-[#2C4A52]/30 hover:bg-[#00B4D8]/60'
-                    }`}
+                    className={`transition-all duration-300 rounded-full ${index === currentIndex
+                      ? 'w-10 h-3 bg-gradient-to-r from-[#F39C12] via-[#E67E22] to-[#D68910]'
+                      : 'w-3 h-3 bg-[#8B6914]/40 hover:bg-[#F5B041]/70'
+                      }`}
                   />
                 ))}
               </div>
-              
+
               <button
                 onClick={nextSlide}
-                className="relative backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#FF8C42]/40 hover:border-[#FF6B9D]/60 rounded-full p-2.5 sm:p-3 shadow-lg shadow-[#FF8C42]/15 hover:shadow-xl hover:shadow-[#FF6B9D]/30 transition-all duration-500 group overflow-hidden"
+                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 shadow-xl shadow-[#F39C12]/30 hover:shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-500 group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF8C42]/0 to-[#FF6B9D]/0 group-hover:from-[#FF8C42]/25 group-hover:to-[#FF6B9D]/25 transition-all duration-500 rounded-full" />
-                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-[#FF8C42] group-hover:text-[#FF6B9D] relative z-10 transition-colors duration-300" />
+                <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-[#8B6914] group-hover:text-[#F39C12] transition-colors duration-300" />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#2C4A52] via-[#1A1B1E] to-[#7209B7] text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#FF8C42]/15 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#00B4D8]/15 rounded-full blur-3xl animate-float-delayed" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FF6B9D]/10 rounded-full blur-3xl" />
-        
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#8B6914] via-[#784212] to-[#BA4A00] text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#F39C12]/20 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#F5B041]/20 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#F8C471]/15 rounded-full blur-3xl" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFF8F0] mb-3 sm:mb-4 drop-shadow-lg">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg">
             Ready to Start Your Adventure?
           </h2>
-          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#FFD23F] max-w-2xl mx-auto drop-shadow-md font-medium">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#F8C471] max-w-2xl mx-auto drop-shadow-md font-medium">
             Browse our tours and craft the Sri Lankan experience you've always dreamed of
           </p>
-          <a 
+          <a
             href="/packages"
-            className="bg-gradient-to-r from-[#FF8C42] via-[#FF6B9D] to-[#FFD23F] hover:from-[#00B4D8] hover:via-[#06D6A0] hover:to-[#FFD23F] text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-xl shadow-[#FF8C42]/40 hover:shadow-2xl hover:shadow-[#00B4D8]/50 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block">
+            className="backdrop-blur-xl bg-white/20 border-2 border-white/40 hover:bg-white/30 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-xl shadow-[#F39C12]/50 hover:shadow-2xl hover:shadow-[#F5B041]/60 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block">
             View All Packages
           </a>
         </div>
       </section>
-      
+
       <style>{`
         @keyframes float-slow {
           0%, 100% { transform: translateY(0px) translateX(0px); }
@@ -317,6 +354,20 @@ export default function HomePage() {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.7; }
         }
+        @keyframes rotate-3d {
+          0% { transform: rotateY(0deg); }
+          100% { transform: rotateY(360deg); }
+        }
+        @keyframes slide-in-mobile {
+          0% {
+            opacity: 0;
+            transform: translateX(-100%);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
         .animate-float-slow {
           animation: float-slow 12s ease-in-out infinite;
         }
@@ -332,6 +383,21 @@ export default function HomePage() {
         .animate-pulse-delayed {
           animation: pulse-delayed 3.5s ease-in-out infinite;
         }
+        .animate-rotate-3d {
+          animation: rotate-3d 8s linear infinite;
+        }
+        @media (max-width: 768px) {
+          .animate-slide-in-mobile {
+            animation: slide-in-mobile 0.6s ease-out forwards;
+          }
+        }
+        @media (min-width: 769px) {
+          .animate-slide-in-mobile {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        /* Dark mode disabled */
       `}</style>
     </div>
   );

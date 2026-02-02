@@ -36,37 +36,41 @@ export default function HelpPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0]">
-      <div className="relative h-[500px] flex items-center justify-center overflow-hidden">
-        <img
-          src="/images/help.jpg"
-          alt="How Can We Help"
-          className="absolute inset-0 w-full h-full object-cover scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2C4A52]/90 via-[#2C4A52]/75 to-[#F59E42]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#F59E42] to-[#E88B2F] backdrop-blur-xl rounded-full mb-6 border-2 border-white/40 shadow-2xl">
-              <HelpCircle className="h-10 w-10 text-white" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">How Can We Help?</h1>
-            <p className="text-xl md:text-2xl text-white/95 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+    <div className="min-h-screen bg-[#FFF8F0] mobile-dark-bg">
+      {/* Hero Section - Image Left, Text Right */}
+      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
+        {/* Background Image - Top on Mobile, Left on Desktop */}
+        <div className="relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full">
+          <img
+            src="/images/help.jpg"
+            alt="How Can We Help"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
+        </div>
+
+        {/* Decorative Elements - Hidden on Mobile */}
+        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl" />
+        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl" />
+
+        {/* Text Container - Bottom on Mobile, Right on Desktop */}
+        <div className="relative z-10 w-full lg:w-1/2 flex items-center">
+          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 lg:min-h-[400px] lg:h-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
+              How Can We Help?
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
               Find answers to frequently asked questions about our tours and services
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F59E42]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2C4A52]/5 rounded-full blur-3xl" />
-        
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F5B041]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F39C12]/5 rounded-full blur-3xl" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,9 +79,9 @@ export default function HelpPage() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-[#F59E42]/10"
           >
-            <h2 className="text-4xl font-bold text-[#2C4A52] mb-4 text-center">Frequently Asked Questions</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#F59E42] to-[#E88B2F] mx-auto mb-10 rounded-full" />
-            
+            <h2 className="text-4xl font-bold text-[#8B6914] mb-4 text-center">Frequently Asked Questions</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#F5B041] to-[#F39C12] mx-auto mb-10 rounded-full" />
+
             <div className="w-full space-y-4">
               {faqs.map((faq, index) => (
                 <motion.div
@@ -90,16 +94,15 @@ export default function HelpPage() {
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
-                    className="flex w-full items-center justify-between text-left font-semibold text-[#2C4A52] hover:text-[#F59E42] transition-colors py-5 px-6 bg-gradient-to-r from-[#FFF8F0] to-white"
+                    className="flex w-full items-center justify-between text-left font-semibold text-[#8B6914] hover:text-[#F5B041] transition-colors py-5 px-6 bg-gradient-to-r from-[#FFF8F0] to-white"
                   >
                     <span className="text-lg pr-4">{faq.question}</span>
                     <ChevronDown
-                      className={`h-6 w-6 text-[#F59E42] transition-transform duration-300 flex-shrink-0 ${
-                        openIndex === index ? 'rotate-180' : ''
-                      }`}
+                      className={`h-6 w-6 text-[#F5B041] transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-180' : ''
+                        }`}
                     />
                   </button>
-                  
+
                   <AnimatePresence>
                     {openIndex === index && (
                       <motion.div
@@ -109,7 +112,7 @@ export default function HelpPage() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden bg-white"
                       >
-                        <p className="px-6 py-5 text-[#6B7280] leading-relaxed text-lg border-t border-[#F5E6D3]">
+                        <p className="px-6 py-5 text-[#784212] leading-relaxed text-lg border-t border-[#F5E6D3]">
                           {faq.answer}
                         </p>
                       </motion.div>
@@ -122,10 +125,10 @@ export default function HelpPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#2C4A52] via-[#2C4A52] to-[#F59E42] text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#F59E42]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#E88B2F]/10 rounded-full blur-3xl" />
-        
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#8B6914] via-[#784212] to-[#BA4A00] text-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#F5B041]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#F39C12]/10 rounded-full blur-3xl" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -133,7 +136,7 @@ export default function HelpPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#F59E42] to-[#E88B2F] rounded-full mb-6 shadow-2xl">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#F5B041] to-[#F39C12] rounded-full mb-6 shadow-2xl">
               <MessageCircle className="h-10 w-10 text-white" />
             </div>
             <h2 className="text-4xl font-bold text-white mb-6 drop-shadow-lg">Still Have Questions?</h2>
@@ -145,7 +148,7 @@ export default function HelpPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#F59E42] to-[#E88B2F] text-white font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-[#F59E42]/50 transition-all duration-300"
+                  className="bg-gradient-to-r from-[#F5B041] to-[#F39C12] text-white font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-300"
                 >
                   Contact Us
                 </motion.button>
@@ -154,7 +157,7 @@ export default function HelpPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#2C4A52] font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-white/30 transition-all duration-300"
+                  className="bg-white text-[#8B6914] font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-white/30 transition-all duration-300"
                 >
                   Call: +94 77 767 3814
                 </motion.button>
@@ -167,7 +170,7 @@ export default function HelpPage() {
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="absolute top-10 left-10 w-72 h-72 bg-[#E8F4F8] rounded-full blur-3xl opacity-60" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FFF8F0] rounded-full blur-3xl" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -176,10 +179,10 @@ export default function HelpPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-[#2C4A52] mb-4">Get In Touch</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#F59E42] to-[#E88B2F] mx-auto rounded-full" />
+            <h2 className="text-4xl font-bold text-[#8B6914] mb-4">Get In Touch</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#F5B041] to-[#F39C12] mx-auto rounded-full" />
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -189,26 +192,26 @@ export default function HelpPage() {
               whileHover={{ y: -8, scale: 1.02 }}
               className="bg-gradient-to-br from-[#FFF8F0] via-white to-[#F5E6D3] p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center border border-[#F59E42]/10 group cursor-pointer"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#F59E42] to-[#E88B2F] rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#F5B041] to-[#F39C12] rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Mail className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-[#2C4A52] mb-3">Email Support</h3>
-              <p className="text-[#6B7280] mb-4">Send us an email anytime</p>
-              <a href="mailto:mlankaholidays@gmail.com" className="text-[#F59E42] hover:text-[#E88B2F] font-semibold text-lg transition-colors">
+              <h3 className="text-xl font-bold text-[#8B6914] mb-3">Email Support</h3>
+              <p className="text-[#784212] mb-4">Send us an email anytime</p>
+              <a href="mailto:mlankaholidays@gmail.com" className="text-[#F5B041] hover:text-[#F39C12] font-semibold text-lg transition-colors">
                 mlankaholidays@gmail.com
               </a>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-gradient-to-br from-[#F59E42] via-[#F59E42] to-[#E88B2F] p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer"
+              className="bg-gradient-to-br from-[#F5B041] via-[#F5B041] to-[#F39C12] p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Phone className="h-8 w-8 text-[#F59E42]" />
+                <Phone className="h-8 w-8 text-[#F5B041]" />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Phone Support</h3>
               <p className="text-white/90 mb-4">Mon-Fri, 9am-5.30pm</p>
@@ -216,7 +219,7 @@ export default function HelpPage() {
                 +94 77 767 3814
               </a>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}

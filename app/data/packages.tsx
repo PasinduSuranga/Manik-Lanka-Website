@@ -1,0 +1,100 @@
+import { Dam } from "lucide-react";
+
+export const placeDescriptions: Record<string, string> = {
+  Negombo: "Negombo is a lively coastal town where Sri Lanka’s tropical charm meets centuries of history. Just minutes from the international airport, it welcomes visitors with golden beaches lined with swaying palms, colorful fishing boats, and breathtaking sunsets over the Indian Ocean.Often called “Little Rome”, Negombo is rich in cultural heritage, with beautiful colonial-era churches, lively street markets, and a strong local fishing tradition that shapes daily life. Early mornings reveal fishermen hauling in the day’s catch, while evenings come alive with beachside cafés serving fresh seafood and local flavors.",
+  Sigiriya: "Sigiriya is one of Sri Lanka’s most breathtaking treasures, a place where history, nature, and legend rise together from the heart of the island. Dominating the surrounding jungle plains, the iconic Sigiriya Rock Fortress towers nearly 200 meters above the landscape, offering an unforgettable sight and experience.Built in the 5th century, this UNESCO World Heritage Site captivates visitors with its ancient engineering and artistic brilliance. As you climb the rock, you pass through beautifully landscaped water gardens, mirror walls etched with centuries-old poetry, and the famous frescoes of the Sigiriya Maidens, whose vibrant colors still glow after more than 1,500 years.",
+  Polonnaruwa: "Polonnaruwa is a remarkable journey into Sri Lanka’s ancient past, where grand stone monuments rest peacefully amid lush greenery and tranquil lakes. Once the island’s medieval capital, this UNESCO World Heritage Site showcases the refined art, architecture, and engineering of a powerful civilization that flourished over 800 years ago.Wandering through Polonnaruwa feels like stepping back in time. Majestic royal palaces, elegant pavilions, sacred stupas, and sophisticated irrigation systems reveal the brilliance of ancient city planning. The highlight for many visitors is Gal Vihara, a breathtaking collection of colossal Buddha statues carved from a single granite rock-serene, spiritual, and deeply moving.",
+  Dambulla: "Dambulla is a captivating blend of spirituality, history, and natural beauty, crowned by one of Sri Lanka’s most sacred and awe-inspiring sites. At its heart lies the Dambulla Cave Temple, a UNESCO World Heritage Site and the best-preserved cave temple complex in the country.Set high atop a rocky hill, the temple consists of five caves adorned with over 150 Buddha statues and vast, vividly colored murals that cover walls and ceilings. These paintings, some dating back more than 2,000 years, tell stories of the Buddha’s life and Sri Lanka’s ancient kings, creating a powerful and peaceful atmosphere that leaves visitors in awe.",
+  Kandy: "Kandy is the cultural heart of Sri Lanka, nestled among misty hills and wrapped around a serene lake. Once the last royal capital of the island, this enchanting city blends rich history, deep spirituality, and natural beauty in a truly unforgettable way.At its center lies the sacred Temple of the Tooth Relic (Sri Dalada Maligawa), one of the most important Buddhist sites in the world. Daily rituals filled with drumming, chanting, and fragrant incense offer visitors a moving glimpse into living traditions that have endured for centuries. Nearby, Kandy Lake invites peaceful strolls with scenic views and cool mountain air.",
+  'Nuwara Eliya': "Nuwara Eliya is a refreshing escape into Sri Lanka’s hill country, often called “Little England” for its cool climate, misty landscapes, and colonial charm. Set high among rolling hills and emerald-green tea plantations, this picturesque town feels worlds away from the tropical coast.Red-roofed bungalows, neatly trimmed gardens, and historic buildings reflect its British-era heritage, while the surrounding countryside offers some of the island’s most stunning scenery. Waterfalls tumble down forested slopes, lakes shimmer in the cool air, and endless rows of tea bushes create postcard-perfect views. A visit to a tea factory reveals the story behind Sri Lanka’s world-famous Ceylon tea.",
+  Galle : "Galle is a captivating coastal city where history, culture, and ocean views blend seamlessly. At its heart stands the iconic Galle Fort, a UNESCO World Heritage Site built by the Portuguese and later fortified by the Dutch,a living monument where centuries-old walls embrace charming streets, colonial buildings, and stylish cafés.Walking through the fort feels like stepping into another era. Cobblestone lanes lead to art galleries, boutique hotels, and historic churches, while the ramparts offer stunning views of the Indian Ocean, especially at sunset. Outside the fort, golden beaches, swaying palms, and turquoise waters invite relaxation and adventure.",
+  Benthota: "Bentota is a tropical paradise on Sri Lanka’s southwest coast, where golden beaches, palm-lined shores, and calm blue waters create the perfect setting for relaxation and adventure. Known for its laid-back charm and natural beauty, Bentota is one of the island’s most popular beach escapes.The wide sandy beach is ideal for sunbathing and long seaside walks, while the Bentota River offers exciting water activities such as boat safaris, jet skiing, and kayaking through mangroves rich with birdlife. Nearby, visitors can explore sea turtle conservation centers and beautifully landscaped gardens designed by the renowned architect Geoffrey Bawa.",
+  Colombo: "Colombo is Sri Lanka’s dynamic capital,a city where modern life, colonial heritage, and tropical energy come together by the Indian Ocean. As the country’s main commercial hub, Colombo offers visitors a vibrant introduction to Sri Lanka, full of contrasts and color.Sleek skyscrapers rise beside historic buildings from the Portuguese, Dutch, and British eras, while bustling local markets coexist with luxury shopping malls and stylish cafés. Areas like Galle Face Green invite sunset strolls along the ocean, as street food vendors fill the air with irresistible local flavors.",
+  Ella: "Nestled in the heart of Sri Lanka’s lush hill country, Ella is a charming mountain village where nature, culture, and tranquility blend effortlessly. Surrounded by rolling tea plantations, mist-covered peaks, and cascading waterfalls, Ella offers breathtaking views at every turn. The cool climate and fresh mountain air create the perfect escape from the tropical heat.Adventurers can hike to iconic landmarks like Ella Rock and Little Adam’s Peak, while the world-famous Nine Arches Bridge provides a picture-perfect glimpse of colonial-era engineering set against a dramatic green backdrop. For those seeking relaxation, Ella’s laid-back cafés, cozy guesthouses, and scenic train journeys invite visitors to slow down and soak in the beauty.",
+  Yala: "Yala National Park is Sri Lanka’s ultimate wildlife adventure, where untamed nature comes alive in spectacular fashion. Famous for having one of the highest leopard densities in the world, Yala offers thrilling safari experiences through vast landscapes of dry forests, open grasslands, lagoons, and rocky outcrops.As the sun rises, the park awakens with herds of elephants, sloth bears, spotted deer, crocodiles, and a vibrant array of birdlife. Each safari journey promises excitement and wonder, guided by the sounds of the wild and the chance of unforgettable encounters. Beyond wildlife, Yala’s scenic beauty is enhanced by ancient ruins, hidden lakes, and golden coastlines that border the Indian Ocean.",
+  Mirissa: "Mirissa is a tropical paradise on Sri Lanka’s southern coast, where golden sands meet crystal-clear waters and laid-back beach vibes set the pace of life. Known as one of the best places in the world for whale and dolphin watching, Mirissa offers unforgettable ocean adventures alongside serene coastal beauty.Palm-fringed beaches, colorful sunsets, and gentle waves make it ideal for swimming, surfing, and simply unwinding by the sea. The lively beachfront is dotted with cozy cafés, seafood restaurants, and beach bars, creating a perfect balance between relaxation and vibrant nightlife. Just offshore, coral reefs and marine life invite snorkelers and divers to explore beneath the surface.",
+  Trincomalee: "Trincomalee, affectionately known as Trinco, is a breathtaking coastal gem on Sri Lanka’s eastern shore, celebrated for its pristine beaches, turquoise waters, and rich cultural heritage. With some of the finest natural harbors in the world, Trinco offers a perfect blend of relaxation and adventure.The powdery sands of Nilaveli and Uppuveli invite sun-seekers to unwind, while the crystal-clear seas around Pigeon Island National Park reveal vibrant coral reefs and colorful marine life, making it a paradise for snorkeling and diving. Trinco is also one of the best places in Sri Lanka for whale watching, where blue whales and dolphins can be spotted just offshore.",
+  'Arugam Bay': "Arugam Bay is Sri Lanka’s laid-back surf capital, where golden beaches, rolling waves, and a carefree coastal spirit create the perfect tropical escape. Renowned worldwide for its consistent right-hand point breaks, Arugam Bay draws surfers of all levels while maintaining a relaxed, bohemian charm.Beyond surfing, the area offers tranquil beach walks, stunning sunrises over the Indian Ocean, and close encounters with nature in nearby lagoons and wildlife parks. Beachside cafés, yoga shalas, and eco-friendly stays add to the town’s easygoing vibe, making it ideal for both adventure seekers and those looking to unwind.",
+};
+
+export const packagesData = [
+  {
+    id: 1,
+    name: "Complete Sri Lanka Explorer",
+    description: "Experience the best of Sri Lanka in one journey. This tour covers ancient cities, hill country, beaches, and cultural highlights with a relaxed stay plan.",
+    duration: "11 Days / 10 Nights",
+    image: "/images/package1.jpg",
+    itinerary: [
+      { stop: "Negombo", duration: "1 Night" },
+      { stop: "Sigiriya", duration: "2 Nights" },
+      { stop: "Polonnaruwa", duration: "Day Tour" },
+      { stop: "Dambulla", duration: "Visit" },
+      { stop: "Kandy", duration: "2 Nights" },
+      { stop: "Nuwara Eliya", duration: "2 Nights" },
+      { stop: "Galle", duration: "Visit" },
+      { stop: "Benthota", duration: "2 Nights" },
+      { stop: "Colombo", duration: "1 Night" },
+    ]
+  },
+  {
+    id: 2,
+    name: "Hill Country & Coast",
+    description: "Experience the misty mountains of Kandy, Nuwara Eliya, and Ella before relaxing on the golden sands of Benthota.",
+    duration: "7 Days / 6 Nights",
+    image: "/images/package2.jpg",
+    itinerary: [
+      { stop: "Kandy", duration: "2 Nights" },
+      { stop: "Nuwara Eliya", duration: "1 Night" },
+      { stop: "Ella", duration: "1 Night" },
+      { stop: "Benthota", duration: "2 Nights" },
+    ]
+  },
+  {
+    id: 3,
+    name: "The Grand Island Tour",
+    description: "The ultimate Sri Lankan experience covering Colombo, the Hill Country, and the Southern coast including Yala and Mirissa.",
+    duration: "10 Days / 9 Nights",
+    image: "/images/package3.jpg",
+    itinerary: [
+      { stop: "Colombo", duration: "Visit" },
+      { stop: "Kandy", duration: "Visit" },
+      { stop: "Nuwara Eliya", duration: "Visit" },
+      { stop: "Ella", duration: "Visit" },
+      { stop: "Yala", duration: "Visit" },
+      { stop: "Mirissa", duration: "Visit" },
+      { stop: "Benthota", duration: "Visit" },
+    ]
+  },
+  {
+    id: 4,
+    name: "East to South Explorer",
+    description: "An adventure featuring the surfing hotspots of Trinco and Arugam Bay, the mountains of Ella, and historic Galle.",
+    duration: "11 Days / 10 Nights",
+    image: "/images/package4.jpg",
+    itinerary: [
+      { stop: "Negombo", duration: "1 Night" },
+      { stop: "Trincomalee", duration: "2 Nights" },
+      { stop: "Arugam Bay", duration: "2 Nights" },
+      { stop: "Ella", duration: "2 Nights" },
+      { stop: "Nuwara Eliya", duration: "1 Night" },
+      { stop: "Galle", duration: "2 Nights" },
+    ]
+  },
+  {
+    id: 5,
+    name: "Wild & Cultural Expedition",
+    description: "An immersive tour covering Pinnawala, eastern beaches, southern wildlife, and the Mask Museum in Benthota.",
+    duration: "12 Days / 11 Nights",
+    image: "/images/package5.jpg",
+    itinerary: [
+      { stop: "Sigiriya", duration: "1 Night (Pinnawala)" },
+      { stop: "Trincomalee", duration: "1 Night" },
+      { stop: "Arugam Bay", duration: "2 Nights" },
+      { stop: "Ella", duration: "2 Nights" },
+      { stop: "Yala", duration: "1 Night" },
+      { stop: "Mirissa", duration: "1 Night" },
+      { stop: "Benthota", duration: "2 Nights (Mask Museum)" },
+      { stop: "Colombo", duration: "1 Night" },
+    ]
+  },
+];
