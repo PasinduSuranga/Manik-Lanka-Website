@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Loader2, Send } from 'lucide-react';
 import { toast } from 'sonner';
 import emailjs from '@emailjs/browser';
@@ -13,6 +13,11 @@ export default function ContactPage() {
     email: '',
     message: '',
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    setHasAnimated(true);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -52,35 +57,46 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#FFF8F0] mobile-dark-bg">
-      {/* Hero Section - Image Left, Text Right */}
-      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
-        {/* Background Image - Top on Mobile, Left on Desktop */}
-        <div className="relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full">
-          <img
-            src="/images/image.png"
-            alt="Get In Touch"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
-        </div>
+      {/* Hero Section - Full Width Cinematic */}
+      <div className="relative h-[500px] sm:h-[580px] lg:h-[650px] xl:h-[720px] overflow-hidden">
+        {/* Background Image - sharp, no animation */}
+        <img
+          src="/images/contactus.png"
+          alt="Get In Touch"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
 
-        {/* Decorative Elements - Hidden on Mobile */}
-        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl" />
-        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl" />
+        {/* Cinematic gradient: transparent at top, dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
 
-        {/* Text Container - Bottom on Mobile, Right on Desktop */}
-        <div className="relative z-10 w-full lg:w-1/2 flex items-center">
-          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 lg:min-h-[400px] lg:h-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
-              Get In Touch
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
-              We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
-          </div>
+        {/* Ambient orb */}
+        <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-[#F39C12]/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Text content - bottom anchored */}
+        <div className={`absolute bottom-0 left-0 right-0 px-6 sm:px-12 lg:px-20 pb-12 sm:pb-16 ${hasAnimated ? 'animate-hero-text-in' : 'opacity-0'}`}>
+          <div className="w-14 h-1 bg-gradient-to-r from-[#F39C12] to-[#F5B041] rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9)' }}>
+            Get In Touch
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl font-medium"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
+            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes hero-text-in {
+          0% { opacity: 0; transform: translateY(28px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-hero-text-in {
+          animation: hero-text-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+      `}</style>
 
       <section className="py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F5B041]/5 rounded-full blur-3xl" />
@@ -94,7 +110,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-[#F59E42]/10"
+              className="bg-white rounded-3xl p-8 md:p-10 border border-[#F59E42]/10"
             >
               <h2 className="text-3xl font-bold text-[#8B6914] mb-2">Send Us a Message</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-[#F5B041] to-[#F39C12] mb-8 rounded-full" />
@@ -166,7 +182,7 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-[#F5B041] to-[#F39C12] hover:from-[#F39C12] hover:to-[#F5B041] text-white font-semibold h-12 px-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-[#F5B041] to-[#F39C12] hover:from-[#F39C12] hover:to-[#F5B041] text-white font-semibold h-12 px-6 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>
@@ -271,7 +287,7 @@ export default function ContactPage() {
                     href="https://www.facebook.com/share/1BgCs3V8wR/?mibextid=wwXIfr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F5B041] hover:to-[#F39C12] transition-all duration-300 shadow-lg"
+                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F5B041] hover:to-[#F39C12] transition-all duration-300"
                   >
                     <Facebook className="h-6 w-6" />
                   </motion.a>
@@ -281,7 +297,7 @@ export default function ContactPage() {
                     href="https://www.instagram.com/manik_lankaholidays?igsh=MTBubms2c3BrMm9nNA%3D%3D&utm_source=qr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F5B041] hover:to-[#F39C12] transition-all duration-300 shadow-lg"
+                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-gradient-to-br hover:from-[#F5B041] hover:to-[#F39C12] transition-all duration-300"
                   >
                     <Instagram className="h-6 w-6" />
                   </motion.a>
@@ -291,7 +307,7 @@ export default function ContactPage() {
                     href="https://wa.me/94777673814"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-[#10B981] transition-all duration-300 shadow-lg"
+                    className="bg-white/10 backdrop-blur-sm text-white p-4 rounded-xl hover:bg-[#10B981] transition-all duration-300"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />

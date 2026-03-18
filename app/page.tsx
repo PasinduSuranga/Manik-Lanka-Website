@@ -136,40 +136,41 @@ export default function Home() {
     <div
       className="min-h-screen bg-gradient-to-br from-[#FDFEFE] via-[#F8F9F9] to-[#E8DAEF] mobile-dark-bg"
     >
-      {/* Hero Section - Mobile: Stack Vertically, Desktop: Side by Side */}
-      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
-        {/* Background Image - Top on Mobile, Left on Desktop */}
-        <div className={`relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full transition-transform duration-1000 ease-out ${hasAnimated ? 'lg:translate-x-0' : 'lg:-translate-x-full'
-          }`}>
-          <img
-            src={heroImage}
-            alt="Sri Lanka Train Bridge"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
-        </div>
+      {/* Hero Section - Full Width Cinematic */}
+      <div className="relative h-[500px] sm:h-[580px] lg:h-[650px] xl:h-[720px] overflow-hidden">
+        {/* Background Image - sharp, no animation */}
+        <img
+          src={heroImage}
+          alt="Sri Lanka Train Bridge"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
 
-        {/* Decorative Elements - Hidden on Mobile */}
-        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl animate-float-slow" />
-        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl animate-float-delayed" />
+        {/* Cinematic gradient: transparent at top, dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+        {/* Side vignette for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20" />
 
-        {/* Text Container - Bottom on Mobile, Right on Desktop */}
-        <div className={`relative z-10 w-full lg:w-1/2 flex items-center transition-transform duration-1000 ease-out delay-300 ${hasAnimated ? 'lg:translate-x-0' : 'lg:translate-x-full'
-          }`}>
-          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 min-h-[400px] lg:h-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
-              Experience the Magic of Sri Lanka with Manik Lanka Holidays
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
-              Your Gateway to Unforgettable Adventures and Cultural Experiences
-            </p>
-            <a
-              href="/packages"
-              className="backdrop-blur-xl bg-gradient-to-r from-[#F39C12] via-[#E67E22] to-[#D68910] hover:from-[#FFD700] hover:via-[#F39C12] hover:to-[#E67E22] border-2 border-[#FFD700]/80 hover:border-white text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-2xl shadow-[#F39C12]/60 hover:shadow-[#FFD700]/80 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block w-fit">
-              Explore Packages
-            </a>
-          </div>
+        {/* Ambient golden orbs – subtle, behind text */}
+        <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-[#F39C12]/10 rounded-full blur-3xl animate-float-slow pointer-events-none" />
+
+        {/* Text content - bottom anchored */}
+        <div className={`absolute bottom-0 left-0 right-0 px-6 sm:px-12 lg:px-20 pb-12 sm:pb-16 ${hasAnimated ? 'animate-hero-text-in' : 'opacity-0'}`}>
+          {/* Golden accent bar */}
+          <div className="w-14 h-1 bg-gradient-to-r from-[#F39C12] to-[#F5B041] rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9)' }}>
+            Experience the Magic of<br />Sri Lanka with Manik Lanka Holidays
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl mb-8 text-[#F8C471] max-w-2xl font-medium"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
+            Your Gateway to Unforgettable Adventures and Cultural Experiences
+          </p>
+          <a
+            href="/packages"
+            className="inline-block bg-gradient-to-r from-[#F39C12] via-[#E67E22] to-[#D68910] hover:from-[#FFD700] hover:via-[#F39C12] hover:to-[#E67E22] border border-[#FFD700]/60 text-white font-bold px-8 sm:px-10 py-3 sm:py-4 rounded-full hover:scale-105 transition-all duration-300 text-sm sm:text-base shadow-2xl">
+            Explore Packages
+          </a>
         </div>
       </div>
 
@@ -281,7 +282,7 @@ export default function Home() {
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 onClick={prevSlide}
-                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 shadow-xl shadow-[#F39C12]/30 hover:shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-500 group"
+                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 hover:shadow-[#F5B041]/50 transition-all duration-500 group"
               >
                 <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8 text-[#8B6914] group-hover:text-[#F39C12] transition-colors duration-300" />
               </button>
@@ -302,7 +303,7 @@ export default function Home() {
 
               <button
                 onClick={nextSlide}
-                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 shadow-xl shadow-[#F39C12]/30 hover:shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-500 group"
+                className="backdrop-blur-xl bg-white/70 hover:bg-white/90 border-2 border-[#F39C12]/50 hover:border-[#F5B041]/70 rounded-full p-3 sm:p-4 hover:shadow-[#F5B041]/50 transition-all duration-500 group"
               >
                 <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8 text-[#8B6914] group-hover:text-[#F39C12] transition-colors duration-300" />
               </button>
@@ -325,7 +326,7 @@ export default function Home() {
           </p>
           <a
             href="/packages"
-            className="backdrop-blur-xl bg-white/20 border-2 border-white/40 hover:bg-white/30 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-xl shadow-[#F39C12]/50 hover:shadow-2xl hover:shadow-[#F5B041]/60 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block">
+            className="backdrop-blur-xl bg-white/20 border-2 border-white/40 hover:bg-white/30 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-block">
             View All Packages
           </a>
         </div>
@@ -398,6 +399,20 @@ export default function Home() {
           }
         }
         /* Dark mode disabled */
+        .hero-glass-card {
+          background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.06) 100%);
+          backdrop-filter: blur(18px) saturate(1.4);
+          -webkit-backdrop-filter: blur(18px) saturate(1.4);
+          border: 1px solid rgba(255,255,255,0.22);
+          box-shadow: 0 8px 48px rgba(0,0,0,0.35), 0 2px 0 rgba(255,255,255,0.12) inset;
+        }
+        @keyframes hero-text-in {
+          0% { opacity: 0; transform: translateY(32px) scale(0.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-hero-text-in {
+          animation: hero-text-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
       `}</style>
     </div>
   );

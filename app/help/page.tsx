@@ -1,12 +1,17 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { HelpCircle, MessageCircle, ChevronDown, Mail, Phone, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function HelpPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    setHasAnimated(true);
+  }, []);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -37,35 +42,46 @@ export default function HelpPage() {
 
   return (
     <div className="min-h-screen bg-[#FFF8F0] mobile-dark-bg">
-      {/* Hero Section - Image Left, Text Right */}
-      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
-        {/* Background Image - Top on Mobile, Left on Desktop */}
-        <div className="relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full">
-          <img
-            src="/images/help.jpg"
-            alt="How Can We Help"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
-        </div>
+      {/* Hero Section - Full Width Cinematic */}
+      <div className="relative h-[500px] sm:h-[580px] lg:h-[650px] xl:h-[720px] overflow-hidden">
+        {/* Background Image - sharp, no animation */}
+        <img
+          src="/images/help.jpg"
+          alt="How Can We Help"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
 
-        {/* Decorative Elements - Hidden on Mobile */}
-        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl" />
-        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl" />
+        {/* Cinematic gradient: transparent at top, dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
 
-        {/* Text Container - Bottom on Mobile, Right on Desktop */}
-        <div className="relative z-10 w-full lg:w-1/2 flex items-center">
-          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 lg:min-h-[400px] lg:h-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
-              How Can We Help?
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
-              Find answers to frequently asked questions about our tours and services
-            </p>
-          </div>
+        {/* Ambient orb */}
+        <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-[#F39C12]/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Text content - bottom anchored */}
+        <div className={`absolute bottom-0 left-0 right-0 px-6 sm:px-12 lg:px-20 pb-12 sm:pb-16 ${hasAnimated ? 'animate-hero-text-in' : 'opacity-0'}`}>
+          <div className="w-14 h-1 bg-gradient-to-r from-[#F39C12] to-[#F5B041] rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9)' }}>
+            How Can We Help?
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl font-medium"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
+            Find answers to frequently asked questions about our tours and services
+          </p>
         </div>
       </div>
+
+      <style>{`
+        @keyframes hero-text-in {
+          0% { opacity: 0; transform: translateY(28px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-hero-text-in {
+          animation: hero-text-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+      `}</style>
 
       <section className="py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#F5B041]/5 rounded-full blur-3xl" />
@@ -77,7 +93,7 @@ export default function HelpPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-[#F59E42]/10"
+            className="bg-white rounded-3xl p-8 md:p-12 border border-[#F59E42]/10"
           >
             <h2 className="text-4xl font-bold text-[#8B6914] mb-4 text-center">Frequently Asked Questions</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#F5B041] to-[#F39C12] mx-auto mb-10 rounded-full" />
@@ -148,7 +164,7 @@ export default function HelpPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-[#F5B041] to-[#F39C12] text-white font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-[#F5B041]/50 transition-all duration-300"
+                  className="bg-gradient-to-r from-[#F5B041] to-[#F39C12] text-white font-semibold rounded-full px-10 py-4 transition-all duration-300"
                 >
                   Contact Us
                 </motion.button>
@@ -157,7 +173,7 @@ export default function HelpPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-[#8B6914] font-semibold rounded-full px-10 py-4 shadow-2xl hover:shadow-white/30 transition-all duration-300"
+                  className="bg-white text-[#8B6914] font-semibold rounded-full px-10 py-4 transition-all duration-300"
                 >
                   Call: +94 77 767 3814
                 </motion.button>

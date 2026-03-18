@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Manik Lanka Holidays",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

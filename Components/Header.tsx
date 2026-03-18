@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-3 sm:px-4">
       <div
-        className="max-w-7xl mx-auto backdrop-blur-2xl border transition-all duration-700 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#5D4E37] via-[#4A3C2A] to-[#3D2F1F] border-[#8B6914]/40 shadow-2xl shadow-black/30"
+        className="max-w-7xl mx-auto backdrop-blur-2xl border transition-all duration-700 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#5D4E37] via-[#4A3C2A] to-[#3D2F1F] border-[#8B6914]/40"
       >
         <>
           <div
@@ -67,9 +67,9 @@ export default function Navbar() {
               className="flex items-center gap-2 sm:gap-3 group relative cursor-pointer"
               onClick={() => router.push('/')}
             >
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#F5B041]/40 via-[#E67E22]/30 to-[#F39C12]/40 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="absolute -inset-2 bg-gradient-to-r from-[#F5B041]/40 via-[#E67E22]/30 to-[#F39C12]/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 relative rounded-lg sm:rounded-xl border-2 border-[#F39C12]/60 backdrop-blur-sm bg-gradient-to-br from-[#F8C471]/20 to-[#F39C12]/20 shadow-lg shadow-[#F5B041]/40 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-[#E67E22]/60 flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 relative rounded-lg sm:rounded-xl border-2 border-[#F39C12]/60 backdrop-blur-sm bg-gradient-to-br from-[#F8C471]/20 to-[#F39C12]/20 transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-6 flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#F5B041]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
                   src="/logo.png"
@@ -96,8 +96,8 @@ export default function Navbar() {
                     router.push(link.path);
                   }}
                   className={`relative px-3 lg:px-5 py-2.5 rounded-xl font-medium text-sm lg:text-base transition-all duration-500 transform hover:scale-105 overflow-hidden group ${isActive(link.path)
-                    ? 'text-white shadow-xl shadow-[#F5B041]/50'
-                    : 'text-[#F8C471] hover:text-white backdrop-blur-md hover:shadow-lg hover:shadow-[#F39C12]/30'
+                    ? 'text-white'
+                    : 'text-[#F8C471] hover:text-white backdrop-blur-md'
                     }`}
                 >
                   {isActive(link.path) && (
@@ -116,7 +116,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 sm:p-2.5 rounded-xl backdrop-blur-md bg-gradient-to-br from-[#F5B041]/25 to-[#E67E22]/20 hover:from-[#F5B041]/35 hover:to-[#E67E22]/30 transition-all duration-300 border border-[#F39C12]/40 text-[#F8C471] shadow-lg shadow-[#F5B041]/20"
+              className="md:hidden p-2 sm:p-2.5 rounded-xl backdrop-blur-md bg-gradient-to-br from-[#F5B041]/25 to-[#E67E22]/20 hover:from-[#F5B041]/35 hover:to-[#E67E22]/30 transition-all duration-300 border border-[#F39C12]/40 text-[#F8C471]"
             >
               {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
@@ -136,7 +136,7 @@ export default function Navbar() {
                     setIsOpen(false);
                   }}
                   className={`relative px-4 py-3 rounded-xl font-medium text-sm transition-all duration-300 text-left overflow-hidden ${isActive(link.path)
-                    ? 'text-white shadow-lg shadow-[#F5B041]/40'
+                    ? 'text-white'
                     : 'text-[#F8C471] hover:text-white backdrop-blur-md hover:bg-gradient-to-r hover:from-[#F39C12]/15 hover:to-[#F5B041]/15'
                     }`}
                 >

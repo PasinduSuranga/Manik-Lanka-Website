@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import { Button } from "@/Components/ui/button";
 import { Card } from "@/Components/ui/card";
@@ -9,36 +10,42 @@ import { Clock } from 'lucide-react';
 import { packagesData } from "@/app/data/packages"; // Make sure this path matches where you created Step 1
 
 export default function PackagesPage() {
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    setHasAnimated(true);
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FFF8F0] via-[#FFFFFF] to-[#E8F4F8] mobile-dark-bg">
 
-      {/* Hero Section - Mobile: Stack Vertically, Desktop: Side by Side */}
-      <div className="relative flex flex-col lg:flex-row lg:h-[500px] xl:h-[600px] 2xl:h-[700px] overflow-hidden">
-        {/* Background Image - Top on Mobile, Left on Desktop */}
-        <div className="relative w-full lg:w-1/2 h-[400px] sm:h-[500px] lg:h-full">
-          <img
-            src="/package.jpg"
-            alt="Tour Packages"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-black/20 via-black/30 to-black/60 lg:to-transparent" />
-        </div>
+      {/* Hero Section - Full Width Cinematic */}
+      <div className="relative h-[500px] sm:h-[580px] lg:h-[650px] xl:h-[720px] overflow-hidden">
+        {/* Background Image - sharp, no animation */}
+        <img
+          src="/images/packages.jpg"
+          alt="Tour Packages"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+        />
 
-        {/* Decorative Elements - Hidden on Mobile */}
-        <div className="hidden lg:block absolute top-1/4 left-1/4 w-64 h-64 bg-[#F39C12]/15 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="hidden lg:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#F5B041]/15 rounded-full blur-3xl animate-pulse-slow" />
+        {/* Cinematic gradient: transparent at top, dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
 
-        {/* Text Container - Bottom on Mobile, Right on Desktop */}
-        <div className="relative z-10 w-full lg:w-1/2 flex items-center">
-          <div className="backdrop-blur-2xl bg-gradient-to-br from-[#2C1810]/85 via-[#3D2F1F]/80 to-[#4A3C2A]/85 border-2 border-[#8B6914]/60 w-full flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 shadow-2xl shadow-black/50 lg:min-h-[400px] lg:h-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-2xl">
-              Our Tour Packages
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl drop-shadow-lg font-medium">
-              Choose from our carefully crafted tour packages designed to showcase the best of Sri Lanka
-            </p>
-          </div>
+        {/* Ambient orb */}
+        <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-[#F39C12]/10 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
+
+        {/* Text content - bottom anchored */}
+        <div className={`absolute bottom-0 left-0 right-0 px-6 sm:px-12 lg:px-20 pb-12 sm:pb-16 ${hasAnimated ? 'animate-hero-text-in' : 'opacity-0'}`}>
+          <div className="w-14 h-1 bg-gradient-to-r from-[#F39C12] to-[#F5B041] rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
+            style={{ textShadow: '0 2px 20px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.9)' }}>
+            Our Tour Packages
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-[#F8C471] max-w-2xl font-medium"
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>
+            Choose from our carefully crafted tour packages designed to showcase the best of Sri Lanka
+          </p>
         </div>
       </div>
 
@@ -70,7 +77,7 @@ export default function PackagesPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link href={`/packages/${pkg.id}`} className="block h-full">
-                  <Card className="overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col h-full border border-[#8B6914]/30 hover:border-[#F5B041]/40 bg-gradient-to-br from-[#C9A96E]/95 via-[#B8935D]/90 to-[#A67C52]/95 relative group cursor-pointer">
+                  <Card className="overflow-hidden rounded-2xl transition-all duration-500 flex flex-col h-full border border-[#8B6914]/30 hover:border-[#F5B041]/40 bg-gradient-to-br from-[#C9A96E]/95 via-[#B8935D]/90 to-[#A67C52]/95 relative group cursor-pointer">
 
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-[#F5B041]/30 to-[#F39C12]/30 rounded-2xl opacity-0 group-hover:opacity-100 blur transition-all duration-500" />
 
@@ -84,8 +91,19 @@ export default function PackagesPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#5D4E37]/80 via-[#784212]/30 to-transparent" />
 
-                        <div className="absolute top-4 right-4 w-10 h-10 bg-[#F5B041] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                        {/* Package number badge */}
+                        <div className="absolute top-4 right-4 w-10 h-10 bg-[#F5B041] text-white rounded-full flex items-center justify-center font-bold text-lg">
                           {pkg.id}
+                        </div>
+
+                        {/* Price badge - bottom left of image */}
+                        <div className="absolute bottom-3 left-3 flex flex-col gap-0.5">
+                          <div className="inline-flex items-baseline gap-1 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-[#F5B041]/40">
+                            <span className="text-[#F5B041] text-xs font-semibold uppercase tracking-wide">From</span>
+                            <span className="text-white text-lg font-extrabold">${pkg.pricePerPerson}</span>
+                            <span className="text-[#F8C471] text-xs font-medium">/ person</span>
+                          </div>
+                          <div className="text-white/70 text-[10px] pl-1">Max {pkg.maxPersons} persons</div>
                         </div>
                       </div>
 
@@ -104,8 +122,12 @@ export default function PackagesPage() {
                             </div>
                             <span className="font-medium">{pkg.duration}</span>
                           </div>
+                          <div className="flex items-center justify-between pt-1 border-t border-[#F5B041]/15">
+                            <span className="text-[#784212] text-xs font-semibold uppercase tracking-wide">Price per person</span>
+                            <span className="text-[#8B6914] text-base font-extrabold">USD {pkg.pricePerPerson}</span>
+                          </div>
                         </div>
-                        
+
                         <div className="text-center mt-2 text-[#FFF8F0] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#2C1810]/20 rounded-lg py-1">
                           Click to View Details
                         </div>
@@ -145,7 +167,7 @@ export default function PackagesPage() {
             <Link href="/contactus">
               <Button
                 size="lg"
-                className="bg-white text-[#8B6914] hover:bg-[#FFF8F0] border-none rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F5B041]/50 hover:scale-105 transition-all duration-300"
+                className="bg-white text-[#8B6914] hover:bg-[#FFF8F0] border-none rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-bold hover:scale-105 transition-all duration-300"
               >
                 Contact Us for Custom Tours
               </Button>
@@ -175,6 +197,20 @@ export default function PackagesPage() {
         .animate-float { animation: float 8s ease-in-out infinite; }
         .animate-float-delayed { animation: float-delayed 10s ease-in-out infinite; }
         .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+        .hero-glass-card {
+          background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.06) 100%);
+          backdrop-filter: blur(18px) saturate(1.4);
+          -webkit-backdrop-filter: blur(18px) saturate(1.4);
+          border: 1px solid rgba(255,255,255,0.22);
+          box-shadow: 0 8px 48px rgba(0,0,0,0.35), 0 2px 0 rgba(255,255,255,0.12) inset;
+        }
+        @keyframes hero-text-in {
+          0% { opacity: 0; transform: translateY(32px) scale(0.97); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-hero-text-in {
+          animation: hero-text-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
       `}</style>
     </div>
   );
