@@ -22,7 +22,7 @@ export default function PackagesPage() {
       <div className="relative h-[500px] sm:h-[580px] lg:h-[650px] xl:h-[720px] overflow-hidden">
         {/* Background Image - sharp, no animation */}
         <img
-          src="/images/packages.jpg"
+          src="/images/packages.png"
           alt="Tour Packages"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
