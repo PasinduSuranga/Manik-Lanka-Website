@@ -1,4 +1,4 @@
-import { packagesData } from "./data/packages";
+import { packagesData } from "@/app/data/packages";
 
 export default function sitemap() {
   const baseUrl = "https://maniklankaholidays.com";
