@@ -21,7 +21,7 @@ export default function PackageClient({ id }: { id: number }) {
       <div className="relative h-[50vh] lg:h-[60vh] w-full overflow-hidden">
         <Image
           src={pkg.image}
-          alt={pkg.name}
+          alt={pkg.imageAlt}
           fill
           className="object-cover"
           priority
