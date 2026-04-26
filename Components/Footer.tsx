@@ -57,7 +57,7 @@ export default function Footer() {
                 <div className="bg-gradient-to-br from-[#F39C12] to-[#E67E22] p-2 rounded-lg">
                   <MapPin className="h-4 w-4 text-[#2C1810] flex-shrink-0" />
                 </div>
-                <span className="text-white/90">No. 67/C, Walpola, Ragama, Sri</span>
+                <span className="text-white/90">No. 67/C, Walpola, Ragama, Sri Lanka</span>
               </div>
             </div>
           </div>
