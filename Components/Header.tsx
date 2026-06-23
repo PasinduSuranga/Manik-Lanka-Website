@@ -18,6 +18,7 @@ export default function Navbar() {
     { name: 'Travel Guide', path: '/travelguide' },
     { name: 'About', path: '/about' },
     { name: 'Help', path: '/help' },
+    { name: 'Inquiry', path: '/inquiry' },
     { name: 'Contact Us', path: '/contactus' },
   ];
 
@@ -75,11 +76,10 @@ export default function Navbar() {
                     onClick={() => {
                       router.push(link.path);
                     }}
-                    className={`relative px-4 lg:px-6 py-2.5 rounded-lg font-semibold text-sm lg:text-base transition-all duration-300 transform hover:scale-105 overflow-hidden ${
-                      isActive(link.path)
-                        ? 'text-white bg-white/20 backdrop-blur-md shadow-lg border border-white/30'
-                        : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
-                    }`}
+                    className={`relative px-4 lg:px-6 py-2.5 rounded-lg font-semibold text-sm lg:text-base transition-all duration-300 transform hover:scale-105 overflow-hidden ${isActive(link.path)
+                      ? 'text-white bg-white/20 backdrop-blur-md shadow-lg border border-white/30'
+                      : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
+                      }`}
                   >
                     <span className="relative z-10 drop-shadow-md">{link.name}</span>
                   </button>
@@ -97,9 +97,8 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             <div
-              className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-                isOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
-              }`}
+              className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
+                }`}
             >
               <div className="flex flex-col space-y-2 pt-2">
                 {navLinks.map((link) => (
@@ -109,11 +108,10 @@ export default function Navbar() {
                       router.push(link.path);
                       setIsOpen(false);
                     }}
-                    className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${
-                      isActive(link.path)
-                        ? 'text-white bg-white/20 backdrop-blur-md shadow-lg border border-white/30'
-                        : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
-                    }`}
+                    className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${isActive(link.path)
+                      ? 'text-white bg-white/20 backdrop-blur-md shadow-lg border border-white/30'
+                      : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
+                      }`}
                   >
                     {link.name}
                   </button>
@@ -126,11 +124,10 @@ export default function Navbar() {
 
       {/* Colored Sticky Header - Appears on scroll */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${
-          isScrolled
-            ? 'translate-y-0 opacity-100 shadow-2xl'
-            : '-translate-y-full opacity-0 pointer-events-none'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-in-out ${isScrolled
+          ? 'translate-y-0 opacity-100 shadow-2xl'
+          : '-translate-y-full opacity-0 pointer-events-none'
+          }`}
       >
         <div className="w-full bg-gradient-to-r from-[#5D4E37] via-[#4A3C2A] to-[#3D2F1F] border-b-2 border-[#F39C12]/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,11 +163,10 @@ export default function Navbar() {
                     onClick={() => {
                       router.push(link.path);
                     }}
-                    className={`relative px-4 lg:px-6 py-2.5 rounded-lg font-semibold text-sm lg:text-base transition-all duration-300 transform hover:scale-105 overflow-hidden ${
-                      isActive(link.path)
-                        ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow-lg'
-                        : 'text-[#F8C471] hover:text-white hover:bg-white/10'
-                    }`}
+                    className={`relative px-4 lg:px-6 py-2.5 rounded-lg font-semibold text-sm lg:text-base transition-all duration-300 transform hover:scale-105 overflow-hidden ${isActive(link.path)
+                      ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow-lg'
+                      : 'text-[#F8C471] hover:text-white hover:bg-white/10'
+                      }`}
                   >
                     <span className="relative z-10">{link.name}</span>
                   </button>
@@ -188,9 +184,8 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             <div
-              className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-                isOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
-              }`}
+              className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
+                }`}
             >
               <div className="flex flex-col space-y-2 pt-2">
                 {navLinks.map((link) => (
@@ -200,11 +195,10 @@ export default function Navbar() {
                       router.push(link.path);
                       setIsOpen(false);
                     }}
-                    className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${
-                      isActive(link.path)
-                        ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow-lg'
-                        : 'text-[#F8C471] hover:text-white hover:bg-white/10'
-                    }`}
+                    className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${isActive(link.path)
+                      ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow-lg'
+                      : 'text-[#F8C471] hover:text-white hover:bg-white/10'
+                      }`}
                   >
                     {link.name}
                   </button>

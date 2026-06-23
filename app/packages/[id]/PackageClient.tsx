@@ -304,7 +304,7 @@ export default function PackageClient({ id }: { id: number }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="flex items-center gap-1.5 text-[#F5B041] mb-1">
-                      {[1,2,3,4,5].map(s => <IconStar key={s} />)}
+                      {[1, 2, 3, 4, 5].map(s => <IconStar key={s} />)}
                     </div>
                     <p className="text-white text-xs font-medium leading-snug">
                       Immersive local experiences crafted by our expert guides

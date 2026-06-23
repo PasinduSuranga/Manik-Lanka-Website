@@ -395,7 +395,7 @@ export default function PackagesClient() {
               <p className="text-white/72 text-sm sm:text-base leading-relaxed mb-8 max-w-xl mx-auto">
                 We craft fully personalized tour packages tailored exactly to your preferences, timeline, and budget.
               </p>
-              <Link href="/contactus"
+              <Link href="/inquiry"
                 className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#F39C12] to-[#E67E22] hover:from-[#F5B041] hover:to-[#F39C12] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-[#F39C12]/30 text-sm sm:text-base">
                 Contact Us for Custom Tours
                 <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
@@ -548,7 +548,7 @@ export default function PackagesClient() {
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Need a Custom Package?</h2>
               <p className="text-white/68 text-sm mb-7">Our travel experts will design a tour tailored just for you.</p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Link href="/contactus"
+                <Link href="/inquiry"
                   className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#F39C12] to-[#E67E22] hover:from-[#F5B041] hover:to-[#F39C12] text-white font-semibold px-7 py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm shadow-md shadow-[#F39C12]/25">
                   Contact Us
                   <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
