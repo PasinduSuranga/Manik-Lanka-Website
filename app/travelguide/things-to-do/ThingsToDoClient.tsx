@@ -137,7 +137,7 @@ export default function ThingsToDoClient() {
     <div className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
 
       {/* ── Hero ── */}
-      <section className="relative h-[56vh] sm:h-[64vh] min-h-[400px] max-h-[700px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/wildLifeImage.jpg"
           alt="Things To Do in Sri Lanka"

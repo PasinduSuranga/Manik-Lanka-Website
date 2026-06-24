@@ -72,7 +72,7 @@ export default function PackageClient({ id }: { id: number }) {
           My thought: A dramatic hero immerses the tourist
           instantly. The tour name + duration reads at a glance.
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[60vh] sm:h-[70vh] min-h-[460px] max-h-[780px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <Image
           src="/images/wildLifeImage.jpg"
           alt="Manik Lanka Holidays Sri Lanka"
@@ -291,7 +291,7 @@ export default function PackageClient({ id }: { id: number }) {
 
             {/* RIGHT — Sticky image panel (desktop only) */}
             <div className="hidden lg:block w-72 xl:w-80 flex-shrink-0">
-              <div className="sticky top-24">
+              <div className="sticky top-28">
                 {/* Main image */}
                 <div className="relative w-full rounded-2xl overflow-hidden mb-4" style={{ height: '340px' }}>
                   <Image

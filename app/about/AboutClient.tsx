@@ -132,7 +132,7 @@ export default function AboutClient() {
       {/* ══════════════════════════════════════════════════════
           HERO — existing aboutus.png, cinematic treatment
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[58vh] sm:h-[68vh] min-h-[460px] max-h-[750px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/aboutus.png"
           alt="About Manik Lanka Holidays — Sri Lanka Travel Experts"

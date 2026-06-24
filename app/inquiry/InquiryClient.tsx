@@ -210,7 +210,7 @@ Other Reqs   : ${formData.otherRequirements || 'None'}
       {/* ══════════════════════════════════════════════════════
           HERO — cinematic, bottom-anchored text
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[48vh] sm:h-[55vh] min-h-[380px] max-h-[600px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/beachImage.jpg"
           alt="Inquire About Your Custom Tour"

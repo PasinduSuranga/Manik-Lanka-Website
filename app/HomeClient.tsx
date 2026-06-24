@@ -314,14 +314,11 @@ export default function HomeClient() {
 
             <div className="space-y-4 text-white/75 text-sm sm:text-base leading-relaxed mb-8">
               <p>
-                Manik Lanka Holidays is a premier Sri Lankan travel company dedicated to creating exceptional and unforgettable travel experiences for visitors from around the world. Inspired by the natural beauty, rich heritage, and warm hospitality of Sri Lanka, we specialize in tailor-made tours, luxury holidays, cultural journeys, wildlife adventures, honeymoon escapes, and business travel solutions.
-              </p>
+                Sri Lanka is a tropical island paradise renowned for its breathtaking natural beauty, rich cultural heritage, diverse landscapes, and warm hospitality. From ancient UNESCO World Heritage sites and sacred temples to misty mountains, lush tea plantations, and golden beaches, the island offers unforgettable experiences that captivate travelers from around the world.              </p>
               <p>
-                With a passion for excellence and personalized service, our experienced travel experts design unique itineraries that showcase the very best of the island — from ancient UNESCO heritage sites and misty hill country landscapes to pristine beaches and breathtaking wildlife encounters. Our commitment is to deliver seamless, safe, and authentic travel experiences that exceed international standards.
-              </p>
+                The country is blessed with an extraordinary variety of attractions, including vibrant wildlife, scenic hill country landscapes, pristine coastlines, and centuries of history. Whether seeking adventure, relaxation, cultural exploration, or luxury travel, visitors can discover unique experiences that showcase the very best of Sri Lanka's natural and cultural treasures.              </p>
               <p>
-                At Manik Lanka Holidays, we believe that every journey should be as unique as the traveler. Through professional planning, reliable transportation, carefully selected accommodations, and dedicated customer support, we transform every holiday into a lifetime memory.
-              </p>
+                Manik Lanka Holidays is dedicated to creating exceptional and memorable travel experiences through tailor-made tours, luxury holidays, cultural journeys, wildlife adventures, honeymoon escapes, and business travel solutions. With experienced travel experts, professional planning, reliable transportation, carefully selected accommodations, and dedicated customer support, we ensure seamless, safe, and authentic journeys that exceed expectations and transform every holiday into a lifetime memory.              </p>
             </div>
 
             {/* Why Choose */}
@@ -468,7 +465,14 @@ export default function HomeClient() {
             <div className="w-8 h-px bg-[#F39C12]" />
             <span className="text-[#B8730A] text-xs font-semibold tracking-[0.25em] uppercase">Gallery</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#3D2314]">A Glimpse of the Island</h2>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#3D2314]">A Glimpse of the Island</h2>
+            <a href="/gallery"
+              className="group inline-flex items-center gap-2 border border-[#F39C12]/50 hover:border-[#F39C12] text-[#8B5E0A] hover:text-white hover:bg-gradient-to-r hover:from-[#F39C12] hover:to-[#E67E22] px-5 py-2.5 rounded-full transition-all duration-300 text-sm font-semibold self-start sm:self-auto shadow-sm hover:shadow-md hover:shadow-[#F39C12]/20">
+              View Full Gallery
+              <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
+            </a>
+          </div>
         </div>
 
         {/* Infinite scroll strip */}

@@ -86,7 +86,7 @@ function CategoriesView({ onSelect }: { onSelect: (c: ExpCategory) => void }) {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[58vh] sm:h-[68vh] min-h-[440px] max-h-[720px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/packages.png"
           alt="Discover Sri Lanka Experiences"
@@ -277,7 +277,7 @@ function DestinationsView({
   return (
     <>
       {/* Hero — uses category's own image (changes per category) */}
-      <section className="relative h-[52vh] sm:h-[60vh] min-h-[380px] max-h-[660px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           key={category.image}
           src={category.image}
@@ -491,7 +491,7 @@ function DetailView({
   return (
     <>
       {/* Hero — featured photo */}
-      <section className="relative h-[58vh] sm:h-[68vh] min-h-[420px] max-h-[740px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           key={item.photos[activePhoto]}
           src={item.photos[activePhoto]}

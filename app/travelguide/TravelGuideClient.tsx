@@ -191,7 +191,7 @@ export default function TravelGuideClient() {
     <div className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
 
       {/* ── Hero ── */}
-      <section className="relative h-[58vh] sm:h-[66vh] min-h-[440px] max-h-[720px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/help.jpg"
           alt="Sri Lanka Travel Guide"

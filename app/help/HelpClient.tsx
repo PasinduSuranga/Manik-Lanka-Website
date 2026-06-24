@@ -135,7 +135,7 @@ export default function HelpClient() {
       {/* ══════════════════════════════════════════════════════
           HERO — help.jpg, cinematic, bottom-anchored text
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[58vh] sm:h-[68vh] min-h-[460px] max-h-[750px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <img
           src="/images/help.jpg"
           alt="Manik Lanka Holidays Support and FAQ"

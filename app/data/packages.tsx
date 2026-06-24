@@ -70,7 +70,15 @@ export const placeDescriptions: Record<string, string> = {
   Yala: "Yala National Park is Sri Lanka’s ultimate wildlife adventure, where untamed nature comes alive in spectacular fashion. Famous for having one of the highest leopard densities in the world, Yala offers thrilling safari experiences through vast landscapes of dry forests, open grasslands, lagoons, and rocky outcrops. As the sun rises, the park awakens with herds of elephants, sloth bears, spotted deer, crocodiles, and a vibrant array of birdlife. Each safari journey promises excitement and wonder, guided by the sounds of the wild and the chance of unforgettable encounters. Beyond wildlife, Yala’s scenic beauty is enhanced by ancient ruins, hidden lakes, and golden coastlines that border the Indian Ocean.",
   Mirissa: "Mirissa is a tropical paradise on Sri Lanka’s southern coast, where golden sands meet crystal-clear waters and laid-back beach vibes set the pace of life. Known as one of the best places in the world for whale and dolphin watching, Mirissa offers unforgettable ocean adventures alongside serene coastal beauty. Palm-fringed beaches, colorful sunsets, and gentle waves make it ideal for swimming, surfing, and simply unwinding by the sea. The lively beachfront is dotted with cozy cafés, seafood restaurants, and beach bars, creating a perfect balance between relaxation and vibrant nightlife. Just offshore, coral reefs and marine life invite snorkelers and divers to explore beneath the surface.",
   Trincomalee: "Trincomalee, affectionately known as Trinco, is a breathtaking coastal gem on Sri Lanka’s eastern shore, celebrated for its pristine beaches, turquoise waters, and rich cultural heritage. With some of the finest natural harbors in the world, Trinco offers a perfect blend of relaxation and adventure. The powdery sands of Nilaveli and Uppuveli invite sun-seekers to unwind, while the crystal-clear seas around Pigeon Island National Park reveal vibrant coral reefs and colorful marine life, making it a paradise for snorkeling and diving. Trinco is also one of the best places in Sri Lanka for whale watching, where blue whales and dolphins can be spotted just offshore.",
+  Demodara: "Nestled among the lush green hills of Sri Lanka's hill country, Demodara is a charming destination renowned for its breathtaking landscapes, tea plantations, and remarkable railway heritage. The area is best known for the famous Demodara Loop, an engineering marvel where the railway line curves around a hill and passes beneath itself. Surrounded by misty mountains and scenic tea estates, Demodara offers visitors a peaceful escape into nature while showcasing the rich cultural and historical beauty of the region. Its close proximity to Ella makes it an ideal stop for travelers seeking stunning views, memorable train journeys, and an authentic hill-country experience.",
   'Arugam Bay': "Arugam Bay is Sri Lanka’s laid-back surf capital, where golden beaches, rolling waves, and a carefree coastal spirit create the perfect tropical escape. Renowned worldwide for its consistent right-hand point breaks, Arugam Bay draws surfers of all levels while maintaining a relaxed, bohemian charm. Beyond surfing, the area offers tranquil beach walks, stunning sunrises over the Indian Ocean, and close encounters with nature in nearby lagoons and wildlife parks. Beachside cafés, yoga shalas, and eco-friendly stays add to the town’s easygoing vibe, making it ideal for both adventure seekers and those looking to unwind.",
+  Anuradhapura: "Anuradhapura is one of Sri Lanka's most treasured historical cities and a UNESCO World Heritage Site. Known as the first ancient capital of the country, it is home to magnificent stupas, sacred temples, and centuries-old archaeological wonders that reflect Sri Lanka's rich cultural and religious heritage. The city attracts visitors from around the world who come to experience its spiritual atmosphere, admire its impressive architecture, and visit the sacred Sri Maha Bodhi tree. Surrounded by ancient reservoirs and historical monuments, Anuradhapura offers a unique journey through history while showcasing the enduring legacy of Sri Lanka's ancient civilization. Its blend of cultural significance, religious importance, and timeless beauty makes it a must-visit destination for travelers.",
+  Habarana: "Habarana is a picturesque town located in the heart of Sri Lanka's Cultural Triangle, serving as a gateway to some of the country's most iconic historical and natural attractions. Surrounded by lush forests, serene lakes, and abundant wildlife, it is a popular destination for nature lovers and adventure seekers alike. Visitors can enjoy exciting safari experiences, explore nearby ancient cities, and witness the rich biodiversity of the region. Known for its peaceful atmosphere and scenic landscapes, Habarana offers a perfect blend of culture, wildlife, and relaxation, making it an ideal base for discovering the wonders of Sri Lanka's cultural heritage and natural beauty.",
+  Matale: "Matale is a vibrant city nestled in the central hills of Sri Lanka, renowned for its rich cultural heritage, scenic landscapes, and thriving spice industry. Surrounded by rolling mountains and lush greenery, the region is home to famous spice gardens, historic temples, and picturesque countryside views. Visitors can explore the area's unique blend of natural beauty and cultural significance while experiencing the traditions and hospitality of the local community. With its strategic location between Kandy and the Cultural Triangle, Matale serves as an excellent destination for travelers seeking history, nature, and authentic Sri Lankan experiences.",
+  Ramboda: "Ramboda is a breathtaking hill-country destination located along the scenic route between Kandy and Nuwara Eliya. Surrounded by mist-covered mountains, lush tea plantations, and cascading waterfalls, it is renowned for its stunning natural beauty and tranquil atmosphere. The area is home to the magnificent Ramboda Falls, one of Sri Lanka’s tallest waterfalls, offering spectacular views and unforgettable photo opportunities. Visitors can enjoy the cool climate, explore nearby tea estates, and immerse themselves in the peaceful charm of the central highlands. With its picturesque landscapes and serene environment, Ramboda is a perfect destination for nature lovers and travelers seeking a refreshing escape.",
+  Kalpitiya: "Kalpitiya is a stunning coastal destination on the northwestern coast of Sri Lanka, celebrated for its pristine beaches, crystal-clear waters, and vibrant marine life. Surrounded by the Indian Ocean and a network of lagoons, it is a paradise for water sports enthusiasts, offering world-class kite surfing, dolphin watching, and snorkeling experiences. The region's unspoiled natural beauty, diverse ecosystems, and tranquil atmosphere make it an ideal getaway for both adventure seekers and those looking to relax by the sea. With its unique blend of coastal charm, wildlife encounters, and breathtaking sunsets, Kalpitiya provides an unforgettable experience for visitors exploring Sri Lanka's coastal treasures.",
+  Pasikuda: "Pasikuda is a beautiful coastal destination on the eastern shores of Sri Lanka, renowned for its pristine sandy beaches and calm, crystal-clear waters. Famous for its shallow coastline, visitors can walk far into the sea while enjoying a safe and relaxing beach experience. The region offers excellent opportunities for swimming, snorkeling, diving, and various water sports, making it a favorite destination for both families and adventure enthusiasts. Surrounded by breathtaking ocean views and a peaceful atmosphere, Pasikuda is the perfect escape for those seeking relaxation, natural beauty, and unforgettable seaside experiences along Sri Lanka’s stunning east coast.",
+  Hikkaduwa: "Hikkaduwa is one of Sri Lanka’s most popular beach destinations, renowned for its golden sandy shores, vibrant marine life, and lively coastal atmosphere. Located along the southern coast, it is famous for its coral reefs, crystal-clear waters, and exciting water activities such as snorkeling, diving, and surfing. Visitors can explore the rich underwater world, relax by the beach, or enjoy the town’s diverse dining and entertainment options. With its stunning ocean views, tropical charm, and welcoming ambiance, Hikkaduwa offers the perfect blend of adventure, relaxation, and unforgettable coastal experiences.",
 };
 
 export const packagesData = [
@@ -121,7 +129,7 @@ export const packagesData = [
       { stop: "Ella", duration: "2 Nights" },
       { stop: "Yala", duration: "1 Night" },
       { stop: "Mirissa", duration: "2 Nights" },
-      { stop: "Bentota", duration: "1 Night" }]
+      { stop: "Benthota", duration: "1 Night" }]
   },
   {
     id: 3,
@@ -144,7 +152,7 @@ export const packagesData = [
       { stop: "Ella", duration: "2 Nights" },
       { stop: "Yala", duration: "1 Night" },
       { stop: "Mirissa", duration: "2 Nights" },
-      { stop: "Bentota", duration: "1 Night" }
+      { stop: "Benthota", duration: "1 Night" }
     ]
   },
   {
@@ -230,7 +238,7 @@ export const packagesData = [
       { stop: "Dambulla", duration: "1 Night" },
       { stop: "Kandy", duration: "1 Night" },
       { stop: "Nuwara Eliya", duration: "1 Night" },
-      { stop: "Bentota", duration: "2 Nights" }
+      { stop: "Benthota", duration: "2 Nights" }
     ],
   },
   {
@@ -290,7 +298,7 @@ export const packagesData = [
       { stop: "Nuwara Eliya", duration: "1 Night" },
       { stop: "Yala", duration: "2 Nights" },
       { stop: "Galle", duration: "2 Nights" },
-      { stop: "Bentota", duration: "Visit" },
+      { stop: "Benthota", duration: "Visit" },
       { stop: "Colombo", duration: "1 Night" }
     ],
   },
@@ -331,7 +339,7 @@ export const packagesData = [
     /*pricePerPerson: 320,
     maxPersons: 2, */
     itinerary: [
-      { stop: "Bentota", duration: "2 Nights" },
+      { stop: "Benthota", duration: "2 Nights" },
       { stop: "Galle", duration: "2 Nights" },
       { stop: "Colombo", duration: "1 Night" }
     ],

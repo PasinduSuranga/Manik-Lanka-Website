@@ -50,27 +50,31 @@ const IconMap = () => (
 );
 
 /* ── Minimalist category-specific SVG icons ─────────────────── */
-const IconHeritage = () => (
+// Category 1: Romantic Retreats — heart icon
+const IconRomantic = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  </svg>
+);
+// Category 2: Misty Mountain Escapes — mountain + cloud icon
+const IconMountainEscape = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    <path d="M4 14a3 3 0 0 1 2-5.66A4 4 0 0 1 10 5" />
+  </svg>
+);
+// Category 3: Timeless Cultural Experiences — temple / heritage pillars
+const IconCulture = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
     <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11" />
   </svg>
 );
-const IconWaves = () => (
+// Category 4: Sun-Kissed Beach Getaways — sun + waves
+const IconBeach = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5s2.5 2 5 2 2.5-2 5-2 2 .5 2.5 1" />
-    <path d="M2 12c.6.5 1.2 1 2.5 1C7 13 7 11 9.5 11s2.5 2 5 2 2.5-2 5-2 2 .5 2.5 1" />
-    <path d="M2 18c.6.5 1.2 1 2.5 1C7 19 7 17 9.5 17s2.5 2 5 2 2.5-2 5-2 2 .5 2.5 1" />
-  </svg>
-);
-const IconPaw = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <circle cx="11" cy="4" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="20" cy="16" r="2" />
-    <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
-  </svg>
-);
-const IconMountain = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-    <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    <circle cx="12" cy="9" r="3" />
+    <path d="M12 2v1M12 16v1M4.22 4.22l.7.7M19.07 19.07l.71.71M2 9h1M21 9h1M4.22 13.78l.7-.7M19.07 4.93l.71-.71" />
+    <path d="M2 17c.6.5 1.2 1 2.5 1C7 18 7 16 9.5 16s2.5 2 5 2 2.5-2 5-2 2 .5 2.5 1" />
   </svg>
 );
 const IconCompass = () => (
@@ -81,10 +85,10 @@ const IconCompass = () => (
 );
 
 const categoryIcons: Record<number, React.ReactNode> = {
-  1: <IconHeritage />,
-  2: <IconWaves />,
-  3: <IconPaw />,
-  4: <IconMountain />,
+  1: <IconRomantic />,
+  2: <IconMountainEscape />,
+  3: <IconCulture />,
+  4: <IconBeach />,
   5: <IconCompass />,
 };
 
@@ -182,7 +186,7 @@ export default function PackagesClient() {
       {/* ══════════════════════════════════════════════════════
           HERO — packages.png on landing, category image on tour listing
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[55vh] sm:h-[65vh] min-h-[420px] max-h-[700px] overflow-hidden">
+      <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         {/* Key on heroImage so Next swaps the image when category is selected */}
         <img
           key={heroImage}
