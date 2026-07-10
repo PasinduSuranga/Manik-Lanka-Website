@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ExperiencesClient from "./ExperiencesClient";
 
 export const metadata = {
@@ -7,5 +8,9 @@ export const metadata = {
 };
 
 export default function ExperiencesPage() {
-  return <ExperiencesClient />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FDFCFA]" />}>
+      <ExperiencesClient />
+    </Suspense>
+  );
 }

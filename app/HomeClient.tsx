@@ -1,12 +1,26 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 
-const sigiriyaImage = '/images/sigiriya.jpg';
-const beachImage = '/images/beachImage.jpg';
-const wildLifeImage = '/images/wildLifeImage.jpg';
-const foodImage = '/images/food.jpg';
-const greenHillImage = '/images/nuwaraEliya.jpg';
+const aboutImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656736/Home_Page_About_Sri_Lanka_Image_bhpizz.png';
+const aboutMobileImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656693/Home_Page_About_Sri_Lanka_Image_Mobile_mflvny.png';
+const heritageImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656506/Home_Heritage_image_1_1_sdhyuv.png';
+const hillCountryImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656281/Home_Hill_Country_Image_epjczf.png';
+const culinaryImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655942/Home_Culinary_Image_sxjlqw.png';
+const wildlifeImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656698/Home_Wild_Life_Image_j7hnw1.png';
+const beachImage = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655896/Home_Beach_Image_k88zp6.png';
+const galleryImage1 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655942/Home_Gallery_Section_Image_1_ofhmtq.png'
+const galleryImage2 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655945/Home_Gallery_Section_Image_2_u0owvm.png'
+const galleryImage3 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656083/Home_Gallery_Section_Image_3_ykl5sv.png'
+const galleryImage4 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656095/Home_Gallery_Section_Image_4_zfbdbe.png'
+const galleryImage5 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656122/Home_Gallery_Section_Image_5_mnvoem.png'
+const galleryImage6 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656125/Home_Gallery_Section_Image_6_mqp1op.png'
+const galleryImage7 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656128/Home_Gallery_Section_Image_7_xyqatn.png'
+const galleryImage8 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656271/Home_Gallery_Section_Image_8_lvlpcs.png'
+const galleryImage9 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656274/Home_Gallery_Section_Image_9_ulscsx.png'
+const galleryImage10 = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783656276/Home_Gallery_Section_Image_10_z8sre1.png'
+const bottomSection = 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655899/Home_Bottom_Section_ofxvhv.png'
 
 /* ─── SVG Icons ─────────────────────────────────────────────────── */
 const IconMap = () => (
@@ -83,36 +97,84 @@ const destinations = [
     id: 1,
     name: 'Journey Through History',
     tag: 'Heritage',
-    description: "Step into a world of timeless history amid Sri Lanka's ancient wonders and breathtaking heritage sites.",
-    image: sigiriyaImage,
+    image: heritageImage,
   },
   {
     id: 2,
     name: 'Green Hills',
     tag: 'Hill Country',
-    description: "Breathe in the cool mist of Sri Lanka's hill country, surrounded by emerald tea estates and waterfalls.",
-    image: greenHillImage,
+    image: hillCountryImage,
   },
   {
     id: 3,
     name: 'Delicious Flavors',
     tag: 'Culinary',
-    description: "Taste the bold spices and fresh ingredients that make Sri Lankan cuisine an adventure in itself.",
-    image: foodImage,
+    image: culinaryImage,
   },
   {
     id: 4,
     name: 'Wildlife Adventures',
     tag: 'Safari',
-    description: "Encounter leopards, elephants and exotic birds in their wild natural habitats across the island.",
-    image: wildLifeImage,
+    image: wildlifeImage,
   },
   {
     id: 5,
     name: 'Tropical Shores',
     tag: 'Beach',
-    description: "Unwind along golden sands kissed by warm turquoise waters on some of Asia's finest coastlines.",
     image: beachImage,
+  },
+];
+
+const galleryImages = [
+  {
+    id: 1,
+    name: 'Scenic hilltop moment with travelers',
+    image: galleryImage1,
+  },
+  {
+    id: 2,
+    name: 'Tropical roadside stop with coconuts',
+    image: galleryImage2,
+  },
+  {
+    id: 3,
+    name: 'Family boat ride on a peaceful river',
+    image: galleryImage3,
+  },
+  {
+    id: 4,
+    name: 'A scenic sunset at the coastal fort',
+    image: galleryImage4,
+  },
+  {
+    id: 5,
+    name: 'Climbing the rocky hillside staircase',
+    image: galleryImage5,
+  },
+  {
+    id: 6,
+    name: 'Colonial hotel charm on a rainy day',
+    image: galleryImage6
+  },
+  {
+    id: 7,
+    name: 'Sunset over coastal fortress ruins',
+    image: galleryImage7,
+  },
+  {
+    id: 8,
+    name: 'Tea harvest in lush hillsides',
+    image: galleryImage8,
+  },
+  {
+    id: 9,
+    name: 'Fishing at the tropical shoreline',
+    image: galleryImage9,
+  },
+  {
+    id: 10,
+    name: 'Scenic overlook with smiling visitors',
+    image: galleryImage10,
   },
 ];
 
@@ -195,12 +257,12 @@ export default function HomeClient() {
         {/* Video */}
         <video
           ref={heroVideoRef}
-          src="/videos/HomePageHero.mp4"
+          src="https://res.cloudinary.com/bnhex8aj/video/upload/v1783673226/HomePageHero_qkcd1o.mp4"
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           disablePictureInPicture
           className="absolute inset-0 w-full h-full object-cover hero-video"
           style={{ filter: 'brightness(0.82)' }}
@@ -291,7 +353,26 @@ export default function HomeClient() {
       <section className="relative overflow-hidden">
         {/* Full-width background image with overlay — only this section */}
         <div className="absolute inset-0">
-          <img src={sigiriyaImage} alt="Sri Lanka heritage" className="w-full h-full object-cover object-center" />
+          <Image
+            src={aboutImage}
+            alt="Sigiriya Rock Sri Lanka"
+            fill
+            priority
+            quality={75}
+            sizes="100vw"
+            className="hidden md:block object-cover object-center"
+          />
+
+          {/* Mobile Image */}
+          <Image
+            src={aboutMobileImage}
+            alt="Sigiriya Rock Sri Lanka"
+            fill
+            priority
+            quality={75}
+            sizes="100vw"
+            className="block md:hidden object-cover object-center"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1A0E05]/95 via-[#1A0E05]/85 to-[#1A0E05]/70 sm:to-[#1A0E05]/50" />
           {/* Extra overlay for mobile readability */}
           <div className="absolute inset-0 bg-[#1A0E05]/30 sm:bg-transparent" />
@@ -362,9 +443,16 @@ export default function HomeClient() {
                 <span className="text-[#8B5E0A]">Experiences</span>
               </h2>
             </div>
-            <p className="text-sm text-[#6B5744]/80 max-w-xs leading-relaxed">
-              Discover must-see places, cultural wonders, and unforgettable flavors across the island.
-            </p>
+            <div className="flex flex-col items-start sm:items-end gap-4">
+              <p className="text-sm text-[#6B5744]/80 max-w-xs leading-relaxed">
+                Discover must-see places, cultural wonders, and unforgettable flavors across the island.
+              </p>
+              <a href="/experiences"
+                className="group inline-flex items-center gap-2 border border-[#F39C12]/50 hover:border-[#F39C12] text-[#8B5E0A] hover:text-white hover:bg-gradient-to-r hover:from-[#F39C12] hover:to-[#E67E22] px-5 py-2.5 rounded-full transition-all duration-300 text-sm font-semibold shadow-sm hover:shadow-md hover:shadow-[#F39C12]/20">
+                View All Experiences
+                <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
+              </a>
+            </div>
           </div>
 
           {/* Carousel viewport */}
@@ -397,10 +485,12 @@ export default function HomeClient() {
                   onClick={() => pos !== 0 && goTo(i)}
                 >
                   {/* Image */}
-                  <img
+                  <Image
                     src={dest.image}
                     alt={dest.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
                     style={{ filter: 'brightness(0.78) saturate(1.2)' }}
                   />
                   {/* Gradient overlay */}
@@ -415,9 +505,6 @@ export default function HomeClient() {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}>
                       {dest.name}
                     </h3>
-                    <p className="text-white/75 text-xs sm:text-sm md:text-base leading-relaxed max-w-sm hidden xs:block">
-                      {dest.description}
-                    </p>
                   </div>
 
                   {/* Slide counter */}
@@ -478,20 +565,22 @@ export default function HomeClient() {
         {/* Infinite scroll strip */}
         <div className="relative w-full overflow-hidden">
           <div className="gallery-track flex gap-3 sm:gap-4" style={{ width: 'max-content' }}>
-            {[...destinations, ...destinations].map((dest, i) => (
+            {[...galleryImages, ...galleryImages].map((dest, i) => (
               <div
                 key={i}
                 className="gallery-card flex-shrink-0 relative overflow-hidden rounded-xl sm:rounded-2xl group"
                 style={{ height: '160px' }}>
-                <img
+                <Image
                   src={dest.image}
                   alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 260px, 320px"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
                   style={{ filter: 'brightness(0.85) saturate(1.15)' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 <div className="absolute bottom-0 left-0 p-3 sm:p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0 transform transition-transform duration-400">
-                  <span className="text-white font-semibold text-sm">{dest.name}</span>
+                  {/*<span className="text-white font-semibold text-sm">{dest.name}</span>*/}
                 </div>
               </div>
             ))}
@@ -507,7 +596,7 @@ export default function HomeClient() {
       ══════════════════════════════════════════════════════ */}
       <section className="relative py-24 sm:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={beachImage} alt="Sri Lanka beach" className="w-full h-full object-cover object-center" />
+          <Image src={bottomSection} alt="Sri Lanka beach" fill className="object-cover object-center" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
 
@@ -551,10 +640,12 @@ export default function HomeClient() {
             onClick={e => e.stopPropagation()}>
             <video
               ref={modalVideoRef}
-              src="/videos/HomePageHero.mp4"
+              src="https://res.cloudinary.com/bnhex8aj/video/upload/v1783673226/HomePageHero_qkcd1o.mp4"
               controls
+              controlsList="nodownload"
               playsInline
-              preload="metadata"
+              preload="none"
+              poster="/images/hero1.jpeg"
               className="w-full aspect-video bg-black"
             />
             <button

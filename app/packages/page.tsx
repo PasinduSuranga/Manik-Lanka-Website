@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import PackagesClient from "./PackagesClient";
 
 export const metadata = {
@@ -6,5 +7,9 @@ export const metadata = {
 };
 
 export default function PackagesPage() {
-  return <PackagesClient />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FDFCFA]" />}>
+      <PackagesClient />
+    </Suspense>
+  );
 }

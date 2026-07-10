@@ -1,6 +1,6 @@
 "use client";
 
-import { packagesData, placeDescriptions, packageInclusions, packageExclusions } from "@/app/data/packages";
+import { packagesData, tourCategories, placeDescriptions, packageInclusions, packageExclusions } from "@/app/data/packages";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -64,6 +64,9 @@ export default function PackageClient({ id }: { id: number }) {
   const pkg = packagesData.find((p) => p.id === id);
   if (!pkg) return notFound();
 
+  const category = tourCategories.find(c => c.id === pkg.categoryId);
+  const categoryName = category?.name ?? 'Packages';
+
   return (
     <div className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
 
@@ -74,8 +77,8 @@ export default function PackageClient({ id }: { id: number }) {
       ══════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         <Image
-          src="/images/wildLifeImage.jpg"
-          alt="Manik Lanka Holidays Sri Lanka"
+          src={pkg.image}
+          alt={pkg.imageAlt}
           fill
           priority
           className="object-cover"
@@ -87,12 +90,26 @@ export default function PackageClient({ id }: { id: number }) {
         {/* Warm golden orb — subtle depth */}
         <div className="absolute bottom-0 left-0 w-[500px] h-[280px] rounded-full bg-[#F39C12]/10 blur-3xl pointer-events-none" />
 
-        {/* Back button — top left */}
-        <div className="absolute top-5 left-5 sm:top-8 sm:left-8 z-20">
-          <Link href="/packages"
-            className="group inline-flex items-center gap-2 bg-black/32 hover:bg-black/55 backdrop-blur-md border border-white/18 hover:border-white/35 text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full transition-all duration-300">
-            <span className="transition-transform duration-300 group-hover:-translate-x-0.5"><IconBack /></span>
-            Back to Packages
+        {/* ── Premium back button — frosted glass pill, below two-row header ──
+             My thought: Show exactly where the user came from (category name).
+             Circular icon mimics the 'Watch Film' button on the home hero.
+             Golden hover state ties into the site-wide amber palette. */}
+        <div className="absolute top-[76px] sm:top-[108px] left-5 sm:left-8 z-[60]">
+          <Link
+            href={`/packages?cat=${pkg.categoryId}`}
+            className="group inline-flex items-center gap-3 bg-white/10 hover:bg-white/18 backdrop-blur-md border border-white/25 hover:border-[#F39C12]/55 text-white px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#F39C12]/10"
+          >
+            {/* Circular icon — slides left + turns amber on hover */}
+            <span className="w-7 h-7 rounded-full bg-white/15 group-hover:bg-[#F39C12]/80 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+              <span className="transition-transform duration-300 group-hover:-translate-x-0.5">
+                <IconBack />
+              </span>
+            </span>
+            {/* Two-line label — category tag + category name */}
+            <span className="flex flex-col leading-none pr-0.5">
+              <span className="text-[#F5B041] text-[10px] font-semibold tracking-[0.2em] uppercase mb-0.5">Packages</span>
+              <span className="text-white text-xs sm:text-sm font-medium whitespace-nowrap">{categoryName}</span>
+            </span>
           </Link>
         </div>
 
@@ -289,43 +306,51 @@ export default function PackageClient({ id }: { id: number }) {
               </div>
             </div>
 
-            {/* RIGHT — Sticky image panel (desktop only) */}
+            {/* RIGHT — Sticky image panel (desktop only)
+               My thought: Each package has its own curated gallery.
+               The main tall image sets the mood; the smaller one below
+               shows a contrasting scene (heritage vs coast etc.).
+               A sticky enquire card keeps the CTA always in view. */}
             <div className="hidden lg:block w-72 xl:w-80 flex-shrink-0">
               <div className="sticky top-28">
-                {/* Main image */}
-                <div className="relative w-full rounded-2xl overflow-hidden mb-4" style={{ height: '340px' }}>
-                  <Image
-                    src="/images/food.jpg"
-                    alt="Sri Lanka experience"
-                    fill
-                    className="object-cover"
-                    style={{ filter: 'brightness(0.82) saturate(1.15)' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex items-center gap-1.5 text-[#F5B041] mb-1">
-                      {[1, 2, 3, 4, 5].map(s => <IconStar key={s} />)}
+                {/* Main gallery image — tall, cinematic */}
+                {pkg.galleryImages?.[0] && (
+                  <div className="relative w-full rounded-2xl overflow-hidden mb-4" style={{ height: '340px' }}>
+                    <Image
+                      src={pkg.galleryImages[0]}
+                      alt={`${pkg.name} — scene 1`}
+                      fill
+                      className="object-cover"
+                      style={{ filter: 'brightness(0.82) saturate(1.15)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-1.5 text-[#F5B041] mb-1">
+                        {[1, 2, 3, 4, 5].map(s => <IconStar key={s} />)}
+                      </div>
+                      <p className="text-white text-xs font-medium leading-snug">
+                        Immersive local experiences crafted by our expert guides
+                      </p>
                     </div>
-                    <p className="text-white text-xs font-medium leading-snug">
-                      Immersive local experiences crafted by our expert guides
-                    </p>
                   </div>
-                </div>
+                )}
 
-                {/* Second smaller image */}
-                <div className="relative w-full rounded-2xl overflow-hidden" style={{ height: '180px' }}>
-                  <Image
-                    src="/images/sigiriya.jpg"
-                    alt="Sri Lanka heritage"
-                    fill
-                    className="object-cover"
-                    style={{ filter: 'brightness(0.80) saturate(1.1)' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-                  <div className="absolute bottom-3 left-4">
-                    <p className="text-white/85 text-xs font-medium">UNESCO Heritage Sites</p>
+                {/* Secondary gallery image */}
+                {pkg.galleryImages?.[1] && (
+                  <div className="relative w-full rounded-2xl overflow-hidden mb-4" style={{ height: '180px' }}>
+                    <Image
+                      src={pkg.galleryImages[1]}
+                      alt={`${pkg.name} — scene 2`}
+                      fill
+                      className="object-cover"
+                      style={{ filter: 'brightness(0.80) saturate(1.1)' }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                    <div className="absolute bottom-3 left-4">
+                      <p className="text-white/85 text-xs font-medium">{pkg.name}</p>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Enquire card */}
                 <div className="mt-4 bg-[#FDF4E7] border border-[#F39C12]/25 rounded-2xl p-5">
@@ -353,10 +378,11 @@ export default function PackageClient({ id }: { id: number }) {
       ══════════════════════════════════════════════════════ */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/images/beachImage.jpg"
-            alt="Sri Lanka beach"
-            className="w-full h-full object-cover"
+          <Image
+            src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783661325/Bottom_Section_djpguy.png"
+            alt="Sri Lanka Surfing"
+            fill
+            className="object-cover"
             style={{ filter: 'brightness(0.65) saturate(1.1)' }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/52 to-black/78" />

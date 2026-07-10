@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Image from "next/image";
 import Link from "next/link";
-import { packagesData, tourCategories } from "@/app/data/packages";
+import { packagesData, tourCategories, excursionsData } from "@/app/data/packages";
 
 /* ════════════════════════════════════════════════════════════
    SVG ICONS — all pure, monochrome, minimalist
@@ -83,13 +84,32 @@ const IconCompass = () => (
     <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76" />
   </svg>
 );
+// Category 5: Wildlife & Adventure — paw print
+const IconWildlife = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <circle cx="11" cy="4" r="2" />
+    <circle cx="18" cy="8" r="2" />
+    <circle cx="4" cy="8" r="2" />
+    <circle cx="6.5" cy="15.5" r="2" />
+    <circle cx="16.5" cy="15.5" r="2" />
+    <path d="M8.5 14.5c1-3 5.5-3 6.5 0" />
+  </svg>
+);
+// Category 6: Excursions — location pin + flag
+const IconExcursion = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
 
 const categoryIcons: Record<number, React.ReactNode> = {
   1: <IconRomantic />,
   2: <IconMountainEscape />,
   3: <IconCulture />,
   4: <IconBeach />,
-  5: <IconCompass />,
+  5: <IconWildlife />,
+  6: <IconExcursion />,
 };
 
 /* ── Inclusion items with icons ─────────────────────────────── */
@@ -140,8 +160,38 @@ export default function PackagesClient() {
   const [hoveredCat, setHoveredCat] = useState<number | null>(null);
   const [catSearch, setCatSearch] = useState('');
   const [tourSearch, setTourSearch] = useState('');
+  const [selectedExcursion, setSelectedExcursion] = useState<(typeof excursionsData)[0] | null>(null);
+  const [excursionSearch, setExcursionSearch] = useState('');
   const topRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
+  // Sync React state with URL on every param change (including browser Back/Forward)
+  useEffect(() => {
+    const cat = searchParams.get('cat');
+    const exc = searchParams.get('exc');
+    if (cat) {
+      const id = parseInt(cat, 10);
+      if (tourCategories.find(c => c.id === id)) {
+        setSelectedCategory(id);
+      }
+      // Restore selected excursion if exc= param is present
+      if (exc) {
+        const excId = parseInt(exc, 10);
+        const found = excursionsData.find(e => e.id === excId);
+        if (found) setSelectedExcursion(found);
+        else setSelectedExcursion(null);
+      } else {
+        setSelectedExcursion(null);
+      }
+    } else {
+      // No ?cat= in URL → show categories grid (handles browser Back from a category)
+      setSelectedCategory(null);
+      setSelectedExcursion(null);
+    }
+  }, [searchParams]);
+
+  const isExcursionsCategory = selectedCategory === 6;
   const selectedCategoryData = tourCategories.find(cat => cat.id === selectedCategory);
 
   const filteredCategories = tourCategories.filter(cat =>
@@ -152,7 +202,7 @@ export default function PackagesClient() {
     )
   );
 
-  const filteredTours = selectedCategory
+  const filteredTours = (selectedCategory && !isExcursionsCategory)
     ? packagesData
       .filter(pkg => pkg?.categoryId === selectedCategory)
       .filter(pkg =>
@@ -164,21 +214,57 @@ export default function PackagesClient() {
       )
     : [];
 
+  const filteredExcursions = excursionsData.filter(ex =>
+    ex.name.toLowerCase().includes(excursionSearch.toLowerCase()) ||
+    ex.shortDescription.toLowerCase().includes(excursionSearch.toLowerCase())
+  );
+
   const handleSelectCategory = (id: number) => {
     setSelectedCategory(id);
     setTourSearch('');
+    setExcursionSearch('');
+    setSelectedExcursion(null);
+    // Update URL so a page refresh stays in this category
+    router.push(`/packages?cat=${id}`, { scroll: false });
     setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   };
 
   const handleBack = () => {
     setSelectedCategory(null);
     setCatSearch('');
+    setSelectedExcursion(null);
+    setExcursionSearch('');
+    // Clear the ?cat= param so a refresh shows the categories grid
+    router.push('/packages', { scroll: false });
     setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   };
 
-  /* Hero image: categories view = packages.png, tours view = category's own image */
-  const heroImage = selectedCategory ? selectedCategoryData?.image : '/images/packages.png';
-  const heroAlt = selectedCategory ? selectedCategoryData?.name ?? 'Tour category' : 'Manik Lanka Holidays Tour Packages';
+  const handleBackToExcursions = () => {
+    setSelectedExcursion(null);
+    // Drop exc= param, keep cat=6 so refresh shows excursions list
+    router.push('/packages?cat=6', { scroll: false });
+    setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  };
+
+  /* Hero image: default = packages.png, category = category image, excursion detail = excursion's own photo */
+  const getCategoryHeroImage = (id: number) => {
+    const imageMap: Record<number, string> = {
+      5: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783660916/Wildlife_And_Adventure_acsljq.png',
+      6: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783660675/Excursions_1_1_1_1_1_1_1_1_1_1_1_2_1_2_1_qcllmv.png',
+    };
+    const cat = tourCategories.find(c => c.id === id);
+    return imageMap[id] ?? cat?.image ?? 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783657657/Hero_Image_zcdew0.png';
+  };
+  const heroImage = selectedExcursion
+    ? selectedExcursion.image
+    : selectedCategory
+      ? getCategoryHeroImage(selectedCategory)
+      : 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783657657/Hero_Image_zcdew0.png';
+  const heroAlt = selectedExcursion
+    ? selectedExcursion.imageAlt
+    : selectedCategory
+      ? selectedCategoryData?.name ?? 'Tour category'
+      : 'Manik Lanka Holidays Tour Packages';
 
   return (
     <div ref={topRef} className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
@@ -188,11 +274,12 @@ export default function PackagesClient() {
       ══════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
         {/* Key on heroImage so Next swaps the image when category is selected */}
-        <img
+        <Image
           key={heroImage}
           src={heroImage}
           alt={heroAlt}
-          className="absolute inset-0 w-full h-full object-cover pkg-hero-img"
+          fill
+          className="object-cover pkg-hero-img"
           style={{ filter: 'brightness(0.72)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/28 to-black/10" />
@@ -269,7 +356,12 @@ export default function PackagesClient() {
               {filteredCategories.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                   {filteredCategories.map((category, index) => {
-                    const pkgCount = packagesData.filter(p => p.categoryId === category.id).length;
+                    const pkgCount = category.id === 6
+                      ? excursionsData.length
+                      : packagesData.filter(p => p.categoryId === category.id).length;
+                    const countLabel = category.id === 6
+                      ? `${pkgCount} excursion${pkgCount !== 1 ? 's' : ''}`
+                      : `${pkgCount} tour${pkgCount !== 1 ? 's' : ''}`;
                     const isHovered = hoveredCat === category.id;
                     return (
                       <button
@@ -294,9 +386,9 @@ export default function PackagesClient() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/25 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black/25 to-transparent" />
 
-                        {/* Top-right: tour count pill */}
+                        {/* Top-right: count pill */}
                         <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md border border-white/15 text-white/85 text-[11px] font-semibold px-3 py-1.5 rounded-full">
-                          {pkgCount} tour{pkgCount !== 1 ? 's' : ''}
+                          {countLabel}
                         </div>
 
                         {/* Top-left: minimalist category icon */}
@@ -382,7 +474,7 @@ export default function PackagesClient() {
           {/* ── Custom Tour CTA — single beach bg image ── */}
           <section className="relative py-20 sm:py-28 overflow-hidden">
             <div className="absolute inset-0">
-              <img src="/images/beachImage.jpg" alt="Sri Lanka beach" className="w-full h-full object-cover" />
+              <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783657655/Bottom_Section_buucox.png" alt="Sri Lanka Yala National Park" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/75" />
             </div>
             <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-10 text-center">
@@ -410,9 +502,222 @@ export default function PackagesClient() {
       )}
 
       {/* ══════════════════════════════════════════════════════
-          TOURS VIEW — after a category is selected
+          EXCURSIONS VIEW — category 6
       ══════════════════════════════════════════════════════ */}
-      {selectedCategory && (
+      {selectedCategory === 6 && !selectedExcursion && (
+        <>
+          <section className="py-14 sm:py-20 bg-[#FDFCFA]">
+            <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-16">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
+                <div>
+                  <button onClick={handleBack} className="group inline-flex items-center gap-2 text-[#8B5E0A] hover:text-[#F39C12] text-sm font-medium transition-colors duration-300 mb-4">
+                    <span className="transition-transform duration-300 group-hover:-translate-x-0.5"><IconBack /></span>
+                    All Categories
+                  </button>
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="w-8 h-px bg-[#F39C12]" />
+                    <span className="text-[#B8730A] text-xs font-semibold tracking-[0.25em] uppercase">Excursions</span>
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-bold text-[#3D2314]">Available <span className="text-[#8B5E0A]">Excursions</span></h2>
+                </div>
+                <div className="text-sm text-[#6B5744]/65 font-medium flex-shrink-0">
+                  {filteredExcursions.length} excursion{filteredExcursions.length !== 1 ? 's' : ''} found
+                </div>
+              </div>
+
+              {/* Search */}
+              <div className="relative max-w-md mb-10 sm:mb-12">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#B8730A]"><IconSearch /></div>
+                <input type="text" value={excursionSearch} onChange={e => setExcursionSearch(e.target.value)} placeholder="Search excursions…"
+                  className="w-full bg-white border border-[#E8D5B5] focus:border-[#F39C12] rounded-full pl-10 pr-10 py-3 text-sm text-[#3D2314] placeholder:text-[#B8A090] outline-none transition-all duration-300 shadow-sm focus:shadow-md focus:shadow-[#F39C12]/10" />
+                {excursionSearch && (
+                  <button onClick={() => setExcursionSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#B8A090] hover:text-[#8B5E0A] transition-colors" aria-label="Clear search"><IconClose /></button>
+                )}
+              </div>
+
+              {/* Excursion cards — same horizontal style as tour cards */}
+              {filteredExcursions.length > 0 ? (
+                <div className="space-y-5 sm:space-y-6">
+                  {filteredExcursions.map((ex, index) => (
+                    <button key={ex.id} onClick={() => { setSelectedExcursion(ex); router.push(`/packages?cat=6&exc=${ex.id}`, { scroll: false }); setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); }}
+                      className="group block w-full text-left tour-card-reveal" style={{ animationDelay: `${index * 90}ms` }}>
+                      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#E8D5B5] hover:border-[#F39C12]/45 bg-white hover:shadow-xl hover:shadow-[#F39C12]/8 transition-all duration-500">
+                        <div className="flex flex-col sm:flex-row">
+                          <div className="relative flex-shrink-0 w-full sm:w-64 md:w-72 lg:w-80 h-52 sm:h-auto overflow-hidden">
+                            <Image src={ex.image} alt={ex.imageAlt} fill className="object-cover transition-transform duration-700 group-hover:scale-108" style={{ filter: 'brightness(0.85) saturate(1.1)' }} />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-black/5" />
+                          </div>
+                          <div className="flex flex-col flex-1 p-6 sm:p-7 md:p-8">
+                            <div className="flex items-start justify-between gap-4 mb-3">
+                              <h3 className="text-xl sm:text-2xl font-bold text-[#3D2314] group-hover:text-[#8B5E0A] transition-colors duration-300 leading-snug">{ex.name}</h3>
+                              <div className="flex-shrink-0 w-9 h-9 rounded-full border border-[#E8D5B5] group-hover:border-[#F39C12] group-hover:bg-[#FDF4E7] flex items-center justify-center text-[#B8A090] group-hover:text-[#F39C12] transition-all duration-300"><IconChevronRight /></div>
+                            </div>
+                            <p className="text-[#6B5744]/80 text-sm sm:text-base leading-relaxed mb-5 flex-1">{ex.shortDescription}</p>
+                            <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-[#F5EFE6]">
+                              <div className="flex items-center gap-1.5 text-[#8B5E0A] text-xs sm:text-sm font-medium"><IconClock />{ex.duration}</div>
+                              <div className="w-px h-3.5 bg-[#E8D5B5]" />
+                              <div className="flex items-center gap-1.5 text-[#8B5E0A] text-xs sm:text-sm font-medium"><IconMap />{ex.location}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#F39C12] to-[#E67E22] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16 text-[#8B5E0A]/60">
+                  <p className="text-base font-medium">No excursions match &ldquo;{excursionSearch}&rdquo;</p>
+                  <button onClick={() => setExcursionSearch('')} className="mt-3 text-[#F39C12] text-sm hover:underline">Clear search</button>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="relative py-16 sm:py-20 overflow-hidden">
+            <div className="absolute inset-0">
+              <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783666013/Bottom_Section_1_jglpap.png" alt="Sri Lanka Train Journey" fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/78" />
+            </div>
+            <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-10 text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Plan a Custom Excursion?</h2>
+              <p className="text-white/68 text-sm mb-7">Our travel experts can design an excursion tailored just for you.</p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link href="/inquiry" className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#F39C12] to-[#E67E22] hover:from-[#F5B041] hover:to-[#F39C12] text-white font-semibold px-7 py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm shadow-md shadow-[#F39C12]/25">
+                  Contact Us <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
+                </Link>
+                <button onClick={handleBack} className="inline-flex items-center gap-2 border border-white/35 hover:border-white/65 bg-white/8 hover:bg-white/18 text-white px-7 py-3 rounded-full transition-all duration-300 text-sm backdrop-blur-sm">
+                  <IconBack /> All Categories
+                </button>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ══════════════════════════════════════════════════════
+          EXCURSION DETAIL VIEW — when a single excursion is selected
+      ══════════════════════════════════════════════════════ */}
+      {selectedCategory === 6 && selectedExcursion && (
+        <>
+          {/* Description strip */}
+          <section className="bg-white border-b border-[#F0E8DC]">
+            <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-16 py-10 sm:py-12">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+                <div className="flex-1 max-w-2xl">
+                  <button onClick={handleBackToExcursions} className="group inline-flex items-center gap-2 text-[#8B5E0A] hover:text-[#F39C12] text-sm font-medium transition-colors duration-300 mb-6">
+                    <span className="transition-transform duration-300 group-hover:-translate-x-0.5"><IconBack /></span>
+                    All Excursions
+                  </button>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-px bg-[#F39C12]" />
+                    <span className="text-[#B8730A] text-xs font-semibold tracking-[0.25em] uppercase">About This Excursion</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#3D2314] mb-4">{selectedExcursion.name}</h2>
+                  <p className="text-[#5D4030] text-base sm:text-lg leading-relaxed">{selectedExcursion.description}</p>
+                </div>
+                <div className="flex-shrink-0 flex flex-col items-start lg:items-end gap-3 pt-2">
+                  <Link href="/contactus" className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#F39C12] to-[#E67E22] hover:from-[#F5B041] hover:to-[#F39C12] text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:scale-105 shadow-md shadow-[#F39C12]/25 text-sm whitespace-nowrap">
+                    Enquire About This Excursion <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
+                  </Link>
+                  <p className="text-[#8B5E0A]/60 text-xs">Free, no-obligation consultation</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Details — duration, location, highlights */}
+          <section className="py-14 sm:py-18 bg-gradient-to-b from-[#FDF8F2] to-[#FDFCFA]">
+            <div className="max-w-6xl mx-auto px-5 sm:px-10 lg:px-16">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-px bg-[#F39C12]" />
+                <span className="text-[#B8730A] text-xs font-semibold tracking-[0.25em] uppercase">Excursion Details</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10">
+                {/* Duration */}
+                <div className="bg-white rounded-2xl border border-[#E8D5B5] p-6 flex items-start gap-4 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-[#FDF4E7] border border-[#F39C12]/20 flex items-center justify-center text-[#8B5E0A] flex-shrink-0"><IconClock /></div>
+                  <div>
+                    <p className="text-xs text-[#B8730A] font-semibold tracking-widest uppercase mb-1">Duration</p>
+                    <p className="text-[#3D2314] font-bold text-base">{selectedExcursion.duration}</p>
+                  </div>
+                </div>
+                {/* Location */}
+                <div className="bg-white rounded-2xl border border-[#E8D5B5] p-6 flex items-start gap-4 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-[#FDF4E7] border border-[#F39C12]/20 flex items-center justify-center text-[#8B5E0A] flex-shrink-0"><IconMap /></div>
+                  <div>
+                    <p className="text-xs text-[#B8730A] font-semibold tracking-widest uppercase mb-1">Location</p>
+                    <p className="text-[#3D2314] font-bold text-base">{selectedExcursion.location}</p>
+                  </div>
+                </div>
+                {/* Highlights count */}
+                <div className="bg-white rounded-2xl border border-[#E8D5B5] p-6 flex items-start gap-4 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-[#FDF4E7] border border-[#F39C12]/20 flex items-center justify-center text-[#8B5E0A] flex-shrink-0"><IconChevronRight /></div>
+                  <div>
+                    <p className="text-xs text-[#B8730A] font-semibold tracking-widest uppercase mb-1">Highlights</p>
+                    <p className="text-[#3D2314] font-bold text-base">{selectedExcursion.highlights.length} key experiences</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Highlights list */}
+              <div className="bg-white rounded-2xl border border-[#E8D5B5] p-6 sm:p-8 shadow-sm">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-7 h-7 rounded-xl bg-[#F0FBF5] border border-[#A8DFC4] flex items-center justify-center text-[#2A7A52]">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5"><polyline points="20,6 9,17 4,12" /></svg>
+                  </div>
+                  <h3 className="font-bold text-[#3D2314] text-base">What You Will Experience</h3>
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {selectedExcursion.highlights.map((h, i) => (
+                    <li key={i} className="flex items-center gap-3 text-[#5D4030] text-sm">
+                      <span className="w-5 h-5 rounded-full bg-[#F0FBF5] border border-[#A8DFC4] flex items-center justify-center text-[#2A7A52] flex-shrink-0">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3"><polyline points="20,6 9,17 4,12" /></svg>
+                      </span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Hero image for the excursion detail */}
+          <section className="relative py-20 sm:py-28 overflow-hidden">
+            <div className="absolute inset-0">
+              <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783666622/Excursion_Bottom_Section_compressed_qd7dor.jpg" alt="Ella Sri Lanka" fill className="object-cover" style={{ filter: 'brightness(0.65) saturate(1.1)' }} />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/52 to-black/78" />
+            </div>
+            <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-10 text-center">
+              <div className="flex items-center justify-center gap-3 mb-5">
+                <div className="w-10 h-px bg-[#F5B041]" />
+                <span className="text-[#F5B041] text-xs font-semibold tracking-[0.25em] uppercase">Book This Experience</span>
+                <div className="w-10 h-px bg-[#F5B041]" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight" style={{ textShadow: '0 2px 18px rgba(0,0,0,0.65)' }}>
+                Experience <span className="text-[#F5B041]">{selectedExcursion.name}</span>
+              </h2>
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-8 max-w-lg mx-auto">
+                Reach out to our travel experts and we will tailor every detail of this excursion just for you — no obligation.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/contactus" className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#F39C12] to-[#E67E22] hover:from-[#F5B041] hover:to-[#F39C12] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-[#F39C12]/30 text-sm sm:text-base">
+                  Book This Excursion <span className="transition-transform duration-300 group-hover:translate-x-1"><IconArrow /></span>
+                </Link>
+                <button onClick={handleBackToExcursions} className="group inline-flex items-center gap-2 border border-white/35 hover:border-white/65 bg-white/8 hover:bg-white/18 backdrop-blur-sm text-white font-medium px-8 py-4 rounded-full transition-all duration-300 text-sm sm:text-base">
+                  <span className="transition-transform duration-300 group-hover:-translate-x-0.5"><IconBack /></span> All Excursions
+                </button>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ══════════════════════════════════════════════════════
+          TOURS VIEW — after a non-excursion category is selected
+      ══════════════════════════════════════════════════════ */}
+      {selectedCategory && !isExcursionsCategory && (
         <>
           {/* ── Tour listing on clean bg ── */}
           <section className="py-14 sm:py-20 bg-[#FDFCFA]">
@@ -545,7 +850,7 @@ export default function PackagesClient() {
           {/* ── CTA — sigiriya bg image at bottom of tours ── */}
           <section className="relative py-16 sm:py-20 overflow-hidden">
             <div className="absolute inset-0">
-              <img src="/images/sigiriya.jpg" alt="Sri Lanka Sigiriya" className="w-full h-full object-cover" />
+              <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783666013/Bottom_Section_1_jglpap.png" alt="Sri Lanka Train Journey" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/78" />
             </div>
             <div className="relative z-10 max-w-2xl mx-auto px-5 sm:px-10 text-center">

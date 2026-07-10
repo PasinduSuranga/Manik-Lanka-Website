@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 /* ════════════════════════════════════════════════════════════
    FOOTER COMPONENT
    Design thought:
@@ -83,8 +85,8 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             {/* Logo + name */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl border border-[#F39C12]/40 bg-white/8 flex items-center justify-center flex-shrink-0">
-                <img src="/logo.png" alt="Manik Lanka Holidays Logo" className="w-[78%] h-[78%] object-contain" />
+              <div className="relative w-11 h-11 rounded-xl border border-[#F39C12]/40 bg-white/8 flex items-center justify-center flex-shrink-0">
+                <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672260/logo_ef2rw8.png" alt="Manik Lanka Holidays Logo" fill className="object-contain p-1" />
               </div>
               <div>
                 <span className="block font-bold text-sm sm:text-base bg-gradient-to-r from-[#F5B041] via-[#F39C12] to-[#F5B041] bg-clip-text text-transparent leading-tight">

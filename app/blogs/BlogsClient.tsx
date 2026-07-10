@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { blogsData, Blog } from '../data/blogsData';
 
 /* ════════════════════════════════════════════════════════════
@@ -48,20 +49,22 @@ export default function BlogsClient() {
 
   return (
     <div className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
-      
+
       {/* ══════════════════════════════════════════════════════
           HERO SECTION
       ══════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/beachImage.jpg"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783588081/Hero_Section_s7auld.png"
           alt="Our Blogs"
-          className="absolute inset-0 w-full h-full object-cover blogs-hero-img"
+          fill
+          priority
+          className="object-cover blogs-hero-img"
           style={{ filter: 'brightness(0.6) saturate(1.1)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCFA] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/30 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
-        
+
         <div className={`absolute bottom-12 left-0 right-0 px-6 sm:px-14 lg:px-24 ${hasAnimated ? 'blogs-hero-text' : 'opacity-0'}`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-px bg-gradient-to-r from-[#F39C12] to-[#F5B041]" />
@@ -82,8 +85,24 @@ export default function BlogsClient() {
       <section className="py-16 sm:py-24 bg-[#FDFCFA]" ref={blogsReveal.ref}>
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 ${blogsReveal.visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            {blogsData.map((blog, idx) => (
-              <div 
+            {blogsData.length === 0 ? (
+              <div className="col-span-full flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-16 h-16 rounded-full bg-[#F5EFE6] flex items-center justify-center mb-6">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#B8730A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-[#3D2314] mb-3">No Blogs Yet</h3>
+                <p className="text-[#6B5744] text-sm sm:text-base max-w-md leading-relaxed">
+                  We&apos;re crafting inspiring travel stories for you. Check back soon for tips, guides, and unforgettable moments from Sri Lanka.
+                </p>
+              </div>
+            ) : blogsData.map((blog, idx) => (
+              <div
                 key={blog.id}
                 className="group bg-white rounded-3xl overflow-hidden border border-[#E8D5B5] shadow-sm hover:shadow-2xl hover:shadow-[#F39C12]/15 transition-all duration-500 cursor-pointer hover:-translate-y-1 flex flex-col"
                 onClick={() => setSelectedBlog(blog)}
@@ -91,10 +110,11 @@ export default function BlogsClient() {
               >
                 {/* Cover Image */}
                 <div className="w-full h-60 relative overflow-hidden">
-                  <img 
-                    src={blog.coverImage} 
-                    alt={blog.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                  <Image
+                    src={blog.coverImage}
+                    alt={blog.title}
+                    fill
+                    className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold text-[#8B5E0A] uppercase tracking-wider shadow-sm">
                     {blog.category}
@@ -112,7 +132,7 @@ export default function BlogsClient() {
                   <p className="text-[#6B5744] text-sm line-clamp-3 mb-6">
                     {blog.content[0]}
                   </p>
-                  
+
                   <div className="mt-auto flex items-center justify-between border-t border-[#F5EFE6] pt-4">
                     <span className="flex items-center gap-1.5 text-xs text-[#8B5E0A] font-semibold"><IcoUser /> {blog.author}</span>
                     <span className="text-[#F39C12] group-hover:translate-x-1 transition-transform duration-300">
@@ -130,16 +150,16 @@ export default function BlogsClient() {
           MODAL (FULL BLOG)
       ══════════════════════════════════════════════════════ */}
       {selectedBlog && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 sm:p-8"
           onClick={() => setSelectedBlog(null)}
         >
-          <div 
+          <div
             className="bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col animate-in zoom-in-95 duration-300 shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
-            <button 
+            <button
               className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur-md flex items-center justify-center text-white transition-colors duration-300"
               onClick={() => setSelectedBlog(null)}
             >
@@ -150,7 +170,7 @@ export default function BlogsClient() {
             <div className="overflow-y-auto w-full h-full">
               {/* Header Image */}
               <div className="w-full h-[40vh] min-h-[300px] relative">
-                <img src={selectedBlog.coverImage} alt={selectedBlog.title} className="w-full h-full object-cover" />
+                <Image src={selectedBlog.coverImage} alt={selectedBlog.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <span className="inline-block px-3 py-1 bg-[#F39C12] text-white text-[11px] font-bold uppercase tracking-wider rounded-md mb-3">
@@ -178,8 +198,8 @@ export default function BlogsClient() {
                   {selectedBlog.images && selectedBlog.images.length > 0 && (
                     <div className={`grid gap-4 my-10 ${selectedBlog.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                       {selectedBlog.images.map((img, i) => (
-                        <div key={i} className="rounded-2xl overflow-hidden shadow-md">
-                          <img src={img} alt="Blog highlight" className="w-full h-64 object-cover" />
+                        <div key={i} className="relative h-64 rounded-2xl overflow-hidden shadow-md">
+                          <Image src={img} alt="Blog highlight" fill className="object-cover" />
                         </div>
                       ))}
                     </div>
@@ -188,8 +208,8 @@ export default function BlogsClient() {
                   {/* Optional Video */}
                   {selectedBlog.videoUrl && (
                     <div className="my-10 rounded-2xl overflow-hidden shadow-lg border border-[#E8D5B5] relative pt-[56.25%]">
-                      <iframe 
-                        src={selectedBlog.videoUrl} 
+                      <iframe
+                        src={selectedBlog.videoUrl}
                         className="absolute inset-0 w-full h-full"
                         allowFullScreen
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

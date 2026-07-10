@@ -65,10 +65,11 @@ function ActivityModal({
       >
         {/* Image header */}
         <div className="relative h-52 sm:h-60 overflow-hidden">
-          <img
+          <Image
             src={activity.photo}
             alt={activity.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             style={{ filter: "brightness(0.75) saturate(1.1)" }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
@@ -138,10 +139,11 @@ export default function ThingsToDoClient() {
 
       {/* ── Hero ── */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/wildLifeImage.jpg"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672016/Things_to_Do_g2ozwk.png"
           alt="Things To Do in Sri Lanka"
-          className="absolute inset-0 w-full h-full object-cover td-fade-in"
+          fill
+          className="object-cover td-fade-in"
           style={{ filter: "brightness(0.65) saturate(1.1)" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/28 to-black/06" />
@@ -322,8 +324,9 @@ export default function ThingsToDoClient() {
       {/* ── Packages CTA image strip ── */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/packages.png" alt="Sri Lanka packages"
-            className="w-full h-full object-cover"
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783668049/Bottom_Section_gvsgka.png" alt="Sri Lanka packages"
+            fill
+            className="object-cover"
             style={{ filter: "brightness(0.6) saturate(1.1)" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/75" />
         </div>

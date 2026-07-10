@@ -5,41 +5,43 @@ export const tourCategories = [
     slug: "romantic-retreats",
     name: "Romantic Retreats",
     description: "Create unforgettable memories with intimate escapes, luxury stays, and breathtaking experiences designed for couples.",
-    image: "/images/sigiriya.jpg",
-    icon: "🏛️",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783657661/Romantic_Retreats_Image_dikbe9.png",
   },
   {
     id: 2,
     slug: "misty-mountain-escapes",
     name: "Misty Mountain Escapes",
     description: "Journey through scenic highlands, rolling tea plantations, cascading waterfalls, and charming hill country landscapes.",
-    image: "/images/beachImage.jpg",
-    icon: "🏖️",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783657658/Misty_Mountain_Escapes_paidpp.png",
   },
   {
     id: 3,
     slug: "timeless-cultural-experiences",
     name: "Timeless Cultural Experiences",
     description: "Explore ancient cities, sacred temples, vibrant traditions, and UNESCO World Heritage Sites.",
-    image: "/images/wildLifeImage.jpg",
-    icon: "🦁",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783660913/Timeless_Cultural_Experiences_qjclfc.png",
   },
   {
     id: 4,
     slug: "sun-kissed-beach-getaways",
     name: "Sun-Kissed Beach Getaways",
     description: "Relax along pristine coastlines, turquoise waters, and secluded beaches while enjoying the finest tropical experiences.",
-    image: "/images/nuwaraEliya.jpg",
-    icon: "⛰️",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783660909/Sun-Kissed_Beach_Getaways_oszzz0.png",
   },
-  /* {
+  {
     id: 5,
-    slug: "complete-tours",
-    name: "Complete Island Tours",
-    description: "Comprehensive journeys covering all highlights of Sri Lanka",
-    image: "/images/package1.jpg",
-    icon: "🗺️",
-  }, */
+    slug: "wildlife-and-adventure",
+    name: "Wildlife & Adventure",
+    description: "Experience thrilling safaris, breathtaking national parks, scenic hiking trails, waterfalls, rafting, and unforgettable outdoor adventures across Sri Lanka.",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783660916/Wildlife_And_Adventure_acsljq.png",
+  },
+  {
+    id: 6,
+    slug: "excursions",
+    name: "Excursions",
+    description: "Discover unforgettable day trips and short adventures, from ancient landmarks and wildlife safaris to scenic train rides, cultural experiences, and breathtaking natural attractions across Sri Lanka.",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783660675/Excursions_1_1_1_1_1_1_1_1_1_1_1_2_1_2_1_qcllmv.png",
+  },
 ];
 
 // Shared inclusions & exclusions (same for all packages)
@@ -79,6 +81,13 @@ export const placeDescriptions: Record<string, string> = {
   Kalpitiya: "Kalpitiya is a stunning coastal destination on the northwestern coast of Sri Lanka, celebrated for its pristine beaches, crystal-clear waters, and vibrant marine life. Surrounded by the Indian Ocean and a network of lagoons, it is a paradise for water sports enthusiasts, offering world-class kite surfing, dolphin watching, and snorkeling experiences. The region's unspoiled natural beauty, diverse ecosystems, and tranquil atmosphere make it an ideal getaway for both adventure seekers and those looking to relax by the sea. With its unique blend of coastal charm, wildlife encounters, and breathtaking sunsets, Kalpitiya provides an unforgettable experience for visitors exploring Sri Lanka's coastal treasures.",
   Pasikuda: "Pasikuda is a beautiful coastal destination on the eastern shores of Sri Lanka, renowned for its pristine sandy beaches and calm, crystal-clear waters. Famous for its shallow coastline, visitors can walk far into the sea while enjoying a safe and relaxing beach experience. The region offers excellent opportunities for swimming, snorkeling, diving, and various water sports, making it a favorite destination for both families and adventure enthusiasts. Surrounded by breathtaking ocean views and a peaceful atmosphere, Pasikuda is the perfect escape for those seeking relaxation, natural beauty, and unforgettable seaside experiences along Sri Lanka’s stunning east coast.",
   Hikkaduwa: "Hikkaduwa is one of Sri Lanka’s most popular beach destinations, renowned for its golden sandy shores, vibrant marine life, and lively coastal atmosphere. Located along the southern coast, it is famous for its coral reefs, crystal-clear waters, and exciting water activities such as snorkeling, diving, and surfing. Visitors can explore the rich underwater world, relax by the beach, or enjoy the town’s diverse dining and entertainment options. With its stunning ocean views, tropical charm, and welcoming ambiance, Hikkaduwa offers the perfect blend of adventure, relaxation, and unforgettable coastal experiences.",
+  Minneriya: "Minneriya is one of Sri Lanka’s premier wildlife destinations, famous for the spectacular Elephant Gathering—one of the largest gatherings of Asian elephants in the world. Centered around the historic Minneriya Tank, the national park offers unforgettable jeep safaris through grasslands, wetlands, and forests where visitors can spot elephants, deer, monkeys, crocodiles, and a wide variety of bird species. The park’s breathtaking landscapes and incredible biodiversity make it a must-visit destination for nature lovers and wildlife photographers.",
+  Kaudulla: "Kaudulla National Park is a beautiful wildlife sanctuary located in Sri Lanka’s Cultural Triangle. Known for its large herds of wild Asian elephants, the park features vast grasslands, forests, and the scenic Kaudulla Reservoir. Depending on seasonal elephant migration, Kaudulla becomes one of the best places in the country to observe elephants in their natural habitat. The park is also home to numerous bird species, crocodiles, deer, and other wildlife, making it a paradise for safari enthusiasts and photographers.",
+  'Horton Plains': "Horton Plains National Park is a UNESCO World Heritage Site renowned for its breathtaking cloud forests, sweeping grasslands, and cool mountain climate. The park is home to the famous World's End viewpoint, where dramatic cliffs offer panoramic views across the southern plains. Visitors can enjoy scenic hiking trails while encountering sambar deer, purple-faced langurs, endemic birds, and unique highland flora found nowhere else in Sri Lanka.",
+  Udawalawe: "Udawalawe National Park is one of Sri Lanka’s best destinations to observe wild Asian elephants throughout the year. The park’s open grasslands, reservoirs, and scrub forests provide excellent opportunities to see elephants, crocodiles, water buffalo, jackals, foxes, and a rich diversity of birdlife. Nearby, the Elephant Transit Home offers visitors a unique opportunity to learn about elephant conservation and rehabilitation, making Udawalawe an unforgettable wildlife destination.",
+  Sinharaja: "Sinharaja Forest Reserve is Sri Lanka’s last remaining primary tropical rainforest and a UNESCO World Heritage Site celebrated for its extraordinary biodiversity. Home to countless endemic birds, mammals, reptiles, butterflies, and rare plant species, the rainforest offers an unforgettable experience for nature lovers, birdwatchers, and photographers. Guided rainforest treks reveal hidden waterfalls, lush greenery, and the incredible wildlife that makes Sinharaja one of the island’s greatest natural treasures.",
+  'Victoria Randenigala Rantembe Sanctuary': "Victoria Randenigala Rantembe Sanctuary is a vast protected wildlife reserve in Sri Lanka's central highlands, encompassing the scenic Victoria, Randenigala, and Rantembe reservoirs. Surrounded by lush forests, rolling hills, and tranquil waters, the sanctuary is one of the country's finest birdwatching destinations. Visitors can enjoy peaceful nature walks while spotting endemic birds, kingfishers, eagles, giant squirrels, monkeys, and a rich variety of wildlife thriving in this pristine natural environment. Its breathtaking scenery and remarkable biodiversity make it an ideal destination for nature lovers, photographers, and outdoor enthusiasts.",
+  Kitulgala: "Kitulgala is Sri Lanka's premier adventure destination, surrounded by lush rainforests, rushing rivers, and breathtaking mountain scenery. Best known for its thrilling white-water rafting experiences on the Kelani River, Kitulgala also offers jungle trekking, waterfall abseiling, confidence jumps, stream sliding, canyoning, birdwatching, and nature trails. Rich in biodiversity and natural beauty, this adventure hotspot is the perfect destination for outdoor enthusiasts seeking excitement, unforgettable experiences, and a close connection with Sri Lanka's tropical wilderness.",
 };
 
 export const packagesData = [
@@ -93,7 +102,8 @@ export const packagesData = [
     shortDescription: "Celebrate your love with an unforgettable journey through Sri Lanka's cultural treasures, misty hills, wildlife adventures, and idyllic beaches.",
     description: "Experience the perfect honeymoon across Sri Lanka with a carefully curated itinerary featuring ancient cities, scenic hill country, wildlife safaris, and relaxing coastal escapes. From Sigiriya's iconic landscapes to the golden beaches of Mirissa, every moment is designed for romance and unforgettable memories.",
     duration: "13 Days / 12 Nights",
-    image: "/images/package1.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667081/Romantic_Honeymoon_Escape_rfzkxs.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783663097/Romantic_Honeymoon_Escape_1_qdonci.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783663100/Romantic_Honeymoon_Escape_2_h5zgbf.png"],
     /*pricePerPerson: 550,
     maxPersons: 2, */
     itinerary: [
@@ -119,7 +129,8 @@ export const packagesData = [
     shortDescription: "Indulge in a premium journey through Sri Lanka's scenic highlands, wildlife reserves, and pristine coastal destinations.",
     description: "Discover Sri Lanka in style with a carefully curated luxury experience featuring elegant accommodations, breathtaking landscapes, and exclusive experiences. Travel from vibrant cities and misty mountains to wildlife adventures and tranquil beach escapes, enjoying comfort and sophistication throughout your journey.",
     duration: "11 Days / 10 Nights",
-    image: "/images/package2.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666787/Luxury_Sri_Lanka_Holiday_teugb0.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783663123/Luxury_Sri_Lanka_Holiday_1_jbwduc.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783663105/Luxury_Sri_Lanka_Holiday_2_pfcbo5.png"],
     /*pricePerPerson: 390,
     maxPersons: 2, */
     itinerary: [
@@ -142,7 +153,8 @@ export const packagesData = [
     shortDescription: "Discover Sri Lanka's breathtaking highlands, scenic train journeys, and coastal beauty in one unforgettable escape.",
     description: "Experience the charm of Sri Lanka's hill country with a carefully designed journey through Kandy, Nuwara Eliya, and Ella. Explore misty mountains, lush tea plantations, and spectacular landscapes before unwinding with wildlife encounters and relaxing beach stays along the southern coast.",
     duration: "11 Days / 10 Nights",
-    image: "/images/package3.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666294/Hill_Country_Luxury_Escape_knco3s.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783661779/Hill_Country_Luxury_Escape_1_xeipwy.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783661779/Hill_Country_Luxury_Escape_2_vi4geg.png"],
     /*pricePerPerson: 520,
     maxPersons: 2, */
     itinerary: [
@@ -166,7 +178,8 @@ export const packagesData = [
     shortDescription: "Experience Sri Lanka's most breathtaking train ride through misty mountains, tea plantations, and charming hill towns.",
     description: "Discover the beauty of Sri Lanka's hill country with scenic landscapes, lush tea estates, and iconic rail journeys. Visit Pinnawala Elephant Orphanage, explore Horton Plains National Park, and enjoy the unforgettable train ride from Nanu Oya to Demodara through the heart of the highlands.",
     duration: "7 Days / 6 Nights",
-    image: "/images/package4.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666547/Hill_Country_Train_Journey_gcinnx.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783661779/Hill_Country_Train_Journey_1_iiwaxj.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783662070/Hill_Country_Train_Journey_2_jum0gc.png"],
     /*pricePerPerson: 570,
     maxPersons: 2, */
     itinerary: [
@@ -188,7 +201,8 @@ export const packagesData = [
     shortDescription: "Experience Sri Lanka's most spectacular cultural festival while exploring scenic landscapes, wildlife, and heritage sites.",
     description: "Witness the grandeur of the world-famous Kandy Esala Perahera, one of Asia's most vibrant cultural celebrations. Journey through Sri Lanka's southern coast, wildlife reserves, and misty hill country before experiencing the spectacular processions, traditional dancers, drummers, and centuries-old rituals in Kandy.",
     duration: "9 Days / 8 Nights",
-    image: "/images/package5.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666778/Kandy_Esala_Perahera_Cultural_Tour_d3ksts.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783662077/Kandy_Esala_Perahera_Cultural_Tour_1_axylse.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783662773/Kandy_Esala_Perahera_Cultural_Tour_2_1_1_1_1_1_1_1_urodzg.png"],
     /*pricePerPerson: 335,
     maxPersons: 2, */
     itinerary: [
@@ -211,7 +225,8 @@ export const packagesData = [
     shortDescription: "Discover the perfect blend of Sri Lanka's vibrant city life and rich cultural heritage.",
     description: "Experience the essence of Sri Lanka with a short yet memorable journey through Colombo and Kandy. Explore bustling city attractions, visit sacred temples, witness traditional cultural performances, and immerse yourself in the island's rich history and heritage.",
     duration: "4 Days / 3 Nights",
-    image: "/images/sigiriya.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783665817/Cultural_City_Escape_arttmf.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783661302/Cultural_City_Escape_1_pxysxu.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783661296/Cultural_City_Escape_2_tmvckk.png"],
     /*pricePerPerson: 420,
     maxPersons: 2, */
     itinerary: [
@@ -230,7 +245,8 @@ export const packagesData = [
     shortDescription: "Discover Sri Lanka's iconic destinations, from ancient heritage sites and scenic highlands to relaxing coastal escapes.",
     description: "Experience the very best of Sri Lanka on this carefully curated journey through vibrant cities, ancient cultural landmarks, misty hill country, and golden beaches. Explore the island's rich heritage, breathtaking landscapes, and warm hospitality in one unforgettable adventure.",
     duration: "7 Days / 6 Nights",
-    image: "/images/beachImage.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667736/Sri_Lanka_Highlights_Tour_compressed_xqjnlp.jpg",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783663103/Sri_Lanka_Highlights_Tour_1_x3qguv.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783663543/Sri_Lanka_Highlights_Tour_2_wllbiy.png"],
     /*pricePerPerson: 280,
     maxPersons: 2, */
     itinerary: [
@@ -252,7 +268,8 @@ export const packagesData = [
     shortDescription: "Explore Sri Lanka at a relaxed pace with a journey through ancient kingdoms, scenic highlands, wildlife reserves, and coastal escapes.",
     description: "Experience the diverse beauty of Sri Lanka on an immersive 14-day journey. Discover ancient heritage cities, explore iconic landmarks including Sigiriya and Polonnaruwa, travel through misty hill country, encounter wildlife in Yala, and unwind along the southern coast before concluding your adventure in Colombo.",
     duration: "14 Days / 13 Nights",
-    image: "/images/wildLifeImage.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666784/Leisure_at_Sri_Lanka_ywzv73.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783662080/Leisure_at_Sri_Lanka_1_ta1njr.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783662084/Leisure_at_Sri_Lanka_2_z920ra.png"],
     /*pricePerPerson: 320,
     maxPersons: 2, */
     itinerary: [
@@ -282,7 +299,8 @@ export const packagesData = [
     shortDescription: "Discover Sri Lanka's stunning east and south coast beaches while exploring ancient cities, wildlife, and scenic hill country.",
     description: "Experience the perfect blend of coastal relaxation and cultural discovery on this unforgettable journey across Sri Lanka. Unwind on the pristine beaches of Trincomalee and the southern coast, explore the ancient wonders of Sigiriya and Polonnaruwa, visit tea plantations in the hill country, encounter wildlife in Yala, and enjoy the charm of historic Galle.",
     duration: "13 Days / 12 Nights",
-    image: "/images/wildLifeImage.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783665825/East_Coast_Southern_Beach_Escape_ur9wro.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783661765/East_Coast_Southern_Beach_Escape_1_cp9qir.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783661771/East_Coast_Southern_Beach_Escape_2_io6efo.png"],
     /*pricePerPerson: 320,
     maxPersons: 2, */
     itinerary: [
@@ -313,7 +331,8 @@ export const packagesData = [
     shortDescription: "Explore Sri Lanka's most spectacular coastal destinations with thrilling water sports and unforgettable beach experiences.",
     description: "Embark on an exciting coastal journey across Sri Lanka's east, south, and west shores. Discover the marine life of Kalpitiya, relax on the pristine beaches of Trincomalee and Pasikuda, experience the surfing culture of Arugam Bay, and enjoy the vibrant beach atmosphere of Hikkaduwa. This tour is perfect for travelers seeking adventure, relaxation, and tropical beauty.",
     duration: "11 Days / 10 Nights",
-    image: "/images/wildLifeImage.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783665813/Adventure_Beach_Expedition_xmxn6c.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783661298/Adventure_Beach_Expedition_1_bo330o.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783661298/Adventure_Beach_Expedition_2_qt038q.png"],
     /*pricePerPerson: 320,
     maxPersons: 2, */
     itinerary: [
@@ -335,7 +354,8 @@ export const packagesData = [
     shortDescription: "Relax on golden beaches, explore historic coastal towns, and enjoy the vibrant atmosphere of Sri Lanka's southern coastline.",
     description: "Unwind with the perfect tropical getaway along Sri Lanka's beautiful southern coast. Relax on the pristine beaches of Bentota, discover the colonial charm of Galle, and experience the energy of Colombo before concluding your unforgettable beach holiday.",
     duration: "6 Days / 5 Nights",
-    image: "/images/wildLifeImage.jpg",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667240/Sun_Fun_Beach_Escape_xbo2oy.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783663545/Sun_Fun_Beach_Escape_1_dml2z5.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783663570/Sun_Fun_Beach_Escape_2_xv97ze.png"],
     /*pricePerPerson: 320,
     maxPersons: 2, */
     itinerary: [
@@ -344,4 +364,344 @@ export const packagesData = [
       { stop: "Colombo", duration: "1 Night" }
     ],
   },
+  {
+    id: 12,
+    slug: "ultimate-wildlife-adventure",
+    categoryId: 5,
+    seoTitle: "8-Day Ultimate Wildlife Adventure Tour | Manik Lanka Holidays",
+    seoKeywords: ["Sri Lanka wildlife tour", "Sri Lanka safari package", "Yala leopard safari", "Udawalawe elephant safari", "Sinharaja rainforest tour", "Minneriya elephant gathering", "birdwatching Sri Lanka", "nature adventure Sri Lanka"],
+    imageAlt: "Wildlife adventure tour featuring Sri Lanka's national parks, rainforests, elephants, leopards, and birdwatching experiences",
+    name: "Ultimate Wildlife Adventure",
+    shortDescription: "Experience Sri Lanka's incredible wildlife through thrilling safaris, rainforest trekking, birdwatching, and breathtaking natural landscapes.",
+    description: "Embark on an unforgettable eight-day wildlife expedition across Sri Lanka. Witness the world-famous Elephant Gathering, track elusive leopards in Yala National Park, explore the biodiversity of Sinharaja Rainforest, hike through Horton Plains, and enjoy spectacular birdwatching opportunities while discovering the island's extraordinary natural heritage.",
+    duration: "8 Days / 7 Nights",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667812/Ultimate_Wildlife_Adventure_dcmda2.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783664687/Ultimate_Wildlife_Adventure_1_bgahjd.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783665565/Ultimate_Wildlife_Adventure_2_compressed_eclx9v.jpg"],
+    /*pricePerPerson: 320,
+    maxPersons: 2, */
+    itinerary: [
+      {
+        stop: "Sigiriya",
+        duration: "2 Nights",
+        highlights: [
+          "Minneriya National Park Safari",
+          "Elephant Gathering (Seasonal)"
+        ]
+      },
+      {
+        stop: "Nuwara Eliya",
+        duration: "1 Night",
+        highlights: [
+          "Victoria Randenigala Rantembe Sanctuary",
+          "Tea Plantation Visit"
+        ]
+      },
+      {
+        stop: "Yala",
+        duration: "2 Nights",
+        highlights: [
+          "Horton Plains National Park",
+          "Full-Day Leopard Safari"
+        ]
+      },
+      {
+        stop: "Udawalawe",
+        duration: "1 Night",
+        highlights: [
+          "Elephant Transit Home",
+          "Jeep Safari"
+        ]
+      },
+      {
+        stop: "Sinharaja",
+        duration: "1 Night",
+        highlights: [
+          "Rainforest Trek",
+          "Birdwatching"
+        ]
+      }
+    ]
+  },
+  {
+    id: 13,
+    slug: "ultimate-adventure-escape",
+    categoryId: 5,
+    seoTitle: "10-Day Ultimate Adventure Escape Tour | Manik Lanka Holidays",
+    seoKeywords: ["Sri Lanka adventure tour", "Kitulgala rafting", "Ella hiking tour", "Flying Ravana zipline", "Yala safari", "Mirissa whale watching", "Bentota water sports", "Sri Lanka adventure holiday"],
+    imageAlt: "Adventure tour across Sri Lanka featuring rafting, hiking, wildlife safaris, whale watching, and exciting outdoor activities",
+    name: "Ultimate Adventure Escape",
+    shortDescription: "Experience Sri Lanka's ultimate adventure with rafting, hiking, safaris, whale watching, ziplining, and exciting coastal water sports.",
+    description: "Embark on an action-packed journey across Sri Lanka, combining thrilling outdoor adventures with breathtaking natural beauty. White-water raft through Kitulgala, hike the scenic mountains of Ella, enjoy wildlife safaris in Yala, witness majestic blue whales in Mirissa, and experience exciting water sports along the southern coast for the perfect adventure holiday.",
+    duration: "10 Days / 9 Nights",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667809/Ultimate_Adventure_Escape_js9pt2.png",
+    galleryImages: ["https://res.cloudinary.com/bnhex8aj/image/upload/v1783663548/Ultimate_Adventure_Escape_1_tfg3rq.png", "https://res.cloudinary.com/bnhex8aj/image/upload/v1783663552/Ultimate_Adventure_Escape_2_mozgwl.png"],
+    itinerary: [
+      {
+        stop: "Negombo",
+        duration: "1 Night"
+      },
+      {
+        stop: "Kitulgala",
+        duration: "1 Night",
+        highlights: [
+          "White Water Rafting",
+          "Jungle Trekking",
+          "Waterfall Abseiling"
+        ]
+      },
+      {
+        stop: "Nuwara Eliya",
+        duration: "1 Night",
+        highlights: [
+          "Ramboda Falls",
+          "Tea Plantation Visit",
+          "Gregory Lake"
+        ]
+      },
+      {
+        stop: "Ella",
+        duration: "2 Nights",
+        highlights: [
+          "Horton Plains National Park",
+          "Little Adam's Peak",
+          "Ella Rock",
+          "Nine Arches Bridge",
+          "Flying Ravana Zipline",
+          "Ravana Falls"
+        ]
+      },
+      {
+        stop: "Yala",
+        duration: "1 Night",
+        highlights: [
+          "Jeep Safari"
+        ]
+      },
+      {
+        stop: "Mirissa",
+        duration: "2 Nights",
+        highlights: [
+          "Whale Watching",
+          "Surfing",
+          "Snorkelling",
+          "Paddle Boarding",
+          "Scuba Diving",
+          "Coconut Tree Hill"
+        ]
+      },
+      {
+        stop: "Benthota",
+        duration: "1 Night",
+        highlights: [
+          "Jet Ski",
+          "Banana Boat Ride",
+          "Tube Ride",
+          "Wake Boarding",
+          "Madu River Safari"
+        ]
+      },
+      {
+        stop: "Colombo",
+        duration: "Departure"
+      }
+    ]
+  },
+];
+
+export const excursionsData = [
+  {
+    id: 1,
+    slug: "culture-of-kandy",
+    seoTitle: "Culture of Kandy Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Kandy cultural tour",
+      "Temple of the Tooth",
+      "Kandy excursion",
+      "Sri Lanka culture"
+    ],
+    imageAlt: "Traditional Kandyan cultural dance performance",
+    name: "Culture of Kandy",
+    shortDescription: "Discover the rich traditions, history, and cultural heritage of Sri Lanka's last royal kingdom.",
+    description: "Immerse yourself in the vibrant culture of Kandy by visiting the sacred Temple of the Tooth Relic, exploring the scenic city, witnessing a traditional Kandyan cultural dance performance, and experiencing the unique heritage that makes Kandy one of Sri Lanka's most treasured destinations.",
+    duration: "Full Day",
+    location: "Kandy",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783665821/Culture_of_Kandy_Excursion_vthfov.png",
+    highlights: [
+      "Temple of the Tooth",
+      "Kandy Lake",
+      "Cultural Dance Show",
+      "City Tour"
+    ]
+  },
+
+  {
+    id: 2,
+    slug: "madu-river-safari",
+    seoTitle: "Madu River Safari Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Madu River safari",
+      "Bentota boat safari",
+      "Mangrove tour Sri Lanka"
+    ],
+    imageAlt: "Boat safari through the mangrove forests of Madu River",
+    name: "River Safari in Madu River",
+    shortDescription: "Cruise through beautiful mangrove forests while discovering Sri Lanka's unique wetland ecosystem.",
+    description: "Enjoy a relaxing boat safari along the famous Madu River, passing lush mangroves, small islands, cinnamon plantations, fish spas, and diverse birdlife while experiencing one of Sri Lanka's most beautiful natural wetlands.",
+    duration: "Half Day",
+    location: "Benthota",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666832/River_Safari_in_Madu_River_Excursion_fqzsci.png",
+    highlights: [
+      "Mangrove Forest",
+      "Boat Safari",
+      "Bird Watching",
+      "Cinnamon Island"
+    ]
+  },
+
+  {
+    id: 3,
+    slug: "whale-and-dolphin-watching",
+    seoTitle: "Whale & Dolphin Watching Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Whale watching",
+      "Dolphin watching",
+      "Mirissa excursion",
+      "Blue whale Sri Lanka"
+    ],
+    imageAlt: "Blue whale and dolphins in the Indian Ocean",
+    name: "Whale & Dolphin Watching",
+    shortDescription: "Experience an unforgettable ocean adventure watching whales and dolphins in their natural habitat.",
+    description: "Set sail from Mirissa on an exciting morning cruise to witness majestic blue whales, playful dolphins, and other incredible marine life while enjoying the breathtaking beauty of Sri Lanka's southern coastline.",
+    duration: "Half Day",
+    location: "Mirissa",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667819/Whale_Dolphin_Watching_Excursion_cixzf9.png",
+    highlights: [
+      "Blue Whales",
+      "Dolphins",
+      "Sunrise Cruise",
+      "Marine Wildlife"
+    ]
+  },
+
+  {
+    id: 4,
+    slug: "turtle-watching",
+    seoTitle: "Turtle Watching Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Turtle watching Sri Lanka",
+      "Sea turtles",
+      "Turtle hatchery"
+    ],
+    imageAlt: "Sea turtles along Sri Lanka's southern coast",
+    name: "Turtle Watching",
+    shortDescription: "Observe magnificent sea turtles and learn about their conservation along Sri Lanka's beautiful coastline.",
+    description: "Visit one of Sri Lanka's renowned turtle conservation centers to learn about sea turtle protection while observing rescued turtles and, depending on the season, witnessing nesting or hatchlings making their journey to the ocean.",
+    duration: "Half Day",
+    location: "Kosgoda",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667076/Turtle_Watching_Excursion_ahxj8p.png",
+    highlights: [
+      "Sea Turtle Conservation",
+      "Turtle Hatchery",
+      "Educational Tour",
+      "Beach Visit"
+    ]
+  },
+
+  {
+    id: 5,
+    slug: "hiking-and-trekking",
+    seoTitle: "Hiking & Trekking Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Ella hiking",
+      "Sri Lanka trekking",
+      "Mountain hiking"
+    ],
+    imageAlt: "Hiking trail through Sri Lanka's scenic hill country",
+    name: "Hiking & Trekking",
+    shortDescription: "Explore Sri Lanka's spectacular mountain landscapes through unforgettable hiking adventures.",
+    description: "Experience the natural beauty of Sri Lanka with guided hiking and trekking adventures through scenic mountains, cloud forests, waterfalls, tea plantations, and breathtaking viewpoints suitable for both beginners and experienced hikers.",
+    duration: "Full Day",
+    location: "Ella",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666506/Hiking_Trekking_Excursion_t0vnbr.png",
+    highlights: [
+      "Ella Rock",
+      "Little Adam's Peak",
+      "Nature Trails",
+      "Scenic Views"
+    ]
+  },
+
+  {
+    id: 6,
+    slug: "national-park-safari",
+    seoTitle: "National Park Safari Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "Yala safari",
+      "National park safari",
+      "Sri Lanka wildlife"
+    ],
+    imageAlt: "Safari jeep exploring Sri Lanka's national parks",
+    name: "National Park Safari",
+    shortDescription: "Discover Sri Lanka's incredible wildlife on an exciting safari adventure.",
+    description: "Embark on an unforgettable jeep safari through Sri Lanka's famous national parks, where you can encounter leopards, elephants, sloth bears, crocodiles, deer, and hundreds of bird species in their natural habitat.",
+    duration: "Full Day",
+    location: "Yala",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666828/National_Park_Safari_Excursions_tpriip.png",
+    highlights: [
+      "Jeep Safari",
+      "Leopards",
+      "Elephants",
+      "Bird Watching"
+    ]
+  },
+
+  {
+    id: 7,
+    slug: "south-coast-discovery",
+    seoTitle: "South Coast Discovery Excursion | Manik Lanka Holidays",
+    seoKeywords: [
+      "South coast tour",
+      "Galle",
+      "Mirissa",
+      "Bentota"
+    ],
+    imageAlt: "Beautiful beaches and colonial landmarks along Sri Lanka's south coast",
+    name: "South Coast Discovery",
+    shortDescription: "Explore the stunning beaches, historic landmarks, and vibrant coastal lifestyle of Sri Lanka's south coast.",
+    description: "Discover the charm of Sri Lanka's southern coastline by visiting historic Galle Fort, relaxing on golden beaches, exploring coastal towns, enjoying scenic ocean views, and experiencing the region's unique culture and hospitality.",
+    duration: "Full Day",
+    location: "Southern Coast",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783667765/South_Coast_Discovery_Excursion_compressed_jzdrvi.jpg",
+    highlights: [
+      "Galle Fort",
+      "Beach Views",
+      "Coastal Towns",
+      "Scenic Drive"
+    ]
+  },
+
+  {
+    id: 8,
+    slug: "taste-of-ceylon-tea",
+    seoTitle: "Experience the Taste of Ceylon Tea | Manik Lanka Holidays",
+    seoKeywords: [
+      "Ceylon tea",
+      "Tea plantation",
+      "Tea factory",
+      "Nuwara Eliya"
+    ],
+    imageAlt: "Freshly brewed Ceylon tea overlooking lush tea plantations",
+    name: "Experience the Taste of Ceylon Tea",
+    shortDescription: "Discover the story behind Sri Lanka's world-famous Ceylon Tea from plantation to cup.",
+    description: "Visit picturesque tea plantations and traditional tea factories in Sri Lanka's scenic hill country, where you will learn the tea-making process, meet local tea experts, and enjoy tasting freshly brewed world-famous Ceylon Tea surrounded by breathtaking mountain landscapes.",
+    duration: "Half Day",
+    location: "Nuwara Eliya",
+    image: "https://res.cloudinary.com/bnhex8aj/image/upload/v1783666290/Experience_the_Taste_of_Ceylon_Tea_Excursion_hg9bqt.png",
+    highlights: [
+      "Tea Plantation",
+      "Tea Factory",
+      "Tea Tasting",
+      "Hill Country Views"
+    ]
+  }
 ];

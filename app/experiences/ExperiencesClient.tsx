@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { experienceCategories, type ExpCategory, type ExpItem } from "@/app/data/experiences";
@@ -87,10 +88,11 @@ function CategoriesView({ onSelect }: { onSelect: (c: ExpCategory) => void }) {
     <>
       {/* Hero */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/packages.png"
-          alt="Discover Sri Lanka Experiences"
-          className="absolute inset-0 w-full h-full object-cover exp-fade-in"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783590397/Hero_Section_moqmqr.png"
+          alt="Ancient Temples in Sri Lanka"
+          fill
+          className="object-cover exp-fade-in"
           style={{ filter: 'brightness(0.68) saturate(1.1)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/30 to-black/08" />
@@ -218,7 +220,7 @@ function CategoriesView({ onSelect }: { onSelect: (c: ExpCategory) => void }) {
       {/* Beach CTA */}
       <section className="relative py-20 sm:py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/beachImage.jpg" alt="Sri Lanka beach" className="w-full h-full object-cover" style={{ filter: 'brightness(0.62)' }} />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783591060/Bottom_Section_eu1rbu.png" alt="Sri Lanka Wildlife" fill className="object-cover" style={{ filter: 'brightness(0.62)' }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/50 to-black/75" />
         </div>
         <div className="relative z-10 max-w-2xl mx-auto px-5 text-center">
@@ -278,11 +280,12 @@ function DestinationsView({
     <>
       {/* Hero — uses category's own image (changes per category) */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
+        <Image
           key={category.image}
           src={category.image}
           alt={category.name}
-          className="absolute inset-0 w-full h-full object-cover exp-fade-in"
+          fill
+          className="object-cover exp-fade-in"
           style={{ filter: 'brightness(0.68) saturate(1.1)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/28 to-black/08" />
@@ -396,7 +399,7 @@ function DestinationsView({
       {/* Sigiriya CTA at bottom */}
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/sigiriya.jpg" alt="Sri Lanka" className="w-full h-full object-cover" style={{ filter: 'brightness(0.6)' }} />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783594570/Bottom_Section_b0kewk.png" alt="Nuwara Eliya Sri Lanka" fill className="object-cover" style={{ filter: 'brightness(0.6)' }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 to-black/78" />
         </div>
         <div className="relative z-10 max-w-xl mx-auto px-5 text-center">
@@ -492,11 +495,12 @@ function DetailView({
     <>
       {/* Hero — featured photo */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          key={item.photos[activePhoto]}
-          src={item.photos[activePhoto]}
+        <Image
+          key={item.photos[0]}
+          src={item.photos[0]}
           alt={item.name}
-          className="absolute inset-0 w-full h-full object-cover exp-fade-in"
+          fill
+          className="object-cover exp-fade-in"
           style={{ filter: 'brightness(0.68) saturate(1.1)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/32 to-black/08" />
@@ -569,11 +573,12 @@ function DetailView({
               </div>
               {/* Main photo */}
               <div className="relative w-full rounded-2xl overflow-hidden mb-3" style={{ height: '220px' }}>
-                <img
+                <Image
                   key={activePhoto}
                   src={item.photos[activePhoto]}
                   alt={`${item.name} photo ${activePhoto + 1}`}
-                  className="w-full h-full object-cover exp-fade-in"
+                  fill
+                  className="object-cover exp-fade-in"
                   style={{ filter: 'brightness(0.9)' }}
                 />
               </div>
@@ -586,10 +591,11 @@ function DetailView({
                     className={`relative flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden transition-all duration-300 ${activePhoto === pi ? 'ring-2 ring-[#F39C12] ring-offset-1' : 'opacity-65 hover:opacity-90'}`}
                     aria-label={`Photo ${pi + 1}`}
                   >
-                    <img
+                    <Image
                       src={ph}
                       alt={`Thumbnail ${pi + 1}`}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </button>
                 ))}
@@ -636,7 +642,7 @@ function DetailView({
       {/* Final CTA */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/nuwaraEliya.jpg" alt="Sri Lanka" className="w-full h-full object-cover" style={{ filter: 'brightness(0.6)' }} />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783597524/Inside_Bottom_Section_jtkpc5.png" alt="Kandy Lake Sri Lanka" fill className="object-cover" style={{ filter: 'brightness(0.6)' }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 to-black/78" />
         </div>
         <div className="relative z-10 max-w-xl mx-auto px-5 text-center">
@@ -671,31 +677,62 @@ export default function ExperiencesClient() {
   const [selectedCategory, setSelectedCategory] = useState<ExpCategory | null>(null);
   const [selectedItem, setSelectedItem] = useState<ExpItem | null>(null);
   const topRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   const scrollTop = () =>
     setTimeout(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 30);
 
+  // Restore state from URL on mount and browser Back/Forward
+  useEffect(() => {
+    const catId = searchParams.get('cat');
+    const itemId = searchParams.get('item');
+    if (catId) {
+      const cat = experienceCategories.find(c => c.id === parseInt(catId, 10));
+      if (cat) {
+        setSelectedCategory(cat);
+        if (itemId) {
+          const item = cat.items.find(i => i.id === itemId);
+          setSelectedItem(item ?? null);
+        } else {
+          setSelectedItem(null);
+        }
+      }
+    } else {
+      setSelectedCategory(null);
+      setSelectedItem(null);
+    }
+  }, [searchParams]);
+
   const handleSelectCategory = useCallback((cat: ExpCategory) => {
     setSelectedCategory(cat);
     setSelectedItem(null);
+    router.push(`/experiences?cat=${cat.id}`, { scroll: false });
     scrollTop();
-  }, []);
+  }, [router]);
 
   const handleSelectItem = useCallback((item: ExpItem) => {
     setSelectedItem(item);
+    if (selectedCategory) {
+      router.push(`/experiences?cat=${selectedCategory.id}&item=${item.id}`, { scroll: false });
+    }
     scrollTop();
-  }, []);
+  }, [router, selectedCategory]);
 
   const handleBackToCategories = useCallback(() => {
     setSelectedCategory(null);
     setSelectedItem(null);
+    router.push('/experiences', { scroll: false });
     scrollTop();
-  }, []);
+  }, [router]);
 
   const handleBackToDestinations = useCallback(() => {
     setSelectedItem(null);
+    if (selectedCategory) {
+      router.push(`/experiences?cat=${selectedCategory.id}`, { scroll: false });
+    }
     scrollTop();
-  }, []);
+  }, [router, selectedCategory]);
 
   return (
     <div ref={topRef} className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">

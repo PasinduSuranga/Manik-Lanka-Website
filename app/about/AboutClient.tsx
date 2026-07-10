@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 /* ════════════════════════════════════════════════════════════
@@ -133,12 +134,13 @@ export default function AboutClient() {
           HERO — existing aboutus.png, cinematic treatment
       ══════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/aboutus.png"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783587759/Hero_Section_envxsb.png"
           alt="About Manik Lanka Holidays — Sri Lanka Travel Experts"
-          className="absolute inset-0 w-full h-full object-cover about-hero-img"
+          fill
+          className="object-cover about-hero-img"
           style={{ filter: 'brightness(0.72) saturate(1.05)' }}
-          loading="eager"
+          priority
         />
         {/* Cinematic layered overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/30 to-black/10" />
@@ -205,7 +207,20 @@ export default function AboutClient() {
       <section className="relative overflow-hidden" ref={storyReveal.ref}>
         {/* Full section bg image — heavy overlay so left text stays readable */}
         <div className="absolute inset-0">
-          <img src="/images/sigiriya.jpg" alt="Sri Lanka heritage" className="w-full h-full object-cover object-center" />
+          {/* Desktop / landscape image */}
+          <Image
+            src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783587761/Middle_Section_hgibrb.png"
+            alt="Sri Lanka heritage"
+            fill
+            className="object-cover object-center hidden sm:block"
+          />
+          {/* Mobile / portrait image — replace src with your portrait photo when ready */}
+          <Image
+            src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783587767/Middle_Section_Mobile_aa4gyo.png"
+            alt="Sri Lanka heritage"
+            fill
+            className="object-cover object-center sm:hidden"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1A0E05]/97 via-[#1A0E05]/88 to-[#1A0E05]/55 sm:to-[#1A0E05]/40" />
         </div>
 
@@ -336,7 +351,7 @@ export default function AboutClient() {
       ══════════════════════════════════════════════════════ */}
       <section className="relative py-24 sm:py-32 overflow-hidden" ref={commitReveal.ref}>
         <div className="absolute inset-0">
-          <img src="/images/beachImage.jpg" alt="Sri Lanka beach commitment" className="w-full h-full object-cover object-center" />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783587759/Bottom_Section_cny6pz.png" alt="Sri Lanka beach commitment" fill className="object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/80" />
         </div>
 

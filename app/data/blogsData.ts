@@ -11,7 +11,7 @@ export interface Blog {
 }
 
 export const blogsData: Blog[] = [
-  {
+  /*{
     id: "blog-1",
     title: "Exploring the Ancient Wonders of Sigiriya",
     date: "October 12, 2026",
@@ -29,7 +29,7 @@ export const blogsData: Blog[] = [
     ],
     videoUrl: "https://www.youtube.com/embed/d3P-pB83P6M"
   },
-  {
+  /*{
     id: "blog-2",
     title: "A Serene Escape to the Southern Beaches",
     date: "September 24, 2026",
@@ -56,5 +56,5 @@ export const blogsData: Blog[] = [
     images: [
       "/images/contactus.png"
     ]
-  }
+  }*/
 ];

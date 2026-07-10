@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -192,10 +193,11 @@ export default function TravelGuideClient() {
 
       {/* ── Hero ── */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/help.jpg"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672012/Hero_Section_ljchll.png"
           alt="Sri Lanka Travel Guide"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          className="object-cover"
           style={{ filter: "brightness(0.68) saturate(1.1)" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/30 to-black/08" />
@@ -237,10 +239,12 @@ export default function TravelGuideClient() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             {/* Food & Beverages Card */}
             <Link href="/travelguide/food-beverages" className="group relative overflow-hidden rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F39C12] block min-h-[380px] sm:min-h-[420px] lg:min-h-[450px]">
-              <img
-                src="/images/food.jpg"
+              <Image
+                src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672004/Foods_and_Beverages_ebvdul.png"
                 alt="Food & Beverages"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 style={{ filter: "brightness(0.55) saturate(1.1)" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
@@ -272,10 +276,12 @@ export default function TravelGuideClient() {
 
             {/* Things To Do Card */}
             <Link href="/travelguide/things-to-do" className="group relative overflow-hidden rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F39C12] block min-h-[380px] sm:min-h-[420px] lg:min-h-[450px]">
-              <img
-                src="/images/wildLifeImage.jpg"
+              <Image
+                src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672016/Things_to_Do_g2ozwk.png"
                 alt="Things To Do"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                fill
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 style={{ filter: "brightness(0.55) saturate(1.1)" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
@@ -385,7 +391,7 @@ export default function TravelGuideClient() {
       {/* ── CTA ── */}
       <section className="relative py-20 sm:py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/sigiriya.jpg" alt="Sri Lanka" className="w-full h-full object-cover" style={{ filter: "brightness(0.62)" }} />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672008/Bottom_Section_j7cbwk.png" alt="Sri Lanka" fill className="object-cover" style={{ filter: "brightness(0.62)" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/50 to-black/78" />
         </div>
         <div className="relative z-10 max-w-2xl mx-auto px-5 text-center">

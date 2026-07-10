@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 
 /* ════════════════════════════════════════════════════════════
@@ -66,7 +67,7 @@ export default function Navbar() {
       <div className={`w-9 h-9 sm:w-11 sm:h-11 relative rounded-xl flex items-center justify-center overflow-visible shadow-lg transition-all duration-500 group-hover:scale-110 ${scrolled
         ? 'border-2 border-[#F39C12]/60 bg-gradient-to-br from-[#F8C471]/20 to-[#F39C12]/20'
         : 'border-2 border-white/30 bg-white/10 backdrop-blur-sm'}`}>
-        <img src="/logo.png" alt="Manik Lanka Holidays Logo" className="w-[80%] h-[80%] object-contain relative z-10" />
+        <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672260/logo_ef2rw8.png" alt="Manik Lanka Holidays Logo" fill className="object-contain p-1 relative z-10" />
       </div>
       <div className="flex flex-col">
         <span className={`font-bold text-sm sm:text-base tracking-wide leading-tight transition-all duration-500 ${scrolled
@@ -103,13 +104,12 @@ export default function Navbar() {
                   <button
                     key={link.path}
                     onClick={() => router.push(link.path)}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all duration-300 hover:scale-105 ${
-                      link.name === 'Contact Us'
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all duration-300 hover:scale-105 ${link.name === 'Contact Us'
                         ? 'bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white shadow-md shadow-[#F39C12]/30 hover:from-[#F5B041] hover:to-[#F39C12]'
                         : isActive(link.path)
                           ? 'text-white bg-white/20 backdrop-blur-md shadow border border-white/30'
                           : 'text-white/90 border border-white/25 hover:bg-white/15 backdrop-blur-sm'
-                    }`}
+                      }`}
                   >
                     {link.name}
                     {link.name === 'Contact Us' && <IcoArrow />}
@@ -132,11 +132,10 @@ export default function Navbar() {
                 <button
                   key={link.path}
                   onClick={() => router.push(link.path)}
-                  className={`relative px-3 lg:px-4 py-1.5 rounded-md font-medium text-xs lg:text-sm transition-all duration-300 hover:scale-105 ${
-                    isActive(link.path)
+                  className={`relative px-3 lg:px-4 py-1.5 rounded-md font-medium text-xs lg:text-sm transition-all duration-300 hover:scale-105 ${isActive(link.path)
                       ? 'text-white bg-white/20 backdrop-blur-md shadow border border-white/30'
                       : 'text-white/85 hover:text-white hover:bg-white/10 backdrop-blur-sm'
-                  }`}
+                    }`}
                 >
                   <span className="relative z-10 drop-shadow-md">{link.name}</span>
                 </button>
@@ -150,11 +149,10 @@ export default function Navbar() {
                   <button
                     key={link.path}
                     onClick={() => { router.push(link.path); setIsOpen(false); }}
-                    className={`px-3 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${
-                      isActive(link.path)
+                    className={`px-3 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${isActive(link.path)
                         ? 'text-white bg-white/20 backdrop-blur-md shadow border border-white/30'
                         : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </button>
@@ -184,13 +182,12 @@ export default function Navbar() {
                   <button
                     key={link.path}
                     onClick={() => router.push(link.path)}
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all duration-300 hover:scale-105 ${
-                      link.name === 'Contact Us'
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all duration-300 hover:scale-105 ${link.name === 'Contact Us'
                         ? 'bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white shadow-md shadow-[#F39C12]/30 hover:from-[#F5B041] hover:to-[#F39C12]'
                         : isActive(link.path)
                           ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow'
                           : 'text-[#F8C471] border border-[#F39C12]/40 hover:bg-white/10'
-                    }`}
+                      }`}
                   >
                     {link.name}
                     {link.name === 'Contact Us' && <IcoArrow />}
@@ -213,11 +210,10 @@ export default function Navbar() {
                 <button
                   key={link.path}
                   onClick={() => router.push(link.path)}
-                  className={`relative px-3 lg:px-4 py-1.5 rounded-md font-medium text-xs lg:text-sm transition-all duration-300 hover:scale-105 ${
-                    isActive(link.path)
+                  className={`relative px-3 lg:px-4 py-1.5 rounded-md font-medium text-xs lg:text-sm transition-all duration-300 hover:scale-105 ${isActive(link.path)
                       ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow'
                       : 'text-[#F8C471] hover:text-white hover:bg-white/10'
-                  }`}
+                    }`}
                 >
                   <span className="relative z-10">{link.name}</span>
                 </button>
@@ -231,11 +227,10 @@ export default function Navbar() {
                   <button
                     key={link.path}
                     onClick={() => { router.push(link.path); setIsOpen(false); }}
-                    className={`px-3 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${
-                      isActive(link.path)
+                    className={`px-3 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 text-left ${isActive(link.path)
                         ? 'text-white bg-gradient-to-r from-[#F5B041] via-[#E67E22] to-[#F39C12] shadow'
                         : 'text-[#F8C471] hover:text-white hover:bg-white/10'
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </button>

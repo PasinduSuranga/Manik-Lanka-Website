@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 /* ════════════════════════════════════════════════════════════
@@ -136,12 +137,13 @@ export default function HelpClient() {
           HERO — help.jpg, cinematic, bottom-anchored text
       ══════════════════════════════════════════════════════ */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/help.jpg"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783655712/Hero_Section_1_1_1_1_1_1_1_w2zdhm.png"
           alt="Manik Lanka Holidays Support and FAQ"
-          className="absolute inset-0 w-full h-full object-cover help-hero-img"
+          fill
+          className="object-cover help-hero-img"
           style={{ filter: 'brightness(0.68) saturate(1.05)' }}
-          loading="eager"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/30 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/10 to-transparent" />
@@ -283,7 +285,7 @@ export default function HelpClient() {
       ══════════════════════════════════════════════════════ */}
       <section className="relative py-24 sm:py-32 overflow-hidden" ref={ctaReveal.ref}>
         <div className="absolute inset-0">
-          <img src="/images/beachImage.jpg" alt="Sri Lanka beach" className="w-full h-full object-cover object-center" />
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783655405/Bottom_Section_uhs9oz.png" alt="Sri Lanka beach" fill className="object-cover object-center" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/80" />
         </div>
 

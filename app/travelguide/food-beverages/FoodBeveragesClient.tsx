@@ -51,10 +51,11 @@ export default function FoodBeveragesClient() {
 
       {/* ── Hero ── */}
       <section className="relative h-[65vh] sm:h-[75vh] min-h-[520px] max-h-[860px] overflow-hidden">
-        <img
-          src="/images/food.jpg"
+        <Image
+          src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783672004/Foods_and_Beverages_ebvdul.png"
           alt="Sri Lankan Food & Beverages"
-          className="absolute inset-0 w-full h-full object-cover fb-fade-in"
+          fill
+          className="object-cover fb-fade-in"
           style={{ filter: "brightness(0.65) saturate(1.15)" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/28 to-black/06" />
@@ -209,7 +210,7 @@ export default function FoodBeveragesClient() {
       {/* ── Nuwa Eliya tea image strip ── */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/nuwaraEliya.jpg" alt="Ceylon Tea Country" className="w-full h-full object-cover"
+          <Image src="https://res.cloudinary.com/bnhex8aj/image/upload/v1783601709/Bottom_Section_go7ry3.png" alt="Ceylon Tea Country" fill className="object-cover"
             style={{ filter: "brightness(0.6) saturate(1.1)" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/75" />
         </div>
