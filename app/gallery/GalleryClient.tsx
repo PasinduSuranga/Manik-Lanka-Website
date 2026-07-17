@@ -91,12 +91,12 @@ const galleryData: GalleryItem[] = [
   { id: 31, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783654595/30_jme5k1.png', title: 'Traditional Coastal Fishing', category: 'Culture', span: 'tall', type: 'image' },
   { id: 32, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783654792/31_dbfftp.png', title: 'Scenic Highland Escapes', category: 'Nature', span: 'wide', type: 'image' },
   { id: 33, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655096/32_nktkjg.png', title: 'Local Heritage Encounters', category: 'Heritage', span: 'tall', type: 'image' },
-  { id: 34, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673465/1_avxgyy.mp4', title: 'Turtles', category: 'Wildlife', span: 'tall', type: 'video' },
-  { id: 35, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673567/2_hblbj9.mp4', title: 'Fishing', category: 'Culture', span: 'tall', type: 'video' },
-  { id: 36, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286066/WhatsApp_Video_2026-07-17_at_2.03.58_PM_1_hbuz7m.mp4', title: 'Hill Country', category: 'Nature', span: 'tall', type: 'video' },
-  { id: 37, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.05.05_PM_ejc0ut.mp4', title: 'Beaches', category: 'Nature', span: 'tall', type: 'video' },
-  { id: 38, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.03.58_PM_wdclfk.mp4', title: 'Hill Country', category: 'Nature', span: 'wide', type: 'video' },
-  { id: 39, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286068/WhatsApp_Video_2026-07-17_at_2.41.21_PM_xucyyi.mp4', title: 'Elephants', category: 'Culture', span: 'tall', type: 'video' },
+  { id: 34, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673465/1_avxgyy.mp4', title: 'Baby Turtles', category: 'Wildlife', span: 'tall', type: 'video' },
+  { id: 35, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673567/2_hblbj9.mp4', title: 'Fishing Experience', category: 'Culture', span: 'tall', type: 'video' },
+  { id: 36, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286066/WhatsApp_Video_2026-07-17_at_2.03.58_PM_1_hbuz7m.mp4', title: 'Scenic Highland Escapes', category: 'Nature', span: 'tall', type: 'video' },
+  { id: 37, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.05.05_PM_ejc0ut.mp4', title: 'Sunset at the Beach', category: 'Nature', span: 'tall', type: 'video' },
+  { id: 38, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.03.58_PM_wdclfk.mp4', title: 'Scenic Highland Escapes', category: 'Nature', span: 'wide', type: 'video' },
+  { id: 39, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286068/WhatsApp_Video_2026-07-17_at_2.41.21_PM_xucyyi.mp4', title: 'Elephants in Sri Lanka', category: 'Culture', span: 'tall', type: 'video' },
 ];
 
 /* ════════════════════════════════════════════════════════════
