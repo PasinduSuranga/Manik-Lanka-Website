@@ -91,12 +91,20 @@ const galleryData: GalleryItem[] = [
   { id: 31, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783654595/30_jme5k1.png', title: 'Traditional Coastal Fishing', category: 'Culture', span: 'tall', type: 'image' },
   { id: 32, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783654792/31_dbfftp.png', title: 'Scenic Highland Escapes', category: 'Nature', span: 'wide', type: 'image' },
   { id: 33, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1783655096/32_nktkjg.png', title: 'Local Heritage Encounters', category: 'Heritage', span: 'tall', type: 'image' },
-  { id: 34, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673465/1_avxgyy.mp4', title: 'Baby Turtles', category: 'Wildlife', span: 'tall', type: 'video' },
-  { id: 35, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673567/2_hblbj9.mp4', title: 'Fishing Experience', category: 'Culture', span: 'tall', type: 'video' },
-  { id: 36, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286066/WhatsApp_Video_2026-07-17_at_2.03.58_PM_1_hbuz7m.mp4', title: 'Scenic Highland Escapes', category: 'Nature', span: 'tall', type: 'video' },
-  { id: 37, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.05.05_PM_ejc0ut.mp4', title: 'Sunset at the Beach', category: 'Nature', span: 'tall', type: 'video' },
-  { id: 38, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.03.58_PM_wdclfk.mp4', title: 'Scenic Highland Escapes', category: 'Nature', span: 'wide', type: 'video' },
-  { id: 39, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286068/WhatsApp_Video_2026-07-17_at_2.41.21_PM_xucyyi.mp4', title: 'Elephants in Sri Lanka', category: 'Culture', span: 'tall', type: 'video' },
+  { id: 34, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673465/1_avxgyy.mp4', title: 'First Ocean Steps', category: 'Wildlife', span: 'tall', type: 'video' },
+  { id: 35, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1783673567/2_hblbj9.mp4', title: 'Sharing The Catch', category: 'Culture', span: 'tall', type: 'video' },
+  { id: 36, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286066/WhatsApp_Video_2026-07-17_at_2.03.58_PM_1_hbuz7m.mp4', title: 'Serene Emerald Heights', category: 'Nature', span: 'tall', type: 'video' },
+  { id: 37, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.05.05_PM_ejc0ut.mp4', title: 'Golden Beach Horizon', category: 'Nature', span: 'tall', type: 'video' },
+  { id: 38, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286067/WhatsApp_Video_2026-07-17_at_2.03.58_PM_wdclfk.mp4', title: 'Quiet Valley Breezes', category: 'Nature', span: 'wide', type: 'video' },
+  { id: 39, src: 'https://res.cloudinary.com/bnhex8aj/video/upload/v1784286068/WhatsApp_Video_2026-07-17_at_2.41.21_PM_xucyyi.mp4', title: 'Mighty Hooded Wanderer', category: 'Culture', span: 'tall', type: 'video' },
+  { id: 40, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292418/WhatsApp_Image_2026-07-17_at_2.03.32_PM_1__upscayl_4x_ultramix-balanced-4x_entk6n.png', title: 'Pastel Ocean Bay', category: 'Nature', span: 'tall', type: 'image' },
+  { id: 41, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292420/WhatsApp_Image_2026-07-17_at_2.03.34_PM_3__upscayl_4x_ultramix-balanced-4x_ycxkrb.png', title: 'Sunset Highway Drive', category: 'Nature', span: 'tall', type: 'image' },
+  { id: 42, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292421/WhatsApp_Image_2026-07-17_at_2.03.34_PM_1__upscayl_4x_ultramix-balanced-4x_b8r0rq.png', title: 'Dramatic Horizon Skies', category: 'Nature', span: 'tall', type: 'image' },
+  { id: 43, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292421/WhatsApp_Image_2026-07-17_at_2.03.34_PM_upscayl_4x_ultramix-balanced-4x_l8zyq1.png', title: 'Sunlit Tropical Shore', category: 'Nature', span: 'wide', type: 'image' },
+  { id: 44, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292421/WhatsApp_Image_2026-07-17_at_2.03.34_PM_2__upscayl_4x_ultramix-balanced-4x_mqyqcm.png', title: 'Shadows On Sand', category: 'Nature', span: 'tall', type: 'image' },
+  { id: 45, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292421/WhatsApp_Image_2026-07-17_at_2.03.23_PM_upscayl_4x_ultramix-balanced-4x_uamf53.png', title: 'Dusk Mountain Trail', category: 'Nature', span: 'tall', type: 'image' },
+  { id: 46, src: 'https://res.cloudinary.com/bnhex8aj/image/upload/v1784292421/WhatsApp_Image_2026-07-17_at_2.03.32_PM_upscayl_4x_ultramix-balanced-4x_dvtans.png', title: 'Soft Evening Tides', category: 'Nature', span: 'wide', type: 'image' },
+
 ];
 
 /* ════════════════════════════════════════════════════════════
@@ -110,7 +118,7 @@ function useReveal() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
     obs.observe(el);
     return () => obs.disconnect();
