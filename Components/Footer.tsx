@@ -160,10 +160,10 @@ export default function Footer() {
                 <span className="mt-0.5 text-[#F39C12]/70 group-hover:text-[#F5B041]"><IcoPhone /></span>
                 +94 77 767 3814
               </a>
-              <a href="mailto:mlankaholidays@gmail.com"
+              <a href="mailto:info@maniklankaholidays.com"
                 className="group flex items-start gap-3 text-white/60 hover:text-[#F5B041] text-sm transition-colors duration-300 break-all">
                 <span className="mt-0.5 text-[#F39C12]/70 group-hover:text-[#F5B041] flex-shrink-0"><IcoMail /></span>
-                mlankaholidays@gmail.com
+                info@maniklankaholidays.com
               </a>
               <div className="flex items-start gap-3 text-white/60 text-sm">
                 <span className="text-[#F39C12]/70"><IcoPin /></span>
