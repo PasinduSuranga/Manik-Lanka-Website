@@ -189,6 +189,18 @@ export default function Footer() {
             Crafted with care for unforgettable Sri Lanka journeys.
           </p>
         </div>
+
+        {/* KODIFEX development credit */}
+        <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-center gap-2 text-white/30 text-[11px] tracking-wide">
+          <Image
+            src="/kodifex-icon.png"
+            alt="KODIFEX"
+            width={16}
+            height={16}
+            className="opacity-70"
+          />
+          <span>Designed &amp; Developed by <span className="text-white/50 font-medium">KODIFEX</span></span>
+        </div>
       </div>
     </footer>
   );
